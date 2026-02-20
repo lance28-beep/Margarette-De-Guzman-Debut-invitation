@@ -292,7 +292,7 @@ export function Details() {
                 </div>
               </div>
               <p className="text-xs sm:text-sm text-white/85 leading-relaxed">
-                Dress in shades that complement our palette—deep navy, royal blue, indigo, & soft cream. Ladies: formal gown. Gentlemen: Suits Coat and Tie or Tuxedo.
+                Dress in shades that complement our palette—deep navy, royal blue & indigo. Ladies: formal gown. Gentlemen: Suits Coat and Tie or Tuxedo.
               </p>
               <div className="relative w-full rounded-xl overflow-hidden border border-white/20 mb-4">
                 <Image

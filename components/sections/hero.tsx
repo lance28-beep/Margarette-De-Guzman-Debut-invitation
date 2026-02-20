@@ -137,7 +137,7 @@ export function Hero() {
                 letterSpacing: "0.08em",
               }}
               >
-              Ena Gerangaya
+              Ena Mariel Gerangaya
             </h1>
             <p
               className={`${windSong.className} text-3xl sm:text-4xl md:text-5xl lg:text-[3.75rem] text-[#E5C9B7] drop-shadow-[0_12px_28px_rgba(1,54,98,0.6)]`}

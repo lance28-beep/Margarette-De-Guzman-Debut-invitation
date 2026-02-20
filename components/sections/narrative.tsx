@@ -19,7 +19,9 @@ const inter = Inter({
   weight: ["300", "400", "500", "600"],
 })
 
-const ABOUT_TEXT = `Ena Gerangaya is a lively, expressive person whose passion for dancing is evident in the way she moves and presents herself. She is kind-hearted and constantly demonstrates compassion and understanding for those around her. People are immediately at ease around her, as though they have known her for a very long time. Ena is inherently a kikay, appreciating the small pleasures of fashion, self-care, and anything that enhances her individuality. She has an adventurous spirit that encourages her to travel, try new things, and live life to the fullest despite her gentle and playful side. Ena is a truly remarkable person because of her dancing, warmth, kindness, adventure, and kikay charm.`
+const ABOUT_TEXT = `Ena is a passionate young lady who aspires to travel the world. She is kind-hearted and constantly demonstrates compassion and understanding for those around her.
+People are immediately at ease around her, as though they have known her for a very long time. Ena appreciates the small pleasures of fashion, self-care, and anything that enhances her individuality.
+She has an adventurous spirit that encourages her to try new things, and live life to the fullest with a gentle heart and curious charm. Ena is a truly remarkable person because of her warmth, kindness, patience, and adventure. `
 
 export function Narrative() {
   return (
