@@ -19,7 +19,11 @@ const mobileImages: string[] = [
 '/desktop-background/debut (2).webp',
 '/desktop-background/debut (3).webp',
 '/desktop-background/debut (4).webp',
-'/desktop-background/debut (2).webp',
+'/desktop-background/debut (5).webp',
+'/desktop-background/debut (6).jpg',
+'/desktop-background/debut (7).jpg',
+'/desktop-background/debut (8).jpg',
+'/desktop-background/debut (9).jpg',
 ];
 
 export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
@@ -38,15 +42,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
     return () => media.removeEventListener('change', handleChange);
   }, []);
 
+  const images = useMemo(() => (isMobile ? mobileImages : desktopImages), [isMobile]);
+
   useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || images.length === 0) return;
     const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % 5);
+      setIndex((prev) => (prev + 1) % images.length);
     }, 5500);
     return () => clearInterval(timer);
-  }, [mounted]);
-
-  const images = useMemo(() => (isMobile ? mobileImages : desktopImages), [isMobile]);
+  }, [mounted, images.length]);
 
   return (
     <div className={`fixed inset-0 z-30 flex items-center justify-center overflow-hidden transition-opacity duration-500 ${visible ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
@@ -54,18 +58,24 @@ export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
       <div className="absolute inset-0 z-0">
         {images.map((src, i) => (
           <img
-            key={src}
+            key={`${src}-${i}`}
             src={src}
-            alt="Couple"
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${i === index ? 'opacity-100' : 'opacity-0'}`}
+            alt="Debut background"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+              i === index ? 'opacity-100' : 'opacity-0'
+            }`}
           />
         ))}
         
-        {/* Overlay */}
+        {/* Overlay - soft pink beach gradient */}
         <div 
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: 'linear-gradient(to bottom, rgba(1, 54, 98, 0.7), rgba(0, 85, 143, 0.7))'
+            background: `
+              radial-gradient(circle at top left, rgba(246, 193, 207, 0.55), transparent 45%),
+              radial-gradient(circle at bottom right, rgba(216, 180, 226, 0.55), transparent 50%),
+              linear-gradient(to bottom, rgba(255, 246, 248, 0.05), rgba(244, 143, 177, 0.45))
+            `
           }}
         />
       </div>
@@ -79,12 +89,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
             {/* Monogram Image */}
             <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44">
               <Image
-                src="/monogram/monogram.png"
+                src="/monogram/newmonogram.png"
                 alt="Debut Monogram"
                 fill
-                className="object-contain"
+                className="object-contain drop-shadow-[0_18px_45px_rgba(0,0,0,0.45)]"
                 priority
-                style={{ filter: 'brightness(0) saturate(100%) invert(84%) sepia(28%) saturate(557%) hue-rotate(342deg) brightness(100%) contrast(88%)' }}
+                style={{ filter: 'brightness(0) invert(1)' }}
               />
             </div>
           </div>
@@ -98,7 +108,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
             style={{
               fontFamily: '"Great Vibes", cursive',
               fontWeight: 400,
-              color: '#FFE1BE',
+              color: '#FFF6F8',
             }}
           >
             You are
@@ -109,7 +119,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
             style={{
               fontFamily: '"Cinzel", serif',
               fontWeight: 700,
-              color: '#FFE1BE',
+              color: '#FFF6F8',
             }}
           >
             Invited!
@@ -119,21 +129,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
             onClick={() => {
               onOpen();
             }}
-            className="px-10 py-4 font-serif text-sm tracking-[0.2em] uppercase rounded-sm border transition-all duration-300"
+            className="px-10 py-4 font-serif text-sm tracking-[0.2em] uppercase rounded-full border transition-all duration-300 shadow-[0_18px_45px_rgba(0,0,0,0.35)] backdrop-blur-sm bg-white/10"
             style={{
-              backgroundColor: '#01184C',
-              borderColor: '#FFE1BE',
-              color: '#FFE1BE',
+              borderColor: 'rgba(255, 246, 248, 0.8)',
+              color: '#FFF6F8',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(1, 24, 76, 0.9)';
+              e.currentTarget.style.backgroundColor = 'rgba(255, 246, 248, 0.16)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#01184C';
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
             }}
           >
             <span
-              style={{ fontFamily: '"Cinzel", serif', fontWeight: 500, color: '#FFE1BE' }}
+              style={{ fontFamily: '"Cinzel", serif', fontWeight: 500, color: '#FFF6F8' }}
             >
               Open Invitation
             </span>

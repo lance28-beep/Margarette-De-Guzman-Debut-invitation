@@ -1,6 +1,7 @@
 "use client"
 
 import { Section } from "@/components/section"
+import { siteConfig } from "@/content/site"
 
 import { Great_Vibes, Playfair_Display, Inter } from "next/font/google"
 
@@ -30,7 +31,7 @@ export function Registry() {
 
       <div className="relative z-10 text-center mb-10 sm:mb-14 lg:mb-16 px-4">
 
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#013662]/40 px-5 py-2 text-[10px] sm:text-xs uppercase tracking-[0.48em] text-white">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#D95C8A]/40 px-5 py-2 text-[10px] sm:text-xs uppercase tracking-[0.48em] text-white">
 
           Gift Registry
 
@@ -52,7 +53,7 @@ export function Registry() {
 
         >
 
-          Your presence is the most precious gift for Ena's debut celebration. If you wish to share a token of love,
+          Your presence is the most precious gift for {`${siteConfig.couple.debut}`}'s debut celebration. If you wish to share a token of love,
 
           we welcome your thoughtful contributions to help her pursue her dreams.
 
@@ -70,9 +71,9 @@ export function Registry() {
 
             <div className="max-w-2xl mx-auto text-center">
 
-              <p className={`${playfair.className} text-lg sm:text-xl md:text-2xl text-[#013662] leading-relaxed`}>
+              <p className={`${playfair.className} text-lg sm:text-xl md:text-2xl text-[#D95C8A] leading-relaxed`}>
 
-                "As Ena celebrates her debut, your presence is the greatest gift she treasures."
+                "As {`${siteConfig.couple.debut}`} celebrates her debut, your presence is the greatest gift she treasures."
 
               </p>
 

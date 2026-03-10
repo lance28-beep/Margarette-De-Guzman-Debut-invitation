@@ -193,7 +193,7 @@ export function Footer() {
     <footer 
 
       className="relative z-20 mt-16 text-cream overflow-hidden"
-      style={{ background: "linear-gradient(to bottom, #013662, #00558F)" }}
+      style={{ background: "linear-gradient(to bottom, #D95C8A, #F48FB1)" }}
 
     >
 
@@ -211,9 +211,9 @@ export function Footer() {
 
             backgroundImage: `
 
-              repeating-linear-gradient(45deg, transparent, transparent 70px, rgba(229,201,183,0.06) 70px, rgba(229,201,183,0.06) 71px),
+              repeating-linear-gradient(45deg, transparent, transparent 70px, rgba(217,92,138,0.06) 70px, rgba(217,92,138,0.06) 71px),
 
-              repeating-linear-gradient(-45deg, transparent, transparent 70px, rgba(229,201,183,0.06) 70px, rgba(229,201,183,0.06) 71px)
+              repeating-linear-gradient(-45deg, transparent, transparent 70px, rgba(217,92,138,0.06) 70px, rgba(217,92,138,0.06) 71px)
 
             `,
 
@@ -235,7 +235,7 @@ export function Footer() {
 
               {/* Scroll motifs at intersections */}
 
-              <g fill="none" stroke="#E5C9B7" strokeWidth="0.5">
+              <g fill="none" stroke="#D95C8A" strokeWidth="0.5">
 
                 {/* Top scroll */}
 
@@ -455,9 +455,9 @@ export function Footer() {
 
                   <Image
 
-                    src="/monogram/monogram.png"
+                    src="/monogram/newmonogram.png"
 
-                    alt="Nena Debut Monogram"
+                    alt="Piel Allen Debut Monogram"
 
                     width={128}
 
@@ -505,21 +505,21 @@ export function Footer() {
 
             <motion.div className="bg-white/90 backdrop-blur-md rounded-2xl p-6 border-2 border-white/30" whileHover={{ scale: 1.02 }} transition={{ duration: 0.3 }}>
 
-              <blockquote className={`${inter.className} text-[#013662] italic text-lg leading-relaxed min-h-[80px]`}>
+              <blockquote className={`${inter.className} text-[#D95C8A] italic text-lg leading-relaxed min-h-[80px]`}>
 
                 "{displayedText}
 
-                <span className="inline-block w-0.5 h-6 bg-[#013662] ml-1 animate-pulse">|</span>"
+                <span className="inline-block w-0.5 h-6 bg-[#D95C8A] ml-1 animate-pulse">|</span>"
 
               </blockquote>
 
               <div className="flex items-center gap-2 mt-4">
 
-                <div className="w-2 h-2 bg-[#013662]/70 rounded-full" />
+                <div className="w-2 h-2 bg-[#D95C8A]/70 rounded-full" />
 
-                <div className="w-2 h-2 bg-[#013662]/50 rounded-full" />
+                <div className="w-2 h-2 bg-[#D95C8A]/50 rounded-full" />
 
-                <div className="w-2 h-2 bg-[#013662]/70 rounded-full" />
+                <div className="w-2 h-2 bg-[#D95C8A]/70 rounded-full" />
 
               </div>
 
@@ -537,13 +537,13 @@ export function Footer() {
 
               <div className="flex items-center gap-3 mb-4">
 
-                <div className="w-10 h-10 bg-[#013662]/10 rounded-full flex items-center justify-center border-2 border-[#013662]/20">
+                <div className="w-10 h-10 bg-[#D95C8A]/10 rounded-full flex items-center justify-center border-2 border-[#D95C8A]/20">
 
-                  <Clock className="w-5 h-5 text-[#013662]" />
+                  <Clock className="w-5 h-5 text-[#D95C8A]" />
 
                 </div>
 
-                <h4 className={`${playfair.className} font-bold text-xl text-[#013662]`}>Debut Celebration</h4>
+                <h4 className={`${playfair.className} font-bold text-xl text-[#D95C8A]`}>Debut Celebration</h4>
 
               </div>
 
@@ -551,17 +551,17 @@ export function Footer() {
 
                 <div className="flex items-center gap-3">
 
-                  <MapPin className="w-4 h-4 text-[#013662]/70" />
+                  <MapPin className="w-4 h-4 text-[#D95C8A]/70" />
 
-                  <span>{siteConfig.wedding.venue}</span>
+                  <span style={{ color: "#D95C8A" }}>{siteConfig.wedding.venue}</span>
 
                 </div>
 
                 <div className="flex items-center gap-3">
 
-                  <Clock className="w-4 h-4 text-[#013662]/70" />
+                  <Clock className="w-4 h-4 text-[#D95C8A]/70" />
 
-                  <span>{siteConfig.wedding.time}</span>
+                  <span style={{ color: "#D95C8A" }}>{siteConfig.wedding.time}</span>
 
                 </div>
 
@@ -577,29 +577,29 @@ export function Footer() {
 
                 <div className="w-10 h-10 bg-[#013662]/10 rounded-full flex items-center justify-center border-2 border-[#013662]/20">
 
-                  <Sparkles className="w-5 h-5 text-[#013662]" />
+                  <Sparkles className="w-5 h-5 text-[#D95C8A]" />
 
                 </div>
 
-                <h4 className={`${playfair.className} font-bold text-xl text-[#013662]`}>Evening Reception</h4>
+                <h4 className={`${playfair.className} font-bold text-xl text-[#D95C8A]`}>Evening Reception</h4>
 
               </div>
 
-              <div className={`space-y-3 ${inter.className} text-[#013662]/80 text-sm`}>
+              <div className={`space-y-3 ${inter.className} text-[#D95C8A]/80 text-sm`}>
 
                 <div className="flex items-center gap-3">
 
-                  <MapPin className="w-4 h-4 text-[#013662]/70" />
+                  <MapPin className="w-4 h-4 text-[#D95C8A]/70" />
 
-                  <span>{siteConfig.wedding.venue}</span>
+                  <span style={{ color: "#D95C8A" }}>{siteConfig.wedding.venue}</span>
 
                 </div>
 
                 <div className="flex items-center gap-3">
 
-                  <Clock className="w-4 h-4 text-[#013662]/70" />
+                  <Clock className="w-4 h-4 text-[#D95C8A]/70" />
 
-                  <span>Following the debut</span>
+                  <span style={{ color: "#D95C8A" }}>Following the debut</span>
 
                 </div>
 
@@ -737,9 +737,9 @@ export function Footer() {
 
             <div className="text-center md:text-left">
 
-              <p className={`text-[#E5C9B7]/85 ${inter.className} text-sm`}>© {year} Ena Gerangaya's Debut. All rights reserved.</p>
+              <p className={`text-[white]/85 ${inter.className} text-sm`}>© {year} Ena Gerangaya's Debut. All rights reserved.</p>
 
-              <p className={`text-[#E5C9B7]/90 ${inter.className} text-sm mt-1`}>
+              <p className={`text-[white]/90 ${inter.className} text-sm mt-1`}>
 
                 Made with love for her special celebration
 
@@ -751,7 +751,7 @@ export function Footer() {
 
             <div className="text-center md:text-right space-y-1">
 
-              <p className={`text-[#E5C9B7]/80 ${inter.className} text-xs`}>
+              <p className={`text-[white]/80 ${inter.className} text-xs`}>
 
                 Developed by{" "}
 
@@ -763,7 +763,7 @@ export function Footer() {
 
                   rel="noopener noreferrer"
 
-                  className="text-[#E5C9B7] hover:text-[#E5C9B7]/80 transition-colors duration-200 underline decoration-[#E5C9B7]/50 hover:decoration-[#E5C9B7]/70"
+                  className="text-[white] hover:text-[white]/80 transition-colors duration-200 underline decoration-[white]/50 hover:decoration-[white]/70"
 
                 >
 
@@ -773,7 +773,7 @@ export function Footer() {
 
               </p>
 
-              <p className={`text-[#E5C9B7]/80 ${inter.className} text-xs`}>
+              <p className={`text-[white]/80 ${inter.className} text-xs`}>
 
                 Want a website like this? Visit{" "}
 
@@ -785,7 +785,7 @@ export function Footer() {
 
                   rel="noopener noreferrer"
 
-                  className="text-[#E5C9B7] hover:text-[#E5C9B7]/80 transition-colors duration-200 underline decoration-[#E5C9B7]/50 hover:decoration-[#E5C9B7]/70"
+                  className="text-[white] hover:text-[white]/80 transition-colors duration-200 underline decoration-[white]/50 hover:decoration-[white]/70"
 
                 >
 

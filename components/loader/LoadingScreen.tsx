@@ -10,12 +10,12 @@ interface LoadingScreenProps {
 
 // Countdown boxes with color photos - numbers show days, hours, minutes
 const COUNTDOWN_BOXES = [
-  { src: '/desktop-background/debut (7).webp' },
-  { src: '/desktop-background/debut (11).webp' },
-  { src: '/desktop-background/debut (3).webp' },
+  { src: '/boxes/1.jpg' },
+  { src: '/boxes/2.jpg' },
+  { src: '/boxes/3.jpg' },
 ];
 
-const MAIN_BW_IMAGE = '/desktop-background/debut (9).webp';
+const MAIN_BW_IMAGE = '/desktop-background/debut (3).webp';
 const STAGGER_DELAY_MS = 4000; // Each image appears every 4 seconds
 const BOX_TRANSITION_MS = 1200; // Slow, smooth transition
 const TOTAL_DURATION_MS = COUNTDOWN_BOXES.length * STAGGER_DELAY_MS + 3000;
@@ -28,7 +28,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
 
   // Live countdown: days, hours, minutes until debut
   const countdown = useMemo(() => {
-    const debutDate = new Date('2026-03-21T18:00:00');
+    const debutDate = new Date('2026-04-04T18:00:00');
     const diff = debutDate.getTime() - now.getTime();
     if (diff <= 0) return { days: 0, hours: 0, minutes: 0 };
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -49,8 +49,8 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
     return `${days} DAYS TO GO`;
   }, [countdown.days]);
 
-  // Debut date: 03.21.26 (month, day, year)
-  const countdownNumbers = ['03', '21', '26'];
+  // Debut date: 04.04.26 (month, day, year)
+  const countdownNumbers = ['04', '04', '26'];
   const countdownLabels = ['MONTH', 'DAY', 'YEAR'];
 
   useEffect(() => {
@@ -88,17 +88,19 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
     };
   }, [onComplete]);
 
-  // Show debutant name with event instead of couple names
-  const coupleNames = `${siteConfig.couple.brideNickname} 18th Birthday`;
+  // Show debutant name and date
+  const debutName = 'Piel Allen G. Marasigan';
+  const debutDateDisplay = '04 · 04 · 26';
   const productionCredit = '';
 
-  // Palette: deep sapphire, royal blue, bright blue, champagne blush, soft cream
+  // Soft pink beach aesthetic palette
   const palette = {
-    dark: '#013662',
-    medium: '#00558F',
-    tan: '#0272C7',
-    light: '#E5C9B7',
-    cream: '#FBF1E7',
+    primaryPink: '#F6C1CF',
+    secondaryPink: '#F48FB1',
+    accentPink: '#D95C8A',
+    lavender: '#D8B4E2',
+    coral: '#E57399',
+    baseWhite: '#FFF6F8',
   };
 
   return (
@@ -107,7 +109,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         fadeOut ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
-      {/* Background image with overlay */}
+      {/* Background image with pastel overlay */}
       <div className="absolute inset-0">
         <Image
           src={MAIN_BW_IMAGE}
@@ -117,40 +119,50 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           sizes="100vw"
           priority
         />
-        {/* Gradient overlay for readability and warmth */}
+        {/* Soft pastel gradient overlay for readability and warmth */}
         <div
           className="absolute inset-0"
           style={{
-            background: `linear-gradient(180deg, ${palette.dark}40 0%, transparent 25%, transparent 75%, ${palette.dark}50 100%)`,
+            background: `radial-gradient(circle at top left, ${palette.primaryPink}55 0%, transparent 40%),
+                         radial-gradient(circle at bottom right, ${palette.lavender}55 0%, transparent 45%),
+                         linear-gradient(180deg, ${palette.baseWhite}10 0%, ${palette.secondaryPink}30 100%)`,
           }}
         />
+
+        {/* Minimal white line-art style accents */}
+        <div className="absolute -top-10 -left-6 sm:-top-6 sm:left-4 w-40 h-40 rounded-full border border-white/40 opacity-50 blur-[1px]" />
+        <div className="absolute bottom-10 -right-12 sm:-right-4 w-48 h-32 rounded-[999px] border border-white/40 opacity-40 rotate-6" />
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-6 top-24 w-16 h-16 rounded-3xl border border-white/40 opacity-50" />
+          <div className="absolute right-10 bottom-32 w-12 h-12 rounded-full border border-white/40 opacity-40" />
+        </div>
       </div>
 
       <div className="relative flex flex-col flex-1 min-h-0">
-        {/* Top: Debut label + countdown - refined styling, centered on mobile */}
-        <div className="flex flex-col items-center justify-center w-full pt-12 sm:pt-16 md:pt-24 px-4 sm:px-6 flex-shrink-0">
+        {/* Top: Debut label + countdown - soft pastel styling, centered on mobile */}
+        <div className="flex flex-col items-center justify-center w-full pt-10 sm:pt-14 md:pt-20 px-4 sm:px-6 flex-shrink-0">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-4 w-full max-w-lg mx-auto">
             <span
               className="hidden sm:block h-px w-12 flex-shrink-0"
-              style={{ backgroundColor: palette.tan }}
+              style={{ backgroundColor: `${palette.coral}80` }}
             />
             <p
               className="text-[10px] sm:text-xs tracking-[0.3em] sm:tracking-[0.4em] font-sans uppercase text-center"
-              style={{ color: '#00558F' }}
+              style={{ color: palette.baseWhite }}
             >
               Save the date for the debut
             </p>
             <span
               className="hidden sm:block h-px w-12 flex-shrink-0"
-              style={{ backgroundColor: palette.tan }}
+              style={{ backgroundColor: `${palette.coral}80` }}
             />
           </div>
           <h2
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center tracking-[0.08em] sm:tracking-[0.12em] uppercase max-w-md leading-tight px-2"
             style={{
               fontFamily: '"Cinzel", serif',
-              color: palette.cream,
-              textShadow: `0 2px 12px rgba(0,0,0,0.35), 0 0 40px rgba(94,51,17,0.15)`,
+              color: palette.baseWhite,
+              textShadow: `0 10px 35px rgba(0,0,0,0.45)`,
             }}
           >
             {countdownText}
@@ -160,42 +172,49 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         {/* Spacer - lets B&W image dominate (upper 2/3) */}
         <div className="flex-1 min-h-[12vh]" />
 
-        {/* Middle: Three color countdown boxes - staggered reveal */}
-        <div className="flex items-stretch justify-center gap-3 sm:gap-4 md:gap-6 px-3 sm:px-4 py-4 flex-shrink-0">
+        {/* Middle: Three glassmorphism countdown cards - staggered reveal */}
+        <div className="flex items-stretch justify-center gap-3 sm:gap-4 md:gap-6 px-4 sm:px-6 py-4 flex-shrink-0">
           {COUNTDOWN_BOXES.map((item, i) => {
             const isVisible = visibleBoxes.includes(i);
             return (
               <div
                 key={i}
-                className="relative flex-1 max-w-[28vw] sm:max-w-[140px] md:max-w-[160px] aspect-[3/4] overflow-hidden"
+                className="relative flex-1 max-w-[28vw] sm:max-w-[140px] md:max-w-[160px] aspect-[3/4] overflow-hidden rounded-3xl border border-white/40 bg-white/10 backdrop-blur-md shadow-[0_18px_45px_rgba(0,0,0,0.35)]"
                 style={{
                   opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(24px) scale(0.96)',
+                  transform: isVisible
+                    ? 'translateY(0) scale(1)'
+                    : 'translateY(28px) scale(0.94)',
                   transition: `opacity ${BOX_TRANSITION_MS}ms cubic-bezier(0.4, 0, 0.2, 1), transform ${BOX_TRANSITION_MS}ms cubic-bezier(0.4, 0, 0.2, 1)`,
                 }}
               >
                 <Image
                   src={item.src}
-                  alt={`${coupleNames}`}
+                  alt={debutName}
                   fill
-                  className="object-cover"
+                  className="object-cover scale-105"
                   sizes="(max-width: 640px) 28vw, 160px"
                 />
+                {/* Soft gradient overlay for readable number */}
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background: `linear-gradient(145deg, ${palette.primaryPink}10 0%, transparent 45%, ${palette.secondaryPink}35 100%)`,
+                  }}
+                />
+
                 {/* Bold debut date number + label - right corner */}
                 <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 flex flex-col items-end">
                   <span
                     className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black select-none leading-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
                     style={{
                       fontFamily: 'var(--font-granika), sans-serif',
-                      color: palette.cream,
+                      color: palette.baseWhite,
                     }}
                   >
                     {countdownNumbers[i]}
                   </span>
-                  <span
-                    className="text-[8px] sm:text-[9px] tracking-widest uppercase mt-0.5"
-                    style={{ color: palette.light }}
-                  >
+                  <span className="text-[8px] sm:text-[9px] tracking-widest uppercase mt-0.5 text-[rgba(255,246,248,0.85)]">
                     {countdownLabels[i]}
                   </span>
                 </div>
@@ -204,18 +223,24 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           })}
         </div>
 
-        {/* Bottom: Names + production credit + progress bar */}
+        {/* Bottom: Name, date + progress bar */}
         <div className="flex flex-col items-center justify-center w-full py-6 sm:py-8 px-4 flex-shrink-0">
           <div
-            className="text-center text-2xl sm:text-3xl md:text-4xl mb-2"
+            className="text-center text-2xl sm:text-3xl md:text-4xl mb-1"
             style={{
               fontFamily: 'var(--font-serif), cursive',
-              color: '#00558F',
-              textShadow: '0 2px 8px rgba(0,0,0,0.3)',
+              color: palette.baseWhite,
+              textShadow: '0 8px 24px rgba(0,0,0,0.4)',
             }}
           >
-            {coupleNames}
+            {debutName}
           </div>
+          <p
+            className="text-[11px] sm:text-xs tracking-[0.35em] uppercase mb-3 font-sans"
+            style={{ color: 'rgba(255,246,248,0.9)' }}
+          >
+            {debutDateDisplay}
+          </p>
           {productionCredit && (
             <p
               className="text-[10px] sm:text-xs font-sans tracking-wider"
@@ -227,20 +252,22 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           {/* Preparing message + progress bar */}
           <p
             className="text-xs sm:text-sm tracking-widest mt-6 mb-3 font-sans uppercase"
-            style={{ color: '#172822' }}
+            style={{ color: 'rgba(255,246,248,0.9)' }}
           >
             Preparing your debut invitation
           </p>
           <div className="w-full max-w-xs mx-auto">
             <div
               className="h-1 rounded-full overflow-hidden"
-              style={{ backgroundColor: `${palette.medium}60` }}
+              style={{
+                backgroundColor: 'rgba(255,255,255,0.25)',
+              }}
             >
               <div
                 className="h-full rounded-full transition-all duration-300 ease-out"
                 style={{
                   width: `${progress}%`,
-                  backgroundColor: '#172822',
+                  backgroundColor: 'rgba(255,255,255,0.95)',
                 }}
               />
             </div>

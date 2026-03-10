@@ -11,6 +11,30 @@ const cormorant = Cormorant_Garamond({
   weight: ["400"],
 })
 
+// Soft pink beach aesthetic palette for easy tweaking
+const navPalette = {
+  primaryPink: "#F6C1CF",
+  secondaryPink: "#F48FB1",
+  accentPink: "#D95C8A",
+  lavender: "#D8B4E2",
+  coral: "#E57399",
+  baseWhite: "#FFF6F8",
+}
+
+// Central navbar color tokens
+const NAV_COLORS = {
+  // Glassmorphism over hero photos, aligned with LoadingScreen and loader Hero
+  background: "rgba(246, 193, 207, 0.22)", // primary pink glass
+  backgroundScrolled: "rgba(216, 180, 226, 0.3)", // lavender glass a bit stronger
+  border: "rgba(255, 246, 248, 0.55)",
+  text: navPalette.baseWhite,
+  textMuted: "rgba(255, 246, 248, 0.9)",
+  accent: navPalette.accentPink,
+  glow: navPalette.secondaryPink,
+  monogramFilter: "brightness(0) invert(1)",
+}
+
+
 const navLinks = [
   { href: "#home", label: "Home" },
   { href: "#countdown", label: "Countdown" },
@@ -83,36 +107,56 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out ${
-        isScrolled
-          ? "bg-[#01184C]/96 backdrop-blur-xl shadow-[0_10px_40px_rgba(1,24,76,0.35)] border-b border-[#01184C]/70"
-          : "bg-[#01184C]/92 backdrop-blur-lg border-b border-[#01184C]/60"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out border-b`}
+      style={{
+        backgroundColor: isScrolled ? NAV_COLORS.backgroundScrolled : NAV_COLORS.background,
+        borderColor: NAV_COLORS.border,
+        backdropFilter: "blur(18px)",
+        WebkitBackdropFilter: "blur(18px)",
+        boxShadow: isScrolled
+          ? "0 14px 40px rgba(0,0,0,0.35)"
+          : "0 8px 26px rgba(0,0,0,0.28)",
+      }}
     >
       {/* Elegant glow effect when scrolled */}
       {isScrolled && (
-        <div className="absolute inset-0 bg-gradient-to-r from-[#01184C]/28 via-[#01184C]/16 to-[#FFE1BE]/28 pointer-events-none" />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: `linear-gradient(90deg, ${navPalette.primaryPink}40, transparent, ${navPalette.lavender}40)`,
+          }}
+        />
       )}
       {/* Subtle texture overlay for depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#FFE1BE]/8 via-transparent to-[#01184C]/12 pointer-events-none" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `linear-gradient(to bottom, ${NAV_COLORS.glow}22, transparent, rgba(0,0,0,0.25))`,
+        }}
+      />
       
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 relative">
         <div className="flex justify-between items-center h-14 sm:h-16 md:h-20">
           <Link href="#home" className="flex-shrink-0 group relative z-10">
             <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20">
               <Image
-                src="/monogram/monogram.png"
+                src="/monogram/newmonogram.png"
                 alt="Debut Monogram"
                 fill
-                className="object-contain group-hover:scale-110 group-active:scale-105 transition-all duration-500 drop-shadow-[0_4px_16px_rgba(1,24,76,0.3)] group-hover:drop-shadow-[0_6px_22px_rgba(1,24,76,0.4)]"
+                className="object-contain group-hover:scale-110 group-active:scale-105 transition-all duration-500 drop-shadow-[0_4px_16px_rgba(0,0,0,0.35)] group-hover:drop-shadow-[0_6px_22px_rgba(0,0,0,0.45)]"
                 style={{
-                  filter: "brightness(0) saturate(100%) invert(84%) sepia(28%) saturate(557%) hue-rotate(342deg) brightness(100%) contrast(88%)",
+                  filter: NAV_COLORS.monogramFilter,
                 }}
               />
             </div>
             
             {/* Subtle background glow on hover */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#A58169]/40 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10" />
+            <div
+              className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10"
+              style={{
+                background: `linear-gradient(90deg, transparent, ${navPalette.coral}55, transparent)`,
+              }}
+            />
           </Link>
 
           <div className="hidden md:flex gap-1 items-center">
@@ -122,26 +166,45 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3 lg:px-4 py-2 text-xs lg:text-sm ${cormorant.className} font-medium rounded-lg transition-all duration-500 relative group ${
+                  className={`px-3 lg:px-4 py-2 text-xs lg:text-sm ${cormorant.className} font-medium rounded-full transition-all duration-500 relative group border ${
                     isActive
-                      ? "text-[#01184C] bg-[#FFE1BE]/95 backdrop-blur-md shadow-[0_6px_18px_rgba(1,24,76,0.35)] border border-[#FFE1BE]"
-                      : "text-[#FFE1BE]/95 hover:text-[#01184C] hover:bg-[#FFE1BE]/95 hover:border hover:border-[#FFE1BE]/80 hover:shadow-[0_6px_18px_rgba(1,24,76,0.3)] hover:scale-105 active:scale-95 bg-white/0 border border-transparent"
+                      ? "backdrop-blur-md shadow-[0_6px_18px_rgba(0,0,0,0.45)]"
+                      : "bg-transparent hover:shadow-[0_6px_18px_rgba(0,0,0,0.35)] hover:scale-105 active:scale-95"
                   }`}
+                  style={{
+                    color: isActive ? "#0B0B10" : NAV_COLORS.textMuted,
+                    backgroundColor: isActive ? `${NAV_COLORS.text}F2` : "transparent",
+                    borderColor: isActive ? `${NAV_COLORS.text}E0` : "transparent",
+                  }}
                 >
                   {link.label}
                   <span
-                    className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#01184C] via-[#FFE1BE] to-[#01184C] transition-all duration-500 rounded-full ${
-                      isActive
-                        ? "w-full shadow-[0_0_10px_rgba(1,24,76,0.6)]"
-                        : "w-0 group-hover:w-full group-hover:shadow-[0_0_8px_rgba(1,24,76,0.5)]"
-                    }`}
+                    className="absolute bottom-0 left-0 h-0.5 transition-all duration-500 rounded-full"
+                    style={{
+                      backgroundImage: `linear-gradient(90deg, ${navPalette.primaryPink}, ${navPalette.secondaryPink}, ${navPalette.lavender})`,
+                      width: isActive ? "100%" : "0%",
+                      boxShadow: isActive
+                        ? "0 0 10px rgba(244,143,177,0.7)"
+                        : "0 0 0 rgba(0,0,0,0)",
+                    }}
                   />
                   {/* Active indicator dot */}
                   {isActive && (
-                    <div className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-[#FFE1BE] animate-pulse shadow-[0_0_6px_rgba(255,225,190,0.8)]" />
+                    <div
+                      className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full animate-pulse"
+                      style={{
+                        backgroundColor: navPalette.secondaryPink,
+                        boxShadow: "0 0 6px rgba(244,143,177,0.9)",
+                      }}
+                    />
                   )}
                   {/* Subtle accent on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#FFE1BE]/40 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+                  <div
+                    className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
+                    style={{
+                      background: `radial-gradient(circle at top left, ${navPalette.primaryPink}35, transparent 55%)`,
+                    }}
+                  />
                 </Link>
               )
             })}
@@ -150,18 +213,23 @@ export function Navbar() {
           <div className="md:hidden flex items-center h-full">
             {/* Decorative halo to improve tap target and visual affordance */}
             <div className="relative">
-              <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-[#01184C]/20 via-[#FFE1BE]/14 to-transparent blur-md pointer-events-none" />
+              <div
+                className="absolute -inset-1 rounded-full blur-md pointer-events-none"
+                style={{
+                  background: `linear-gradient(135deg, ${navPalette.primaryPink}26, ${navPalette.lavender}18, transparent)`,
+                }}
+              />
               <StaggeredMenu
                 position="left"
                 items={menuItems}
                 socialItems={[]}
                 displaySocials={false}
                 displayItemNumbering={true}
-                menuButtonColor="#FFE1BE"
-                openMenuButtonColor="#01184C"
+                menuButtonColor={NAV_COLORS.text}
+                openMenuButtonColor={NAV_COLORS.accent}
                 changeMenuColorOnOpen={true}
-                colors={["#01184C", "#01184C", "#FFE1BE", "#FFE1BE", "#FFE1BE"]}
-                accentColor="#FFE1BE"
+                colors={[NAV_COLORS.background, NAV_COLORS.backgroundScrolled, NAV_COLORS.text, NAV_COLORS.accent, NAV_COLORS.glow]}
+                accentColor={NAV_COLORS.accent}
                 isFixed={true}
                 onMenuOpen={() => {}}
                 onMenuClose={() => {}}

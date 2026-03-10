@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
 import MessageWallDisplay from "./message-wall-display"
 import { Great_Vibes, Inter } from "next/font/google"
+import { siteConfig } from "@/content/site"
 
 const greatVibes = Great_Vibes({
   subsets: ["latin"],
@@ -140,21 +141,21 @@ function MessageForm({ onSuccess, onMessageSent }: MessageFormProps) {
           {/* Header with icon */}
           <div className="text-center mb-3 sm:mb-4 md:mb-5 lg:mb-6">
             <div className="relative inline-block mb-2 sm:mb-3 md:mb-4">
-              <div className="absolute inset-0 bg-[#013662]/35 rounded-full blur-lg scale-150" />
-              <div className="relative w-9 h-9 sm:w-11 sm:h-11 md:w-14 md:h-14 bg-[#013662] rounded-full flex items-center justify-center mx-auto shadow-lg">
+              <div className="absolute inset-0 bg-[]/35 rounded-full blur-lg scale-150" />
+              <div className="relative w-9 h-9 sm:w-11 sm:h-11 md:w-14 md:h-14 bg-[#D95C8A] rounded-full flex items-center justify-center mx-auto shadow-lg">
                 <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-white" />
               </div>
             </div>
-            <p className={`${inter.className} text-[9px] sm:text-[10px] md:text-xs tracking-[0.35em] uppercase text-[#00558F]/80 mb-2`}>
-              Message For Ena
+            <p className={`${inter.className} text-[9px] sm:text-[10px] md:text-xs tracking-[0.35em] uppercase text-[#D95C8A]/80 mb-2`}>
+              Message For {`${siteConfig.couple.debut}`}
             </p>
-            <h3 className={`${greatVibes.className} text-xl sm:text-2xl md:text-3xl text-[#00558F] mb-1.5 sm:mb-2`}>
+            <h3 className={`${greatVibes.className} text-xl sm:text-2xl md:text-3xl text-[#D95C8A] mb-1.5 sm:mb-2`}>
               Leave a Sapphire Wish
             </h3>
-            <p className={`${inter.className} text-[10px] sm:text-xs md:text-sm text-[#00558F]/75 mb-3`}>
+            <p className={`${inter.className} text-[10px] sm:text-xs md:text-sm text-[#D95C8A]/75 mb-3`}>
               Every note becomes part of her story
             </p>
-            <div className={`${inter.className} flex items-center justify-center gap-2 text-[10px] sm:text-xs text-[#00558F]/70`}>
+            <div className={`${inter.className} flex items-center justify-center gap-2 text-[10px] sm:text-xs text-[#D95C8A]/70`}>
               <span>Share</span>
               <span>•</span>
               <span>Bless</span>
@@ -172,11 +173,11 @@ function MessageForm({ onSuccess, onMessageSent }: MessageFormProps) {
           >
             {/* Name Field */}
             <div className="space-y-1.5 sm:space-y-2 md:space-y-3">
-              <label className="block text-xs sm:text-sm md:text-base font-medium text-[#00558F] font-lora flex items-center gap-1.5 sm:gap-2">
-                <div className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-gradient-to-br from-[#E5C9B7]/30 to-[#013662]/25 rounded-full flex items-center justify-center transition-all duration-300 ${
-                  focusedField === 'name' ? 'scale-110 bg-[#E5C9B7]/50' : ''
+              <label className="block text-xs sm:text-sm md:text-base font-medium text-[#D95C8A] font-lora flex items-center gap-1.5 sm:gap-2">
+                <div className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-gradient-to-br from-[#D95C8A]/30 to-[#D95C8A]/25 rounded-full flex items-center justify-center transition-all duration-300 ${
+                  focusedField === 'name' ? 'scale-110 bg-[#D95C8A]/50' : ''
                 }`}>
-                  <Heart className="h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-4 md:w-4 text-[#013662]" />
+                  <Heart className="h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-4 md:w-4 text-[#D95C8A]" />
                 </div>
                 Your Name
               </label>
@@ -189,10 +190,10 @@ function MessageForm({ onSuccess, onMessageSent }: MessageFormProps) {
                   onFocus={() => setFocusedField('name')}
                   onBlur={() => setFocusedField(null)}
                   placeholder="Full Name"
-                  className={`message-form-input w-full border-2 rounded-xl py-2 sm:py-2.5 md:py-3 lg:py-3.5 px-3 sm:px-4 md:px-5 text-xs sm:text-sm md:text-base font-lora placeholder:italic transition-all duration-300 bg-white/85 backdrop-blur-sm shadow-sm hover:shadow-md focus:shadow-lg text-[#00558F] ${
+                  className={`message-form-input w-full border-2 rounded-xl py-2 sm:py-2.5 md:py-3 lg:py-3.5 px-3 sm:px-4 md:px-5 text-xs sm:text-sm md:text-base font-lora placeholder:italic transition-all duration-300 bg-white/85 backdrop-blur-sm shadow-sm hover:shadow-md focus:shadow-lg text-[#D95C8A] ${
                     focusedField === 'name' 
-                      ? 'border-[#013662] focus:border-[#013662] focus:ring-4 focus:ring-[#013662]/25 shadow-lg' 
-                      : 'border-[#013662]/50 hover:border-[#013662]/60'
+                      ? 'border-[#D95C8A] focus:border-[#D95C8A] focus:ring-4 focus:ring-[#D95C8A]/25 shadow-lg' 
+                      : 'border-[#D95C8A]/50 hover:border-[#D95C8A]/60'
                   }`}
                 />
                 {nameValue && (
@@ -206,17 +207,17 @@ function MessageForm({ onSuccess, onMessageSent }: MessageFormProps) {
             {/* Message Field */}
             <div className="space-y-1.5 sm:space-y-2 md:space-y-3">
               <div className="flex items-center justify-between">
-                <label className="block text-xs sm:text-sm md:text-base font-medium text-[#00558F] font-lora flex items-center gap-1.5 sm:gap-2">
-                  <div className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-gradient-to-br from-[#E5C9B7]/30 to-[#013662]/25 rounded-full flex items-center justify-center transition-all duration-300 ${
-                    focusedField === 'message' ? 'scale-110 bg-[#E5C9B7]/50' : ''
+                <label className="block text-xs sm:text-sm md:text-base font-medium text-[#D95C8A] font-lora flex items-center gap-1.5 sm:gap-2">
+                  <div className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-gradient-to-br from-[#D95C8A]/30 to-[#D95C8A]/25 rounded-full flex items-center justify-center transition-all duration-300 ${
+                    focusedField === 'message' ? 'scale-110 bg-[#D95C8A]/50' : ''
                   }`}>
-                    <MessageCircle className="h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-4 md:w-4 text-[#013662]" />
+                    <MessageCircle className="h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-4 md:w-4 text-[#D95C8A]" />
                   </div>
                   Your Message
                 </label>
                 {messageValue && (
                   <span className={`text-[10px] sm:text-xs font-lora transition-colors ${
-                    messageValue.length > 500 ? 'text-red-500' : 'text-[#00558F]/70'
+                    messageValue.length > 500 ? 'text-red-500' : 'text-[#D95C8A]/70'
                   }`}>
                     {messageValue.length}/500
                   </span>
@@ -234,11 +235,11 @@ function MessageForm({ onSuccess, onMessageSent }: MessageFormProps) {
                   }}
                   onFocus={() => setFocusedField('message')}
                   onBlur={() => setFocusedField(null)}
-                  placeholder="Write a heartfelt message for Ena Gerangaya... share your wishes, memories, or words of love that will be treasured forever 💕"
-                  className={`message-form-textarea w-full border-2 rounded-xl min-h-[80px] sm:min-h-[100px] md:min-h-[120px] text-xs sm:text-sm md:text-base font-lora placeholder:italic placeholder:leading-relaxed transition-all duration-300 resize-none bg-white/85 backdrop-blur-sm shadow-sm hover:shadow-md focus:shadow-lg py-2 sm:py-3 md:py-4 px-3 sm:px-4 md:px-5 text-[#00558F] ${
+                  placeholder={`Write a heartfelt message for ${`${siteConfig.couple.debut}`}... share your wishes, memories, or words of love that will be treasured forever 💕`}
+                  className={`message-form-textarea w-full border-2 rounded-xl min-h-[80px] sm:min-h-[100px] md:min-h-[120px] text-xs sm:text-sm md:text-base font-lora placeholder:italic placeholder:leading-relaxed transition-all duration-300 resize-none bg-white/85 backdrop-blur-sm shadow-sm hover:shadow-md focus:shadow-lg py-2 sm:py-3 md:py-4 px-3 sm:px-4 md:px-5 text-[#D95C8A] ${
                     focusedField === 'message' 
-                      ? 'border-[#013662] focus:border-[#013662] focus:ring-4 focus:ring-[#013662]/25 shadow-lg' 
-                      : 'border-[#013662]/50 hover:border-[#013662]/60'
+                      ? 'border-[#D95C8A] focus:border-[#D95C8A] focus:ring-4 focus:ring-[#D95C8A]/25 shadow-lg' 
+                      : 'border-[#D95C8A]/50 hover:border-[#D95C8A]/60'
                   }`}
                 />
                 {messageValue && (
@@ -253,19 +254,19 @@ function MessageForm({ onSuccess, onMessageSent }: MessageFormProps) {
             <Button
               type="submit"
               disabled={isSubmitting || !nameValue.trim() || !messageValue.trim()}
-              className="w-full text-white py-2 sm:py-2.5 md:py-3 lg:py-3.5 px-4 sm:px-5 md:px-6 lg:px-7 rounded-xl text-xs sm:text-sm md:text-base font-lora font-semibold backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none relative overflow-hidden group border border-[#01184C]"
+              className="w-full text-white py-2 sm:py-2.5 md:py-3 lg:py-3.5 px-4 sm:px-5 md:px-6 lg:px-7 rounded-xl text-xs sm:text-sm md:text-base font-lora font-semibold backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none relative overflow-hidden group border border-[#D95C8A]"
               style={{ 
-                backgroundColor: "#01184C",
-                boxShadow: "0 6px 20px rgba(1,24,76,0.35), 0 2px 8px rgba(0,49,83,0.2)",
+                backgroundColor: "#D95C8A",
+                boxShadow: "0 6px 20px rgba(217,92,138,0.35), 0 2px 8px rgba(217,92,138,0.2)",
               }}
               onMouseEnter={(e) => {
                 if (!e.currentTarget.disabled) {
                   e.currentTarget.style.backgroundColor = "#003153";
-                  e.currentTarget.style.boxShadow = "0 8px 24px rgba(1,24,76,0.4), 0 3px 10px rgba(0,49,83,0.25)";
+                  e.currentTarget.style.boxShadow = "0 8px 24px rgba(217,92,138,0.4), 0 3px 10px rgba(217,92,138,0.25)";
                 }
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#01184C";
+                e.currentTarget.style.backgroundColor = "#D95C8A";
                 e.currentTarget.style.boxShadow = "0 6px 20px rgba(1,24,76,0.35), 0 2px 8px rgba(0,49,83,0.2)";
               }}
             >
@@ -342,13 +343,13 @@ export function Messages() {
           <h2
             className={`${greatVibes.className} text-4xl sm:text-5xl md:text-6xl text-white mb-4 drop-shadow-[0_18px_48px_rgba(0,31,63,0.5)]`}
           >
-            Letters for Ena Gerangaya
+            Letters for {`${siteConfig.couple.debut}`}
           </h2>
           <p className={`${inter.className} text-sm sm:text-base md:text-lg text-white/95 max-w-2xl mx-auto mt-4 leading-relaxed`}>
             Write a wish for her eighteenth chapter
           </p>
           <p className={`${inter.className} text-xs sm:text-sm md:text-base text-white/90 max-w-2xl mx-auto mt-2 leading-relaxed`}>
-            Send a note woven in sapphire blue and champagne—a keepsake Ena will treasure long after the evening ends.
+            Send a note woven in sapphire blue and champagne—a keepsake {`${siteConfig.couple.debut}`} will treasure long after the evening ends.
           </p>
         </div>
 
@@ -373,17 +374,17 @@ export function Messages() {
         <div className="relative max-w-4xl mx-auto">
           <div className="text-center mb-4 sm:mb-6 md:mb-8">
             <div className="relative inline-block mb-3 sm:mb-4 md:mb-6">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#013662]/50 via-[#013662]/35 to-[#013662]/30 rounded-full blur-xl scale-150 animate-pulse-slow" />
-              <div className="relative w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 bg-[#013662] rounded-full flex items-center justify-center mx-auto shadow-lg hover:scale-110 transition-transform duration-300">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#D95C8A]/50 via-[#D95C8A]/35 to-[#D95C8A]/30 rounded-full blur-xl scale-150 animate-pulse-slow" />
+              <div className="relative w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 bg-[#D95C8A] rounded-full flex items-center justify-center mx-auto shadow-lg hover:scale-110 transition-transform duration-300">
                 <MessageCircle className="h-4 w-4 sm:h-6 sm:h-6 md:h-8 md:w-8 text-white" />
               </div>
-              <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-[#013662]/35 via-[#013662]/25 to-[#013662]/25 blur-md opacity-0 hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-[#D95C8A]/35 via-[#D95C8A]/25 to-[#D95C8A]/25 blur-md opacity-0 hover:opacity-100 transition-opacity duration-300" />
             </div>
             <h3 className="text-lg sm:text-xl md:text-2xl font-playfair font-bold text-white mb-1.5 sm:mb-2 md:mb-3">
               Messages from Loved Ones
             </h3>
             <p className="text-xs sm:text-sm md:text-base text-white/90 font-lora max-w-2xl mx-auto px-2 sm:px-4">
-              Read the beautiful messages shared by family and friends for Ena
+              Read the beautiful messages shared by family and friends for {`${siteConfig.couple.debut}`}
             </p>
           </div>
           

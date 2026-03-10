@@ -3,22 +3,21 @@
 import { Section } from "@/components/section"
 import { siteConfig } from "@/content/site"
 import { Clock, Navigation, Copy, Check, Palette, Car, Sparkles, ListOrdered } from "lucide-react"
-import { useState, useMemo } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Great_Vibes, Inter } from "next/font/google"
 
 const greatVibes = Great_Vibes({ subsets: ["latin"], weight: "400" })
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500", "600"] })
 
-// Color palette: #01123D #01184C #010080 #191873 #15156B
+// Soft pink beach details palette
 const COLORS = {
-  dark: "#01123D",
-  navy: "#01184C",
-  royal: "#010080",
-  indigo: "#191873",
-  deep: "#15156B",
-  accent: "#E5C9B7",
-  cream: "#FBF1E7",
+  primaryPink: "#F6C1CF",
+  secondaryPink: "#F48FB1",
+  accentPink: "#D95C8A",
+  lavender: "#D8B4E2",
+  baseWhite: "#FFF6F8",
+  textDeep: "rgba(108, 23, 61, 0.95)",
 }
 
 const PROGRAM_PART1 = [
@@ -49,12 +48,24 @@ const PROGRAM_PART2 = [
   "Community Dance",
 ]
 
+type Particle = {
+  id: number
+  size: number
+  left: number
+  top: number
+  delay: number
+  duration: number
+  opacity: number
+}
+
 export function Details() {
   const [copiedItems, setCopiedItems] = useState<Set<string>>(new Set())
+  const [particles, setParticles] = useState<Particle[]>([])
 
-  // Generate particles once to avoid re-rendering
-  const particles = useMemo(() => {
-    return Array.from({ length: 30 }).map((_, i) => ({
+  // Generate particles only on the client to avoid SSR hydration mismatches
+  useEffect(() => {
+    if (particles.length > 0) return
+    const generated: Particle[] = Array.from({ length: 30 }).map((_, i) => ({
       id: i,
       size: Math.random() * 3 + 1, // 1-4px
       left: Math.random() * 100, // 0-100%
@@ -63,7 +74,8 @@ export function Details() {
       duration: Math.random() * 8 + 10, // 10-18s
       opacity: Math.random() * 0.6 + 0.3, // 0.3-0.9
     }))
-  }, [])
+    setParticles(generated)
+  }, [particles.length])
 
   const copyToClipboard = async (text: string, itemId: string) => {
     try {
@@ -96,20 +108,22 @@ export function Details() {
   ].filter(Boolean) as { label: string; value: string }[]
 
   return (
-    <Section id="details" className="relative overflow-hidden py-14 sm:py-18 md:py-20 lg:py-24" style={{ background: "linear-gradient(to bottom, #013662, #00558F)" }}>
-      {/* Background pattern */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
+    <Section
+      id="details"
+      className="relative overflow-hidden py-14 sm:py-18 md:py-20 lg:py-24 bg-[#FFF6F8]"
+    >
+      {/* Soft pink beach background */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 opacity-70"
           style={{
             backgroundImage: `
-              repeating-linear-gradient(45deg, transparent, transparent 70px, rgba(229,201,183,0.06) 70px, rgba(229,201,183,0.06) 71px),
-              repeating-linear-gradient(-45deg, transparent, transparent 70px, rgba(229,201,183,0.06) 70px, rgba(229,201,183,0.06) 71px)
+              radial-gradient(circle at 0% 0%, ${COLORS.primaryPink}26 0, transparent 55%),
+              radial-gradient(circle at 100% 100%, ${COLORS.lavender}26 0, transparent 55%),
+              radial-gradient(circle at 15% 80%, ${COLORS.accentPink}22 0, transparent 60%)
             `,
-            backgroundSize: "70px 70px, 70px 70px",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#01123D]/40 via-transparent to-[#15156B]/40" />
       </div>
 
       {/* Animated white dot particles */}
@@ -156,46 +170,77 @@ export function Details() {
 
       <div className="relative max-w-6xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="relative z-10 text-center mb-10 sm:mb-12 md:mb-16 px-4">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2 text-[10px] sm:text-xs tracking-[0.48em] uppercase text-white/90" style={{ backgroundColor: `${COLORS.navy}99` }}>
+          <div
+            className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-[10px] sm:text-xs tracking-[0.48em] uppercase"
+            style={{
+              borderColor: COLORS.accentPink,
+              borderWidth: 1,
+              backgroundColor: "rgba(246,193,207,0.22)",
+              color: COLORS.accentPink,
+            }}
+          >
             Event Details
           </div>
-          <h2 className={`${greatVibes.className} text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white drop-shadow-lg mt-4`} style={{ color: COLORS.cream }}>
-            Your Evening Guide
+          <h2
+            className={`${greatVibes.className} text-4xl sm:text-5xl md:text-6xl lg:text-7xl mt-4`}
+            style={{
+              color: COLORS.accentPink,
+              textShadow: "0 12px 32px rgba(217,92,138,0.38)",
+            }}
+          >
+            Your Day Guide
           </h2>
-          <p className={`${inter.className} text-xs sm:text-sm md:text-base text-white/90 max-w-2xl mx-auto mt-4 leading-relaxed`}>
-            Join us as we celebrate Ena Gerangaya&apos;s debut. Here&apos;s everything you need to know—from call times and venue to the program flow and dress code for this special evening.
+          <p
+            className={`${inter.className} text-xs sm:text-sm md:text-base max-w-2xl mx-auto mt-4 leading-relaxed`}
+            style={{ color: COLORS.textDeep }}
+          >
+            Here&apos;s everything you need to know for Piel Allen&apos;s 18th—schedule, venue, and what to wear for our soft pink seaside celebration.
           </p>
         </div>
 
         <div className="grid gap-5 lg:gap-6 lg:grid-cols-[1.1fr_0.9fr] items-stretch mb-12 sm:mb-16 lg:mb-20">
           {/* Venue card */}
-          <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/15 backdrop-blur-2xl shadow-xl" style={{ backgroundColor: `${COLORS.navy}40` }}>
+          <div
+            className="relative overflow-hidden rounded-2xl sm:rounded-3xl border backdrop-blur-2xl shadow-xl"
+            style={{ backgroundColor: "rgba(255,255,255,0.9)", borderColor: `${COLORS.secondaryPink}55` }}
+          >
             <div className="relative h-[220px] sm:h-60 md:h-80 lg:h-[380px] xl:h-[420px] overflow-hidden">
               <Image
-                src="/Details/venue.jpg"
+                src="/Details/Details.png"
                 alt={venue}
                 fill
                 priority
                 className="object-cover transition-transform duration-500 hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#01123D]/95 via-[#01123D]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.7)] via-transparent to-transparent" />
               <div className="absolute inset-x-4 bottom-4 sm:bottom-6 text-white">
                 <h3 className="text-xl sm:text-3xl font-serif font-semibold tracking-wide drop-shadow-lg">
                   {siteConfig.wedding.venue}
                 </h3>
                 <p className="text-[10px] sm:text-[12px] text-white/85 tracking-[0.24em] uppercase mt-1">
-                  Bacolod City
+                  {siteConfig.ceremony.location}
                 </p>
               </div>
             </div>
 
             <div className="p-4 sm:p-7 lg:p-8 space-y-4 sm:space-y-6">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                <div className="inline-flex justify-center rounded-full border border-white/25 px-4 py-1.5 text-white/90 text-[9px] sm:text-[11px] tracking-[0.24em] sm:tracking-[0.32em] uppercase whitespace-nowrap" style={{ backgroundColor: `${COLORS.royal}66` }}>
+                <div
+                  className="inline-flex justify-center rounded-full px-4 py-1.5 text-[9px] sm:text-[11px] tracking-[0.24em] sm:tracking-[0.32em] uppercase whitespace-nowrap"
+                  style={{
+                    borderColor: `${COLORS.accentPink}88`,
+                    borderWidth: 1,
+                    backgroundColor: "rgba(246,193,207,0.2)",
+                    color: COLORS.textDeep,
+                  }}
+                >
                   {`${ceremony.day}, ${ceremony.date}`}
                 </div>
-                <p className="text-[10px] sm:text-xs text-white/80 tracking-[0.3em] uppercase text-center sm:text-right">
-                  Guests may arrive starting 5:30 PM
+                <p
+                  className="text-[10px] sm:text-xs tracking-[0.2em] uppercase text-center sm:text-right"
+                  style={{ color: COLORS.textDeep }}
+                >
+                  Guests may arrive starting {guestsCall}
                 </p>
               </div>
 
@@ -203,11 +248,16 @@ export function Details() {
                 {schedule.map((entry) => (
                   <div
                     key={entry.label}
-                    className="rounded-xl border border-white/20 px-3.5 py-3 text-center"
-                    style={{ backgroundColor: `${COLORS.indigo}40` }}
+                    className="rounded-xl border px-3.5 py-3 text-center bg-white/80"
+                    style={{ borderColor: `${COLORS.secondaryPink}66` }}
                   >
-                    <p className="text-[9px] sm:text-[11px] tracking-[0.34em] uppercase text-white/70 mb-1">{entry.label}</p>
-                    <div className="flex items-center justify-center gap-2 text-white text-sm sm:text-base font-semibold">
+                    <p
+                      className="text-[9px] sm:text-[11px] tracking-[0.34em] uppercase mb-1"
+                      style={{ color: COLORS.textDeep }}
+                    >
+                      {entry.label}
+                    </p>
+                    <div className="flex items-center justify-center gap-2 text-sm sm:text-base font-semibold">
                       <Clock className="h-3 w-3 sm:h-3.5 sm:w-3.5" style={{ color: COLORS.accent }} />
                       <span>{entry.value}</span>
                     </div>
@@ -218,8 +268,11 @@ export function Details() {
               <div className="flex flex-row gap-2.5 sm:gap-3">
                 <button
                   onClick={openInMaps}
-                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-3 text-xs sm:text-sm font-semibold text-white transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
-                  style={{ backgroundColor: COLORS.royal }}
+                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-3 text-xs sm:text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
+                  style={{
+                    backgroundImage: `linear-gradient(120deg, ${COLORS.primaryPink}, ${COLORS.secondaryPink})`,
+                    color: "#2b1016",
+                  }}
                   aria-label="Get directions to the venue"
                 >
                   <Navigation className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
@@ -227,7 +280,12 @@ export function Details() {
                 </button>
                 <button
                   onClick={() => copyToClipboard(venue, "venue")}
-                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl border border-white/30 px-4 py-3 text-xs sm:text-sm font-semibold text-white/90 transition-all duration-300 hover:bg-white/10 hover:-translate-y-0.5"
+                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl border px-4 py-3 text-xs sm:text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
+                  style={{
+                    borderColor: `${COLORS.accentPink}88`,
+                    color: COLORS.textDeep,
+                    backgroundColor: "rgba(255,255,255,0.9)",
+                  }}
                   aria-label="Copy venue address"
                 >
                   {copiedItems.has("venue") ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
@@ -239,41 +297,69 @@ export function Details() {
 
           <div className="space-y-5 sm:space-y-6">
             {/* Program card */}
-            <div className="rounded-2xl sm:rounded-3xl border border-white/15 backdrop-blur-xl p-5 sm:p-7 lg:p-8 space-y-4" style={{ backgroundColor: `${COLORS.navy}50` }}>
+            <div
+              className="rounded-2xl sm:rounded-3xl border backdrop-blur-xl p-5 sm:p-7 lg:p-8 space-y-4 bg-white/90"
+              style={{ borderColor: `${COLORS.secondaryPink}55` }}
+            >
               <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-xl" style={{ backgroundColor: COLORS.royal }}>
-                  <ListOrdered className="h-5 w-5 text-white" />
+                <div
+                  className="flex items-center justify-center w-10 h-10 rounded-xl"
+                  style={{ backgroundColor: COLORS.accentPink }}
+                >
+                  <ListOrdered className="h-5 w-5 text-[#FFF6F8]" />
                 </div>
                 <div>
-                  <p className="text-xs sm:text-sm uppercase tracking-[0.38em] text-white/70">Debut Program</p>
-                  <h3 className="text-white text-base sm:text-lg font-semibold">Evening Program</h3>
+                  <p
+                    className="text-xs sm:text-sm uppercase tracking-[0.38em]"
+                    style={{ color: COLORS.accentPink }}
+                  >
+                    Debut Program
+                  </p>
+                  <h3
+                    className="text-base sm:text-lg font-semibold"
+                    style={{ color: COLORS.textDeep }}
+                  >
+                    Celebration Flow
+                  </h3>
                 </div>
               </div>
 
               <div className="space-y-4">
                 <div>
-                  <p className="text-[10px] sm:text-xs font-semibold text-white/90 tracking-[0.2em] uppercase mb-2 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: COLORS.accent }} />
+                  <p
+                    className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase mb-2 flex items-center gap-2"
+                    style={{ color: COLORS.textDeep }}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: COLORS.accentPink }} />
                     Part 1
                   </p>
-                  <ul className="space-y-1.5 text-xs sm:text-sm text-white/85 leading-relaxed">
+                  <ul
+                    className="space-y-1.5 text-xs sm:text-sm leading-relaxed"
+                    style={{ color: COLORS.textDeep }}
+                  >
                     {PROGRAM_PART1.map((item, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <Sparkles className="mt-1 h-3 w-3 flex-shrink-0" style={{ color: COLORS.accent }} />
+                        <Sparkles className="mt-1 h-3 w-3 flex-shrink-0" style={{ color: COLORS.accentPink }} />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <p className="text-[10px] sm:text-xs font-semibold text-white/90 tracking-[0.2em] uppercase mb-2 flex items-center gap-2 mt-4">
-                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: COLORS.accent }} />
+                  <p
+                    className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase mb-2 flex items-center gap-2 mt-4"
+                    style={{ color: COLORS.textDeep }}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: COLORS.accentPink }} />
                     Part 2
                   </p>
-                  <ul className="space-y-1.5 text-xs sm:text-sm text-white/85 leading-relaxed">
+                  <ul
+                    className="space-y-1.5 text-xs sm:text-sm leading-relaxed"
+                    style={{ color: COLORS.textDeep }}
+                  >
                     {PROGRAM_PART2.map((item, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <Sparkles className="mt-1 h-3 w-3 flex-shrink-0" style={{ color: COLORS.accent }} />
+                        <Sparkles className="mt-1 h-3 w-3 flex-shrink-0" style={{ color: COLORS.accentPink }} />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -283,20 +369,36 @@ export function Details() {
             </div>
 
             {/* Attire card */}
-            <div className="rounded-2xl sm:rounded-3xl border border-white/15 backdrop-blur-xl p-5 sm:p-7 lg:p-8 space-y-3 sm:space-y-4" style={{ backgroundColor: `${COLORS.navy}50` }}>
+            <div
+              className="rounded-2xl sm:rounded-3xl border backdrop-blur-xl p-5 sm:p-7 lg:p-8 space-y-3 sm:space-y-4 bg-white/90"
+              style={{ borderColor: `${COLORS.secondaryPink}55` }}
+            >
               <div className="flex items-center gap-3">
-                <Palette className="h-6 w-6" style={{ color: COLORS.accent }} />
+                <Palette className="h-6 w-6" style={{ color: COLORS.accentPink }} />
                 <div>
-                  <p className="text-xs sm:text-sm uppercase tracking-[0.38em] text-white/70">Attire & Palette</p>
-                  <h3 className="text-white text-base sm:text-lg font-semibold">Guest Attire</h3>
+                  <p
+                    className="text-xs sm:text-sm uppercase tracking-[0.38em]"
+                    style={{ color: COLORS.accentPink }}
+                  >
+                    Attire & Palette
+                  </p>
+                  <h3
+                    className="text-base sm:text-lg font-semibold"
+                    style={{ color: COLORS.textDeep }}
+                  >
+                    Guest Attire
+                  </h3>
                 </div>
               </div>
-              <p className="text-xs sm:text-sm text-white/85 leading-relaxed">
-                Dress in shades that complement our palette—deep navy, royal blue & indigo. Ladies: formal gown. Gentlemen: Suits Coat and Tie or Tuxedo.
+              <p
+                className="text-xs sm:text-sm leading-relaxed"
+                style={{ color: COLORS.textDeep }}
+              >
+                Semi Formal- shades of pink such as blush, rose, dusty pink or soft pastel pink
               </p>
-              <div className="relative w-full rounded-xl overflow-hidden border border-white/20 mb-4">
+              <div className="relative w-full rounded-xl overflow-hidden border mb-4" style={{ borderColor: `${COLORS.secondaryPink}55` }}>
                 <Image
-                  src="/Details/guestattire.png"
+                  src="/Details/guestAttire.png"
                   alt="Guest attire guidelines"
                   width={400}
                   height={300}
@@ -305,14 +407,19 @@ export function Details() {
               </div>
               {/* Color palette display */}
               <div className="flex flex-col items-center gap-2 pt-2">
-                <p className="text-[9px] sm:text-[10px] text-white/70 tracking-[0.2em] uppercase">Color Palette</p>
+                <p
+                  className="text-[9px] sm:text-[10px] tracking-[0.2em] uppercase"
+                  style={{ color: COLORS.textDeep }}
+                >
+                  Color Palette
+                </p>
                 <div className="flex items-center justify-center gap-2 sm:gap-3">
                   {[
-                    { color: "#01123D", label: "Deep Navy" },
-                    { color: "#01184C", label: "Navy" },
-                    { color: "#010080", label: "Royal Blue" },
-                    { color: "#191873", label: "Indigo" },
-                    { color: "#15156B", label: "Deep Indigo" },
+                    { color: COLORS.primaryPink, label: "Primary Pink" },
+                    { color: COLORS.secondaryPink, label: "Secondary Pink" },
+                    { color: COLORS.accentPink, label: "Accent Pink" },
+                    { color: COLORS.lavender, label: "Lavender Accent" },
+                    { color: COLORS.baseWhite, label: "Base White" },
                   ].map((item, index) => (
                     <div key={index} className="flex flex-col items-center gap-1.5">
                       <div
@@ -320,7 +427,12 @@ export function Details() {
                         style={{ backgroundColor: item.color }}
                         title={item.label}
                       />
-                      <span className="text-[8px] sm:text-[9px] text-white/60 hidden sm:block">{item.color}</span>
+                      <span
+                        className="text-[8px] sm:text-[9px] hidden sm:block"
+                        style={{ color: COLORS.textDeep }}
+                      >
+                        {item.color}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -328,16 +440,32 @@ export function Details() {
             </div>
 
             {/* Travel card */}
-            <div className="rounded-2xl sm:rounded-3xl border border-white/15 backdrop-blur-xl p-5 sm:p-7 lg:p-8 space-y-3 sm:space-y-4" style={{ backgroundColor: `${COLORS.navy}50` }}>
+            <div
+              className="rounded-2xl sm:rounded-3xl border backdrop-blur-xl p-5 sm:p-7 lg:p-8 space-y-3 sm:space-y-4 bg-white/90"
+              style={{ borderColor: `${COLORS.secondaryPink}55` }}
+            >
               <div className="flex items-center gap-3">
-                <Car className="h-6 w-6" style={{ color: COLORS.accent }} />
+                <Car className="h-6 w-6" style={{ color: COLORS.accentPink }} />
                 <div>
-                  <p className="text-xs sm:text-sm uppercase tracking-[0.38em] text-white/70">Travel Notes</p>
-                  <h3 className="text-white text-base sm:text-lg font-semibold">Parking & Transport</h3>
+                  <p
+                    className="text-xs sm:text-sm uppercase tracking-[0.38em]"
+                    style={{ color: COLORS.accentPink }}
+                  >
+                    Travel Notes
+                  </p>
+                  <h3
+                    className="text-base sm:text-lg font-semibold"
+                    style={{ color: COLORS.textDeep }}
+                  >
+                    Parking & Transport
+                  </h3>
                 </div>
               </div>
-              <p className="text-xs sm:text-sm text-white/85 leading-relaxed">
-                Complimentary parking is available at the venue.
+              <p
+                className="text-xs sm:text-sm leading-relaxed"
+                style={{ color: COLORS.textDeep }}
+              >
+                Complimentary parking is available at the venue. Please arrive a little early to enjoy the photo spots and settle in before the program begins.
               </p>
             </div>
           </div>

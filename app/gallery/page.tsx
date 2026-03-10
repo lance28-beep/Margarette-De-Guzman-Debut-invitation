@@ -2,6 +2,7 @@ import fs from "fs/promises"
 import path from "path"
 import MasonryGallery from "@/components/masonry-gallery"
 import { Great_Vibes, Inter } from "next/font/google"
+import { siteConfig } from "@/content/site"
 
 const greatVibes = Great_Vibes({
   subsets: ["latin"],
@@ -45,7 +46,7 @@ export default async function GalleryPage() {
   ]
 
   return (
-    <main className="min-h-screen relative overflow-hidden" style={{ background: "linear-gradient(to bottom, #013662, #00558F)" }}>
+    <main className="min-h-screen relative overflow-hidden" style={{ background: "linear-gradient(to bottom, #FECFDA, #FAA4BC)" }}>
       {/* Ornate pattern background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
         {/* Base pattern - diagonal lines forming diamonds */}
@@ -98,10 +99,10 @@ export default async function GalleryPage() {
             <h1
               className={`${greatVibes.className} text-4xl sm:text-5xl md:text-6xl text-white mb-4 drop-shadow-[0_18px_40px_rgba(1,54,98,0.68)]`}
             >
-              Nena&apos;s Debut Gallery
+              `{siteConfig.couple.debutNickname} Debut Gallery
             </h1>
             <p className={`${inter.className} text-sm sm:text-base md:text-lg text-white/90 mt-4 leading-relaxed`}>
-              Moments captured in sapphire blue and champagne elegance—Nena&apos;s eighteenth celebration, preserved for you to treasure forever.
+              Moments captured in sapphire blue and champagne elegance—`{siteConfig.couple.debutNickname}&apos;s eighteenth celebration, preserved for you to treasure forever.
             </p>
           </div>
         </div>

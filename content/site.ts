@@ -1,50 +1,50 @@
 export const siteConfig = {
   couple: {
-    bride: "Ena Mariel M. Gerangaya",
-    brideNickname: "Ena Mariel M. Gerangaya",
+    debut: "Piel Allen G. Marasigan",
+    debutNickname: "Piel Allen",
     groom: "",
     groomNickname: "",
   },
   wedding: {
-    date: "MARCH 21, 2026",
-    time: "6:00 PM - 10:00 PM",
-    venue: "Sugarland Hotel, Sugar bowl",
+    date: "APRIL 4, 2026",
+    time: "3:00 PM",
+    venue: "7 Cardels Event Centre",
     tagline: "18th Birthday Celebration",
-    theme: "Sapphire & Champagne Motif",
-    motif: "#013662, #00558F, #0272C7, #E5C9B7, #FBF1E7",
+    theme: "Soft Pink Beach Aesthetic",
+    motif: "#F6C1CF, #F48FB1, #D95C8A, #D8B4E2, #E57399, #FFF6F8",
   },
   details: {
     rsvp: {
-      deadline: "January 25, 2026",
+      deadline: "March 31, 2026",
     },
   },
   ceremony: {
-    location: "Sugarland Hotel, Sugar bowl",
-    venue: "Sugarland Hotel, Sugar bowl",
-    date: "March 21 2026",
+    location: "7 Cardels Event Centre, Gov Antonio Carpio Rd, Batangas City, Batangas",
+    venue: "7 Cardels Event Centre",
+    date: "April 4, 2026",
     day: "Saturday",
-    time: "6:00 PM",
-    entourageTime: "5:30 PM",
-    guestsTime: "5:30 PM",
+    time: "3:00 PM",
+    entourageTime: "2:30 PM",
+    guestsTime: "2:30 PM",
   },
   reception: {
-    location: "Sugarland Hotel, Sugar bowl",
-    venue: "Sugarland Hotel, Sugar bowl",
-    date: "MARCH 21, 2026",
-    time: "6:00 PM - 10:00 PM",
+    location: "7 Cardels Event Centre, Gov Antonio Carpio Rd, Batangas City, Batangas",
+    venue: "7 Cardels Event Centre",
+    date: "APRIL 4, 2026",
+    time: "3:00 PM - 8:00 PM",
   },
   dressCode: {
-    theme: "Sapphire & Champagne Motif",
-    colors: ["#013662", "#00558F", "#0272C7", "#E5C9B7", "#FBF1E7"],
+    theme: "Semi-formal in soft pink tones",
+    colors: ["#F6C1CF", "#F48FB1", "#D95C8A", "#D8B4E2", "#E57399", "#FFF6F8"],
     sponsors: {
       male: "Barong, Black Pants and Leather Shoes",
       female: "Purple/Lavender/Sage Long Gown"
     },
     guests: {
-      gents: "Polo & Pants (Strictly no Tshirt)",
-      ladies: "Formal Dress/Gown/Suit"
+      gents: "Semi-formal attire",
+      ladies: "Semi-formal dresses in shades of pink such as blush, rose, dusty pink or soft pastel pink"
     },
-    note: "We kindly request our guests to dress in formal attire with a color of our motif."
+    note: "Semi-formal - shades of pink such as blush, rose, dusty pink or soft pastel pink."
   },
   narratives: {
     groom: `The first time Mark saw Catherine, time seemed to slow down. It was an ordinary day that instantly became unforgettable: one smile, one hello, and suddenly his world had a new center. He didn't have the perfect words ready, but he knew he had met someone who felt like home.
@@ -59,13 +59,13 @@ Mark's steadiness won her heart: the way he showed up, even when schedules were 
 Now, as they prepare to say yes before God and the people they love most, Catherine is grateful for the patience, humor, and hope Mark brings to every day. She knows this next chapter is just the start of the love story they get to write together.`,
   },
   colors: {
-    primary: "#6A4F82",
-    secondary: "#B9AACB",
+    primary: "#F6C1CF",
+    secondary: "#F48FB1",
   },
   snapShare: {
     googleDriveLink: "https://drive.google.com/drive/folders/1mcPDa_sGpHnDBWR5mUDek-RFyawjWQqI?usp=sharing",
-    hashtag: "#DanielAndFlorenceMae2026",
-    instructions: "Please scan this QR Code, create a folder with your name and upload the photos and videos you have taken during our wedding reception. We are delighted to see your snaps too!",
+    hashtag: "#PielAllenTurns18",
+    instructions: "Please scan this QR Code, create a folder with your name and upload the photos and videos you have taken during the celebration. We are delighted to see your snaps too!",
   },
 }
 

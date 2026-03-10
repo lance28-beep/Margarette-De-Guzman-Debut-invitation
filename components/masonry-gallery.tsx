@@ -120,7 +120,7 @@ export default function MasonryGallery({ images }: { images: ImageItem[] }) {
       <div className="mt-8 flex justify-center">
         <button
           type="button"
-          className="px-6 py-3 rounded-full bg-gradient-to-r from-[#F1EDE2] to-[#F1EDE2]/90 text-[#AFC8E6] font-semibold border border-[#F1EDE2] hover:from-[#F1EDE2]/90 hover:to-[#F1EDE2] hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl font-sans"
+          className="px-6 py-3 rounded-full bg-gradient-to-r from-[#F1EDE2] to-[#F1EDE2]/90 text-[#AC2F52] font-semibold border border-[#F1EDE2] hover:from-[#F1EDE2]/90 hover:to-[#F1EDE2] hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl font-sans"
           onClick={() => topRef.current?.scrollIntoView({ behavior: "smooth" })}
         >
           Back to top

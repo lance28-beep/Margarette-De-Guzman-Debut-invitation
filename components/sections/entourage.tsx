@@ -7,6 +7,7 @@ import { useState, useEffect, useMemo } from "react"
 import { Loader2, Users } from "lucide-react"
 
 import { Great_Vibes, Playfair_Display, Inter } from "next/font/google"
+import { siteConfig } from "@/content/site"
 
 
 
@@ -15,6 +16,15 @@ const greatVibes = Great_Vibes({ subsets: ["latin"], weight: "400" })
 const playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", "600"] })
 
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500", "600"] })
+const color = {
+  containerBackground: "#F6C1CF",
+  roleCategoryText: "#FFF6F8",
+  roleTitleText: "#D95C8A",
+  nameText: "#D95C8A",
+  dividerText: "#FFF6F8",
+  dividerBackground: "#D95C8A",
+  dividerBackgroundText: "#FFF6F8",
+}
 
 
 
@@ -240,7 +250,7 @@ export function Entourage() {
 
       <h3
 
-                  className={`${playfair.className} text-xs sm:text-sm md:text-base tracking-[0.45em] uppercase text-[#013662] font-semibold mb-1.5 sm:mb-2 md:mb-2.5 ${textAlign} ${className}`}
+                  className={`${playfair.className} text-xs sm:text-sm md:text-base tracking-[0.45em] uppercase text-${color.roleCategoryText} font-semibold mb-1.5 sm:mb-2 md:mb-2.5 ${textAlign} ${className}`}
 
       >
 
@@ -286,7 +296,7 @@ export function Entourage() {
 
       >
 
-        <p className={`${playfair.className} text-[13px] sm:text-sm md:text-base font-medium text-[#013662] ${textAlign}`}>
+        <p className={`${playfair.className} text-[13px] sm:text-sm md:text-base font-medium text-[#D95C8A] ${textAlign}`}>
 
           {member.Name}
 
@@ -294,7 +304,7 @@ export function Entourage() {
 
         {showRole && member.RoleTitle && (
 
-          <p className={`${inter.className} text-[10px] sm:text-[11px] md:text-xs font-normal text-[#00558F]/80 mt-0.5 leading-snug ${textAlign}`}>
+          <p className={`${inter.className} text-[10px] sm:text-[11px] md:text-xs font-normal text-[#D95C8A]/80 mt-0.5 leading-snug ${textAlign}`}>
 
             {member.RoleTitle}
 
@@ -442,7 +452,7 @@ export function Entourage() {
 
         >
 
-          Ena&apos;s Entourage
+          {`${siteConfig.couple.debutNickname}`}'s Entourage
 
         </h2>
 
@@ -474,9 +484,9 @@ export function Entourage() {
 
                 <div className="flex flex-col items-center gap-4">
 
-                  <Loader2 className="h-12 w-12 animate-spin text-[#013662]" />
+                  <Loader2 className="h-12 w-12 animate-spin text-[#D95C8A]" />
 
-                  <span className={`${inter.className} text-[#013662]/80 text-lg`}>
+                  <span className={`${inter.className} text-[#D95C8A]/80 text-lg`}>
 
                     Loading the entourage…
 
@@ -498,7 +508,7 @@ export function Entourage() {
 
                     onClick={fetchEntourage}
 
-                    className={`${playfair.className} text-[#013662] hover:text-[#013662]/70 transition-colors underline`}
+                    className={`${playfair.className} text-[#D95C8A] hover:text-[#D95C8A]/70 transition-colors underline`}
 
                   >
 
@@ -514,9 +524,9 @@ export function Entourage() {
 
               <div className="text-center py-24">
 
-                <Users className="h-16 w-16 text-[#013662]/30 mx-auto mb-4" />
+                <Users className="h-16 w-16 text-[#D95C8A]/30 mx-auto mb-4" />
 
-                <p className={`${inter.className} text-[#013662]/70 text-lg`}>
+                <p className={`${inter.className} text-[#D95C8A]/70 text-lg`}>
 
                   The entourage list will be available soon.
 
@@ -550,7 +560,7 @@ export function Entourage() {
 
                           <div className="col-span-full">
 
-                            <div className="max-w-sm mx-auto">
+                            <div className="max-w-sm mx-auto ">
 
                               {debutante && <NameItem member={debutante} align="center" showRole={false} />}
 

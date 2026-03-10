@@ -14,6 +14,16 @@ const inter = Inter({
   weight: ["300", "400", "500", "600"],
 })
 
+// Soft pink beach palette for Book of Guests
+const guestsPalette = {
+  primaryPink: "#F6C1CF",
+  secondaryPink: "#F48FB1",
+  accentPink: "#D95C8A",
+  lavender: "#D8B4E2",
+  baseWhite: "#FFF6F8",
+  textDeep: "rgba(108, 23, 61, 0.95)",
+}
+
 interface Guest {
   id: string | number
   name: string
@@ -189,68 +199,44 @@ export function BookOfGuests() {
   return (
     <div
       id="guests"
-      className="relative z-10 bg-[#013662] py-14 sm:py-18 md:py-20 lg:py-24 overflow-hidden"
+      className="relative z-10 bg-[#FFF6F8] py-14 sm:py-18 md:py-20 lg:py-24 overflow-hidden"
     >
-      {/* Ornate pattern background */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
-        {/* Base pattern - diagonal lines forming diamonds */}
-        <div 
-          className="absolute inset-0"
+      {/* Soft pastel background */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-70"
           style={{
             backgroundImage: `
-              repeating-linear-gradient(45deg, transparent, transparent 70px, rgba(252,225,182,0.1) 70px, rgba(252,225,182,0.1) 71px),
-              repeating-linear-gradient(-45deg, transparent, transparent 70px, rgba(252,225,182,0.1) 70px, rgba(252,225,182,0.1) 71px),
-              repeating-linear-gradient(135deg, transparent, transparent 35px, rgba(252,225,182,0.08) 35px, rgba(252,225,182,0.08) 36px),
-              repeating-linear-gradient(225deg, transparent, transparent 35px, rgba(252,225,182,0.08) 35px, rgba(252,225,182,0.08) 36px)
+              radial-gradient(circle at 0% 0%, ${guestsPalette.primaryPink}26 0, transparent 55%),
+              radial-gradient(circle at 100% 100%, ${guestsPalette.lavender}26 0, transparent 55%),
+              radial-gradient(circle at 15% 80%, ${guestsPalette.accentPink}22 0, transparent 60%)
             `,
-            backgroundSize: '70px 70px, 70px 70px, 35px 35px, 35px 35px',
           }}
         />
-        
-        {/* Decorative scroll motifs - using SVG pattern */}
-        <svg className="absolute inset-0 w-full h-full" style={{ opacity: 0.15 }}>
-          <defs>
-            <pattern id="scrollPatternBookOfGuests" x="0" y="0" width="140" height="140" patternUnits="userSpaceOnUse">
-              {/* Scroll motifs at intersections */}
-              <g fill="none" stroke="#FCE1B6" strokeWidth="0.5">
-                {/* Top scroll */}
-                <path d="M 70 0 Q 65 15 70 30 Q 75 15 70 0" />
-                {/* Bottom scroll */}
-                <path d="M 70 140 Q 65 125 70 110 Q 75 125 70 140" />
-                {/* Left scroll */}
-                <path d="M 0 70 Q 15 65 30 70 Q 15 75 0 70" />
-                {/* Right scroll */}
-                <path d="M 140 70 Q 125 65 110 70 Q 125 75 140 70" />
-                {/* Center decorative element */}
-                <path d="M 70 30 Q 60 50 70 70 Q 80 50 70 30" />
-                <path d="M 70 110 Q 60 90 70 70 Q 80 90 70 110" />
-                <path d="M 30 70 Q 50 60 70 70 Q 50 80 30 70" />
-                <path d="M 110 70 Q 90 60 70 70 Q 90 80 110 70" />
-              </g>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#scrollPatternBookOfGuests)" />
-        </svg>
-
-        {/* Subtle overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#013662]/80 via-transparent to-[#013662]/80" />
       </div>
 
       {/* Section Header - More Compact */}
       <div className="relative z-10 text-center mb-10 sm:mb-12 md:mb-16 px-4">
         {/* Small label */}
-        <p className={`${inter.className} text-xs sm:text-sm tracking-[0.45em] uppercase text-[#FCE1B6]/75 mb-3`}>
+        <p
+          className={`${inter.className} text-xs sm:text-sm tracking-[0.45em] uppercase mb-3`}
+          style={{ color: guestsPalette.accentPink }}
+        >
           Honored Attendees
         </p>
 
         <h2
-          className={`${greatVibes.className} text-4xl sm:text-5xl md:text-6xl text-[#FCE1B6] mb-4 drop-shadow-[0_18px_48px_rgba(46,4,26,0.65)]`}
+          className={`${greatVibes.className} text-4xl sm:text-5xl md:text-6xl mb-4`}
+          style={{ color: guestsPalette.accentPink, textShadow: "0 18px 48px rgba(217,92,138,0.45)" }}
         >
           Book of Guests
         </h2>
 
-        <p className={`${inter.className} text-sm sm:text-base md:text-lg text-[#FCE1B6]/85 max-w-2xl mx-auto mt-4 leading-relaxed`}>
-          Meet the cherished souls joining us for Ena's debut celebration—your presence makes this evening truly special.
+        <p
+          className={`${inter.className} text-sm sm:text-base md:text-lg max-w-2xl mx-auto mt-4 leading-relaxed`}
+          style={{ color: guestsPalette.textDeep }}
+        >
+          Meet the cherished people joining Piel Allen&apos;s 18th—your presence makes this soft pink seaside celebration even more special.
         </p>
       </div>
 
@@ -259,41 +245,63 @@ export function BookOfGuests() {
         {/* Stats card - Simplified */}
         <div className="text-center mb-2.5 sm:mb-4 md:mb-6 px-2 sm:px-4 md:px-6">
           <div className="relative max-w-3xl mx-auto">
-            <div className="relative bg-[#FCE1B6]/95 backdrop-blur-md border border-[#FCE1B6]/40 rounded-lg sm:rounded-xl p-3 sm:p-5 md:p-6 shadow-md">
+            <div
+              className="relative backdrop-blur-md rounded-lg sm:rounded-xl p-3 sm:p-5 md:p-6 shadow-md border"
+              style={{ backgroundColor: guestsPalette.baseWhite, borderColor: `${guestsPalette.secondaryPink}66` }}
+            >
               
               {/* Refresh button */}
               <button
                 onClick={() => fetchGuests(true)}
                 disabled={isRefreshing}
-                className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 p-1 sm:p-1.5 rounded-full bg-[#00558F]/10 hover:bg-[#013662]/20 transition-all duration-300 disabled:opacity-50 group z-10"
+                className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 p-1 sm:p-1.5 rounded-full bg-[rgba(217,92,138,0.08)] hover:bg-[rgba(217,92,138,0.15)] transition-all duration-300 disabled:opacity-50 group z-10"
                 title="Refresh counts"
               >
-                <RefreshCw className={`h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#013662] transition-transform ${isRefreshing ? 'animate-spin' : 'group-hover:rotate-180'} duration-500`} />
+                <RefreshCw
+                  className={`h-3 w-3 sm:h-3.5 sm:w-3.5 transition-transform ${
+                    isRefreshing ? "animate-spin" : "group-hover:rotate-180"
+                  } duration-500`}
+                  style={{ color: guestsPalette.accentPink }}
+                />
               </button>
 
               {/* Main Count with inline text */}
               <div className="mb-1.5 sm:mb-2.5">
                 <div className="flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap">
-                  <h3 className={`${inter.className} text-xl sm:text-3xl md:text-4xl font-bold text-[#013662] transition-all duration-500 ${showIncrease ? 'scale-110 text-green-600' : ''}`}>
+                  <h3
+                    className={`${inter.className} text-xl sm:text-3xl md:text-4xl font-bold transition-all duration-500 ${
+                      showIncrease ? "scale-110 text-green-600" : ""
+                    }`}
+                    style={{ color: guestsPalette.textDeep }}
+                  >
                     {totalGuests}
                   </h3>
                   {showIncrease && (
                     <TrendingUp className="h-3.5 w-3.5 sm:h-5 sm:w-5 text-green-600 animate-bounce" />
                   )}
-                  <p className={`${inter.className} text-sm sm:text-lg md:text-xl text-[#013662] font-medium leading-tight`}>
-                    {totalGuests === 1 ? "Guest" : "Guests"} Celebrating With Ena
+                  <p
+                    className={`${inter.className} text-sm sm:text-lg md:text-xl font-medium leading-tight`}
+                    style={{ color: guestsPalette.textDeep }}
+                  >
+                    {totalGuests === 1 ? "Guest" : "Guests"} Celebrating With Piel
                   </p>
                 </div>
               </div>
 
               {/* RSVP Count */}
-              <p className={`${inter.className} text-xs sm:text-base text-[#013662]/80 mb-2 sm:mb-3`}>
+              <p
+                className={`${inter.className} text-xs sm:text-base mb-2 sm:mb-3`}
+                style={{ color: "rgba(108,23,61,0.85)" }}
+              >
                 {rsvpCount} {rsvpCount === 1 ? "RSVP entry" : "RSVP entries"}
               </p>
               
               {/* Message */}
-              <p className={`${inter.className} text-[10px] sm:text-xs md:text-sm text-[#013662]/80 leading-tight`}>
-                Thank you for confirming your RSVP! Your presence means the world to Ena.
+              <p
+                className={`${inter.className} text-[10px] sm:text-xs md:text-sm leading-tight`}
+                style={{ color: "rgba(108,23,61,0.8)" }}
+              >
+                Thank you for confirming your RSVP! Your presence means the world to Piel.
               </p>
             </div>
           </div>
@@ -317,7 +325,10 @@ export function BookOfGuests() {
                   <div className="flex items-start gap-2 sm:gap-3 md:gap-4 mb-2 sm:mb-2.5 md:mb-3">
                     {/* Avatar - Mobile Optimized */}
                     <div className="relative flex-shrink-0">
-                      <div className="w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-[#013662] flex items-center justify-center shadow-md ring-2 ring-white/50">
+                      <div
+                        className="w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-md ring-2 ring-white/70"
+                        style={{ backgroundColor: guestsPalette.accentPink }}
+                      >
                         <span className="text-white font-semibold text-xs sm:text-base md:text-lg">
                           {getInitials(guest.name)}
                         </span>
@@ -325,7 +336,7 @@ export function BookOfGuests() {
                       {/* VIP Badge - Mobile Optimized */}
                       {guest.isVip && (
                         <div className="absolute -top-0.5 -right-0.5">
-                          <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full shadow-md">
+                          <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-gradient-to-r from-[#F6C1CF] to-[#F48FB1] rounded-full shadow-md">
                             <Crown className="h-2 w-2 sm:h-2.5 sm:w-2.5 md:h-3.5 md:w-3.5 text-white fill-current" />
                           </div>
                         </div>
@@ -356,17 +367,29 @@ export function BookOfGuests() {
                       {/* Info Badges - Mobile Optimized */}
                       <div className="flex flex-wrap items-center gap-1 sm:gap-1.5 md:gap-2 mb-1.5 sm:mb-2 md:mb-3">
                         {/* Guest count badge */}
-                        <div className="flex items-center gap-0.5 sm:gap-1 px-1.5 sm:px-2 md:px-2.5 py-0.5 sm:py-1 bg-gradient-to-r from-[#013662]/10 to-[#00558F]/10 border border-[#00558F]/30 rounded sm:rounded-md md:rounded-lg">
-                          <Users className="h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-3.5 md:w-3.5 text-[#013662]" />
-                          <span className="text-[9px] sm:text-[10px] md:text-xs font-semibold text-[#013662]">
+                        <div className="flex items-center gap-0.5 sm:gap-1 px-1.5 sm:px-2 md:px-2.5 py-0.5 sm:py-1 bg-gradient-to-r from-[rgba(246,193,207,0.25)] to-[rgba(248,143,177,0.15)] border border-[rgba(217,92,138,0.6)] rounded sm:rounded-md md:rounded-lg">
+                          <Users
+                            className="h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-3.5 md:w-3.5"
+                            style={{ color: guestsPalette.accentPink }}
+                          />
+                          <span
+                            className="text-[9px] sm:text-[10px] md:text-xs font-semibold"
+                            style={{ color: guestsPalette.textDeep }}
+                          >
                             {guest.allowedGuests} {guest.allowedGuests === 1 ? 'Guest' : 'Guests'}
                           </span>
                         </div>
 
                         {/* Table badge */}
-                        <div className="flex items-center gap-0.5 sm:gap-1 px-1.5 sm:px-2 md:px-2.5 py-0.5 sm:py-1 bg-gradient-to-r from-[#00558F]/15 to-[#013662]/10 border border-[#013662]/40 sm:border-2 rounded sm:rounded-md md:rounded-lg">
-                          <MapPin className="h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-3.5 md:w-3.5 text-[#013662]" />
-                          <span className="text-[9px] sm:text-[10px] md:text-xs font-semibold sm:font-bold text-[#013662]">
+                        <div className="flex items-center gap-0.5 sm:gap-1 px-1.5 sm:px-2 md:px-2.5 py-0.5 sm:py-1 bg-gradient-to-r from-[rgba(216,180,226,0.25)] to-[rgba(246,193,207,0.15)] border border-[rgba(216,180,226,0.6)] sm:border-2 rounded sm:rounded-md md:rounded-lg">
+                          <MapPin
+                            className="h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-3.5 md:w-3.5"
+                            style={{ color: guestsPalette.accentPink }}
+                          />
+                          <span
+                            className="text-[9px] sm:text-[10px] md:text-xs font-semibold sm:font-bold"
+                            style={{ color: guestsPalette.textDeep }}
+                          >
                             {guest.tableNumber && String(guest.tableNumber).trim() !== "" ? (
                               <>Table {guest.tableNumber}</>
                             ) : (
@@ -378,28 +401,31 @@ export function BookOfGuests() {
 
                       {/* Message - Mobile Optimized */}
                       {guest.message && guest.message.trim() !== "" && (
-                        <div className="relative mb-1.5 sm:mb-2.5 md:mb-3 p-2 sm:p-3 md:p-5 bg-gradient-to-br from-[#F8F7FC] via-white to-[#F8F7FC] rounded sm:rounded-lg md:rounded-2xl border border-[#00558F]/30 shadow-sm overflow-hidden">
+                        <div
+                          className="relative mb-1.5 sm:mb-2.5 md:mb-3 p-2 sm:p-3 md:p-5 bg-gradient-to-br from-[#FFF6F8] via-white to-[#F6C1CF]/40 rounded sm:rounded-lg md:rounded-2xl border shadow-sm overflow-hidden"
+                          style={{ borderColor: "rgba(244,143,177,0.5)" }}
+                        >
                           {/* Decorative corner elements - smaller on mobile */}
                           <div className="absolute top-0 left-0 w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 opacity-[0.08]">
-                            <svg viewBox="0 0 100 100" className="text-[#013662]" fill="currentColor">
+                            <svg viewBox="0 0 100 100" className="text-[#D95C8A]" fill="currentColor">
                               <path d="M0,0 L100,0 L0,100 Z" />
                             </svg>
                           </div>
                           <div className="absolute bottom-0 right-0 w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 opacity-[0.08]">
-                            <svg viewBox="0 0 100 100" className="text-[#00558F]" fill="currentColor">
+                            <svg viewBox="0 0 100 100" className="text-[#F48FB1]" fill="currentColor">
                               <path d="M100,100 L0,100 L100,0 Z" />
                             </svg>
                           </div>
                           
                           {/* Opening quote - smaller on mobile */}
-                          <div className="absolute top-1 left-1 sm:top-1.5 sm:left-1.5 md:top-2 md:left-2 text-[#00558F]/25">
+                          <div className="absolute top-1 left-1 sm:top-1.5 sm:left-1.5 md:top-2 md:left-2 text-[#D95C8A]/25">
                             <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24">
                               <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" />
                             </svg>
                           </div>
                           
                           {/* Closing quote - smaller on mobile */}
-                          <div className="absolute bottom-1 right-1 sm:bottom-1.5 sm:right-1.5 md:bottom-2 md:right-2 text-[#00558F]/25">
+                          <div className="absolute bottom-1 right-1 sm:bottom-1.5 sm:right-1.5 md:bottom-2 md:right-2 text-[#D95C8A]/25">
                             <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24">
                               <path d="M18 7h-3l-2 4v6h6v-6h-3zm-8 0H7l-2 4v6h6v-6h-3z" />
                             </svg>
@@ -407,29 +433,56 @@ export function BookOfGuests() {
 
                           {/* Message content */}
                           <div className="relative px-0.5 sm:px-1">
-                            <p className="text-[10px] sm:text-xs md:text-base text-gray-700 leading-tight sm:leading-relaxed italic font-medium">
+                            <p
+                              className="text-[10px] sm:text-xs md:text-base leading-tight sm:leading-relaxed italic font-medium"
+                              style={{ color: guestsPalette.textDeep }}
+                            >
                               {guest.message}
                             </p>
                           </div>
 
                           {/* Elegant border accent - smaller on mobile */}
-                          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 sm:w-0.5 md:w-1 h-8 sm:h-12 md:h-16 bg-gradient-to-b from-transparent via-[#00558F] to-transparent rounded-r-full" />
+                          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 sm:w-0.5 md:w-1 h-8 sm:h-12 md:h-16 bg-gradient-to-b from-transparent via-[#D95C8A] to-transparent rounded-r-full" />
                         </div>
                       )}
 
                       {/* Companions - Mobile Optimized */}
                       {guest.companions && guest.companions.length > 0 && (
-                        <div className="pt-1.5 sm:pt-2 md:pt-2.5 border-t border-gray-100">
+                        <div className="pt-1.5 sm:pt-2 md:pt-2.5 border-t border-[rgba(244,143,177,0.3)]">
                           <div className="flex items-center gap-1 mb-1 sm:mb-1.5">
-                            <Users className="h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-3.5 md:w-3.5 text-[#013662]" />
-                            <span className="text-[9px] sm:text-[10px] md:text-xs font-semibold text-gray-700">Companions</span>
+                            <Users
+                              className="h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-3.5 md:w-3.5"
+                              style={{ color: guestsPalette.accentPink }}
+                            />
+                            <span
+                              className="text-[9px] sm:text-[10px] md:text-xs font-semibold"
+                              style={{ color: guestsPalette.textDeep }}
+                            >
+                              Companions
+                            </span>
                           </div>
                           <div className="flex flex-wrap gap-1 sm:gap-1.5">
                             {guest.companions.map((companion, idx) => (
-                              <div key={idx} className="inline-flex items-center gap-1 sm:gap-1.5 px-1.5 sm:px-2 md:px-2.5 py-0.5 sm:py-1 bg-white border border-[#00558F]/30 rounded sm:rounded-md md:rounded-lg hover:border-[#013662]/50 transition-colors">
-                                <span className="text-[9px] sm:text-[10px] md:text-xs font-medium text-gray-800 whitespace-nowrap">{companion.name}</span>
+                              <div
+                                key={idx}
+                                className="inline-flex items-center gap-1 sm:gap-1.5 px-1.5 sm:px-2 md:px-2.5 py-0.5 sm:py-1 bg-white border rounded sm:rounded-md md:rounded-lg transition-colors"
+                                style={{ borderColor: "rgba(244,143,177,0.5)" }}
+                              >
+                                <span
+                                  className="text-[9px] sm:text-[10px] md:text-xs font-medium whitespace-nowrap"
+                                  style={{ color: guestsPalette.textDeep }}
+                                >
+                                  {companion.name}
+                                </span>
                                 {companion.relationship && companion.relationship.trim() !== "" && (
-                                  <span className="text-[8px] sm:text-[9px] md:text-[10px] text-[#013662] bg-[#013662]/10 px-1.5 sm:px-2 py-0.5 rounded-full font-medium border border-[#013662]/20 whitespace-nowrap">
+                                  <span
+                                    className="text-[8px] sm:text-[9px] md:text-[10px] px-1.5 sm:px-2 py-0.5 rounded-full font-medium border whitespace-nowrap"
+                                    style={{
+                                      color: guestsPalette.accentPink,
+                                      backgroundColor: "rgba(247,208,220,0.5)",
+                                      borderColor: "rgba(244,143,177,0.5)",
+                                    }}
+                                  >
                                     {companion.relationship}
                                   </span>
                                 )}
@@ -440,9 +493,15 @@ export function BookOfGuests() {
                       )}
 
                       {/* Footer - Mobile Optimized */}
-                      <div className="flex items-center gap-1 pt-1.5 sm:pt-2 md:pt-2.5 mt-1.5 sm:mt-2 md:mt-2.5 border-t border-gray-100">
-                        <Calendar className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-gray-400" />
-                        <span className="text-[8px] sm:text-[9px] md:text-[10px] text-gray-500">
+                      <div className="flex items-center gap-1 pt-1.5 sm:pt-2 md:pt-2.5 mt-1.5 sm:mt-2 md:mt-2.5 border-t border-[rgba(244,143,177,0.3)]">
+                        <Calendar
+                          className="h-2.5 w-2.5 sm:h-3 sm:w-3"
+                          style={{ color: "rgba(108,23,61,0.6)" }}
+                        />
+                        <span
+                          className="text-[8px] sm:text-[9px] md:text-[10px]"
+                          style={{ color: "rgba(108,23,61,0.75)" }}
+                        >
                           Confirmed {formatDate(guest.updatedAt)}
                         </span>
                       </div>
