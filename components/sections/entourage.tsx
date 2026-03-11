@@ -296,20 +296,20 @@ export function Entourage() {
 
       >
 
-        <p className={`${playfair.className} text-[13px] sm:text-sm md:text-base font-medium text-[#D95C8A] ${textAlign}`}>
+        <p
+          className={`${playfair.className} text-[12px] sm:text-[13px] md:text-sm lg:text-base font-medium tracking-[0.02em] text-[#D95C8A] ${textAlign}`}
+        >
 
           {member.Name}
 
         </p>
 
         {showRole && member.RoleTitle && (
-
-          <p className={`${inter.className} text-[10px] sm:text-[11px] md:text-xs font-normal text-[#D95C8A]/80 mt-0.5 leading-snug ${textAlign}`}>
-
+          <p
+            className={`${inter.className} text-[9px] sm:text-[10px] md:text-[11px] font-medium tracking-[0.18em] uppercase text-[#D95C8A]/80 mt-0.5 leading-snug ${textAlign}`}
+          >
             {member.RoleTitle}
-
           </p>
-
         )}
 
       </div>

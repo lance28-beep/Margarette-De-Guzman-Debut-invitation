@@ -191,14 +191,15 @@ export function PrincipalSponsors() {
           className={`${greatVibes.className} text-4xl sm:text-5xl md:text-6xl lg:text-7xl drop-shadow-[0_18px_48px_rgba(217,92,138,0.4)]`}
           style={{ color: COLOR.title }}
         >
-          Anchors of My Journey 
+         Our Cotillion De Honor
         </h2>
         <p
           className={`${inter.className} text-xs sm:text-sm md:text-base max-w-2xl mx-auto mt-2 leading-relaxed`}
           style={{ color: COLOR.textMuted }}
         >
-          Behind every beautiful celebration is a circle of love, guidance, and unwavering support.
-          I am deeply grateful to the incredible people who have walked beside me, lifted me up, and helped shape the person I am today.
+          Tonight, we honor the remarkable individuals who stand beside the debutante as she steps into a new chapter of her life. Each pair represents friendship, support, cherished memories, and the beautiful journey that has shaped her into the woman she is becoming.
+
+With grace, elegance, and heartfelt celebration, they take part in this special tradition — a dance that symbolizes love, gratitude, and lasting bonds.
         </p>
       </div>
 
@@ -255,31 +256,20 @@ export function PrincipalSponsors() {
             ) : (
 
               <div className="mb-0">
-
                 <div className="flex flex-col gap-3 sm:gap-4 md:gap-5">
-
                   {sponsorPairs.map((pair, idx) => (
-
-                    <div key={`pair-${idx}`} className="flex flex-col items-center gap-1 sm:gap-1.5 w-full">
-
-                      {pair.MalePrincipalSponsor && (
-
-                        <NameItem name={pair.MalePrincipalSponsor} align="center" />
-
-                      )}
-
-                      {pair.FemalePrincipalSponsor && (
-
-                        <NameItem name={pair.FemalePrincipalSponsor} align="center" />
-
-                      )}
-
+                    <div key={`pair-${idx}`} className="w-full">
+                      <div className="grid grid-cols-2 gap-x-3 sm:gap-x-6 gap-y-1 sm:gap-y-1.5">
+                        {pair.MalePrincipalSponsor && (
+                          <NameItem name={pair.MalePrincipalSponsor} align="right" />
+                        )}
+                        {pair.FemalePrincipalSponsor && (
+                          <NameItem name={pair.FemalePrincipalSponsor} align="left" />
+                        )}
+                      </div>
                     </div>
-
                   ))}
-
                 </div>
-
               </div>
 
             )}
