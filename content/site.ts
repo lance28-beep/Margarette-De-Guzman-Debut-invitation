@@ -34,17 +34,17 @@ export const siteConfig = {
     time: "3:00 PM - 8:00 PM",
   },
   dressCode: {
-    theme: "Semi-formal in soft pink tones",
+    theme: "Casual in soft pink tones",
     colors: ["#F6C1CF", "#F48FB1", "#D95C8A", "#D8B4E2", "#E57399", "#FFF6F8"],
     sponsors: {
       male: "Barong, Black Pants and Leather Shoes",
       female: "Purple/Lavender/Sage Long Gown"
     },
     guests: {
-      gents: "Semi-formal attire",
-      ladies: "Semi-formal dresses in shades of pink such as blush, rose, dusty pink or soft pastel pink"
+    gents: "Casual attire",
+      ladies: "Casual dresses in shades of pink such as blush, rose, dusty pink or soft pastel pink"
     },
-    note: "Semi-formal - shades of pink such as blush, rose, dusty pink or soft pastel pink."
+    note: "Casual attire - shades of pink such as blush, rose, dusty pink or soft pastel pink."
   },
   narratives: {
     groom: `The first time Mark saw Catherine, time seemed to slow down. It was an ordinary day that instantly became unforgettable: one smile, one hello, and suddenly his world had a new center. He didn't have the perfect words ready, but he knew he had met someone who felt like home.

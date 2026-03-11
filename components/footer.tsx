@@ -7,7 +7,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="font-serif font-bold text-lg text-primary mb-2">
-              {siteConfig.couple.bride} & {siteConfig.couple.groom}
+            {siteConfig.couple.debutNickname}
             </h3>
             <p className="text-sm text-muted">{siteConfig.wedding.date}</p>
           </div>

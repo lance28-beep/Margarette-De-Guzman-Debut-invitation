@@ -13,6 +13,7 @@ import { Section } from "@/components/section"
 import { QRCodeCanvas } from "qrcode.react"
 
 import { Great_Vibes, Playfair_Display, Inter } from "next/font/google"
+import { siteConfig } from "@/content/site"
 
 
 
@@ -204,7 +205,7 @@ export function SnapShare() {
 
           <p className={`${inter.className} text-[11px] sm:text-sm md:text-base text-white/90 max-w-2xl mx-auto mt-3 sm:mt-4 leading-relaxed px-2`}>
 
-            Capture the elegance of Ena's debut celebration. Share your favorite moments and help create beautiful memories
+            Capture the elegance of {siteConfig.couple.debutNickname} debut celebration. Share your favorite moments and help create beautiful memories
 
             that will last a lifetime.
 
@@ -242,7 +243,7 @@ export function SnapShare() {
 
                 <p className={`${inter.className} text-[#D95C8A]/80 text-xs sm:text-sm mb-5 leading-relaxed`}>
 
-                  Every photo you share helps create beautiful memories of Ena's debut celebration. Use these hashtags to join the conversation.
+                  Every photo you share helps create beautiful memories of {siteConfig.couple.debutNickname} debut celebration. Use these hashtags to join the conversation.
 
                 </p>
 
@@ -350,7 +351,7 @@ export function SnapShare() {
 
                 <p className={`${inter.className} text-[#013662]/70 text-[11px] sm:text-xs text-center mt-4 px-2`}>
 
-                  Tag your snapshots with our hashtags to be featured in Ena's keepsake gallery.
+                  Tag your snapshots with our hashtags to be featured in {siteConfig.couple.debutNickname} keepsake gallery.
 
                 </p>
 
@@ -376,7 +377,7 @@ export function SnapShare() {
 
                 <p className={`${inter.className} text-[#D95C8A]/80 text-xs sm:text-sm mb-6 leading-relaxed`}>
 
-                  Spread the word about Ena's elegant debut celebration. Share this QR code with friends and family so they can join the celebration.
+                  Spread the word about {siteConfig.couple.debutNickname} elegant debut celebration. Share this QR code with friends and family so they can join the celebration.
 
                 </p>
 
@@ -443,7 +444,7 @@ export function SnapShare() {
 
               <p className={`${inter.className} text-[#D95C8A]/80 text-[11px] sm:text-xs text-center mb-5`}>
 
-                Help spread the word about `${siteConfig.couple.debutNickname}'s` debut celebration. Share the event across your favorite platforms.
+                Help spread the word about {siteConfig.couple.debutNickname} debut celebration. Share the event across your favorite platforms.
 
               </p>
 
@@ -521,7 +522,7 @@ export function SnapShare() {
 
             <p className={`${inter.className} text-[#D95C8A] text-sm sm:text-base md:text-lg leading-relaxed mb-4`}>
 
-              Thank you for helping make Ena's debut celebration memorable. Your photos and messages create beautiful memories
+              Thank you for helping make {siteConfig.couple.debutNickname} debut celebration memorable. Your photos and messages create beautiful memories
 
               that will last a lifetime—keep sharing the joy throughout the evening.
 
