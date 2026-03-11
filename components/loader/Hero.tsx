@@ -22,7 +22,7 @@ const mobileImages: string[] = [
 '/desktop-background/debut (5).webp',
 '/desktop-background/debut (6).jpg',
 '/desktop-background/debut (7).jpg',
-'/desktop-background/debut (8).jpg',
+'/mobile-background/debut (6).jpg',
 '/desktop-background/debut (9).jpg',
 ];
 
