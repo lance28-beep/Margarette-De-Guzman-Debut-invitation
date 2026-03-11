@@ -38,8 +38,8 @@ const galleryItems = [
   { image: "/desktop-background/debut (4).webp", text: "Sunset Whispers" },
   { image: "/desktop-background/debut (5).webp", text: "Pastel Dream" },
   { image: "/desktop-background/debut (6).jpg", text: "Tide of Memories" },
-  { image: "/desktop-background/debut (7).jpg", text: "Shoreline Smiles" },
-  { image: "/desktop-background/debut (8).jpg", text: "Blush Skies" },
+  { image: "/mobile-background/debut (6).jpg", text: "Shoreline Smiles" },
+  { image: "/mobile-background/debut (1).jpg", text: "Blush Skies" },
   { image: "/desktop-background/debut (9).jpg", text: "Seafoam Stories" },
   { image: "/mobile-background/debut (2).webp", text: "Seafoam Stories" },
 ]
