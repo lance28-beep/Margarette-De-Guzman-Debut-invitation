@@ -27,8 +27,7 @@ const PROGRAM_PART1 = [
   "Opening prayer",
   "Trivia c/o host",
   "18 Blooms",
-  "Cotillion de Honor",
-  "18 Candles (first 2 message via video)",
+  "18 Candles ",
   "Special video greetings from Kuya Earl and Ate Pat",
   "Singing of happy birthday song",
   "Blowing of the candle",
@@ -398,7 +397,7 @@ export function Details() {
               >
                 {siteConfig.dressCode.note}
               </p>
-              <div className="relative w-full rounded-xl overflow-hidden border mb-4" style={{ borderColor: `${COLORS.secondaryPink}55` }}>
+              {/* <div className="relative w-full rounded-xl overflow-hidden border mb-4" style={{ borderColor: `${COLORS.secondaryPink}55` }}>
                 <Image
                   src="/Details/guestAttire.png"
                   alt="Guest attire guidelines"
@@ -406,7 +405,7 @@ export function Details() {
                   height={300}
                   className="w-full h-auto object-contain"
                 />
-              </div>
+              </div> */}
               {/* Color palette display */}
               <div className="flex flex-col items-center gap-2 pt-2">
                 <p
