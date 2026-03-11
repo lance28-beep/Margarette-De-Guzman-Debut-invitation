@@ -5,7 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { siteConfig } from "@/content/site"
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://patricia-garcia-debut-invitation.weddinginvitationrsvp.com"
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://piel-allen-debut-invitation.weddinginvitationrsvp.com/"
 const canonicalUrl = siteUrl.replace(/\/$/, "")
 const desktopHero = "/Details/linkPreview.jpg"
 const mobileHero = "/Details/linkPreview.jpg"
