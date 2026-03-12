@@ -22,7 +22,34 @@ const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500", "600"] }
 
 const windSong = WindSong({ subsets: ["latin"], weight: ["400", "500"] })
 
-
+// Starfield layout — varied sizes, some with glow halos, for animated celestial sky
+const starField: { top: string; left: string; size: number; delay: string; duration: string; glow?: boolean }[] = [
+  { top: "5%",  left: "7%",  size: 1.2, delay: "0s",   duration: "6.2s" },
+  { top: "8%",  left: "24%", size: 2.2, delay: "1.1s", duration: "4.8s", glow: true },
+  { top: "11%", left: "44%", size: 1.4, delay: "0.5s", duration: "5.6s" },
+  { top: "14%", left: "62%", size: 1.9, delay: "1.9s", duration: "4.3s", glow: true },
+  { top: "9%",  left: "78%", size: 1.1, delay: "0.8s", duration: "5.0s" },
+  { top: "19%", left: "14%", size: 1.3, delay: "2.2s", duration: "5.9s" },
+  { top: "22%", left: "36%", size: 2.4, delay: "0.3s", duration: "6.4s", glow: true },
+  { top: "26%", left: "57%", size: 1.0, delay: "1.5s", duration: "4.6s" },
+  { top: "23%", left: "88%", size: 1.6, delay: "0.1s", duration: "5.3s" },
+  { top: "33%", left: "6%",  size: 1.2, delay: "2.6s", duration: "4.9s" },
+  { top: "38%", left: "29%", size: 1.5, delay: "1.0s", duration: "6.0s" },
+  { top: "41%", left: "73%", size: 2.1, delay: "0.6s", duration: "5.5s", glow: true },
+  { top: "44%", left: "92%", size: 1.1, delay: "2.0s", duration: "4.7s" },
+  { top: "50%", left: "17%", size: 1.4, delay: "1.4s", duration: "5.8s" },
+  { top: "55%", left: "48%", size: 1.9, delay: "0.9s", duration: "6.5s", glow: true },
+  { top: "59%", left: "82%", size: 1.2, delay: "1.7s", duration: "5.2s" },
+  { top: "65%", left: "33%", size: 1.5, delay: "2.3s", duration: "4.4s" },
+  { top: "69%", left: "61%", size: 1.0, delay: "0.4s", duration: "5.7s" },
+  { top: "73%", left: "8%",  size: 2.3, delay: "1.3s", duration: "6.1s", glow: true },
+  { top: "78%", left: "76%", size: 1.3, delay: "0.7s", duration: "4.5s" },
+  { top: "83%", left: "22%", size: 1.6, delay: "2.8s", duration: "5.9s" },
+  { top: "87%", left: "45%", size: 1.1, delay: "1.6s", duration: "4.8s" },
+  { top: "91%", left: "85%", size: 1.9, delay: "0.2s", duration: "6.3s", glow: true },
+  { top: "3%",  left: "55%", size: 1.3, delay: "3.0s", duration: "5.4s" },
+  { top: "47%", left: "40%", size: 1.0, delay: "2.5s", duration: "4.2s" },
+]
 
 export function Footer() {
 
@@ -193,13 +220,136 @@ export function Footer() {
     <footer 
 
       className="relative z-20 mt-16 text-cream overflow-hidden"
-      style={{ background: "linear-gradient(to bottom, #D95C8A, #F48FB1)" }}
+      style={{ background: "linear-gradient(160deg, rgba(2,6,20,1) 0%, rgba(6,18,58,0.92) 40%, rgba(2,6,20,1) 100%)" }}
 
     >
 
+      {/* Celestial, dreamy background */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+
+        {/* Deep celestial base */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `
+              radial-gradient(ellipse at 12% 15%, rgba(186,214,235,0.32) 0%, transparent 48%),
+              radial-gradient(ellipse at 88% 80%, rgba(51,78,172,0.55) 0%, transparent 55%),
+              radial-gradient(ellipse at 50% 50%, rgba(8,31,92,0.5) 0%, transparent 70%),
+              linear-gradient(160deg, rgba(2,6,20,1) 0%, rgba(6,18,58,0.88) 40%, rgba(2,6,20,1) 100%)
+            `,
+          }}
+        />
+
+        {/* Nebula cloud — top-left blue mist */}
+        <div
+          className="absolute -top-16 -left-20 w-[55%] h-[55%] mix-blend-screen"
+          style={{
+            background: "radial-gradient(ellipse at 40% 40%, rgba(186,214,235,0.9) 0%, rgba(51,78,172,0.55) 38%, transparent 70%)",
+            filter: "blur(52px)",
+            opacity: 0.28,
+            animation: "countdownNebula1 18s ease-in-out infinite",
+          }}
+        />
+
+        {/* Nebula cloud — bottom-right royal mist */}
+        <div
+          className="absolute -bottom-20 -right-20 w-[60%] h-[60%] mix-blend-screen"
+          style={{
+            background: "radial-gradient(ellipse at 60% 60%, rgba(51,78,172,0.88) 0%, rgba(8,31,92,0.5) 45%, transparent 70%)",
+            filter: "blur(58px)",
+            opacity: 0.25,
+            animation: "countdownNebula2 22s ease-in-out infinite",
+          }}
+        />
+
+        {/* Nebula cloud — mid soft glow */}
+        <div
+          className="absolute top-1/3 left-1/4 w-[50%] h-[40%] mix-blend-screen"
+          style={{
+            background: "radial-gradient(ellipse at 50% 50%, rgba(208,227,255,0.85) 0%, transparent 65%)",
+            filter: "blur(64px)",
+            opacity: 0.13,
+            animation: "countdownNebula3 26s ease-in-out infinite",
+          }}
+        />
+
+        {/* Aurora shimmer ribbon */}
+        <div
+          className="absolute inset-0 mix-blend-screen"
+          style={{
+            background: `
+              radial-gradient(ellipse at 20% 35%, rgba(208,227,255,0.22) 0%, transparent 50%),
+              radial-gradient(ellipse at 78% 25%, rgba(186,214,235,0.24) 0%, transparent 55%)
+            `,
+            opacity: 0.65,
+            animation: "countdownAurora 16s ease-in-out infinite",
+          }}
+        />
+
+        {/* Moon — top-right, partially cropped behind top edge so it never overlaps content */}
+        <div
+          className="absolute right-4 sm:right-10 md:right-16 -top-10 sm:-top-14 md:-top-16 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full pointer-events-none"
+          style={{
+            backgroundImage: `radial-gradient(circle at 28% 28%, #D0E3FF 0%, #F7F2EB 36%, transparent 70%)`,
+            boxShadow: `0 0 60px rgba(186,214,235,0.99), 0 0 120px rgba(186,214,235,0.88), 0 0 200px rgba(8,31,92,0.9)`,
+          }}
+        >
+          <div
+            className="absolute rounded-full bg-[#020c1e]"
+            style={{ width: "84%", height: "84%", top: "10%", right: "-4%" }}
+          />
+          <div className="absolute inset-0 rounded-full border border-white/25" />
+          {/* Sparkle companions */}
+          <div
+            className="absolute -bottom-2 -left-3 w-2 h-2 rounded-full bg-white/90 blur-[1px]"
+            style={{ animation: "countdownTwinkle 2.8s 0.4s ease-in-out infinite" }}
+          />
+          <div
+            className="absolute top-3 -left-4 w-1 h-1 rounded-full bg-white/70 blur-[0.5px]"
+            style={{ animation: "countdownTwinkle 3.6s 1.2s ease-in-out infinite" }}
+          />
+        </div>
+
+        {/* Shooting star */}
+        <div
+          className="absolute h-px"
+          style={{
+            width: "clamp(80px, 9vw, 140px)",
+            top: "18%",
+            left: "18%",
+            background: "linear-gradient(90deg, transparent, rgba(237,241,246,0.98) 60%, transparent)",
+            boxShadow: "0 0 6px rgba(237,241,246,0.95)",
+            transform: "rotate(-26deg)",
+            animation: "countdownShootingStar 10s 2.5s ease-in-out infinite",
+            opacity: 0,
+          }}
+        />
+
+        {/* Stars */}
+        <div className="absolute inset-0 pointer-events-none">
+          {starField.map((star, index) => (
+            <div
+              key={index}
+              className="absolute rounded-full bg-[rgba(237,241,246,0.98)]"
+              style={{
+                width: `${star.size}px`,
+                height: `${star.size}px`,
+                top: star.top,
+                left: star.left,
+                opacity: 0.85,
+                filter: star.glow
+                  ? `blur(0.5px) drop-shadow(0 0 3px rgba(208,227,255,0.95))`
+                  : star.size > 1.4 ? "blur(0.4px)" : "blur(0.2px)",
+                animation: `countdownTwinkle ${star.duration} ${star.delay} ease-in-out infinite`,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
       {/* Ornate pattern background */}
 
-      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
 
         {/* Base pattern - diagonal lines forming diamonds */}
 
@@ -455,7 +605,7 @@ export function Footer() {
 
                   <Image
 
-                    src="/monogram/newmonogram.png"
+                    src="/monogram/mongoram.png"
 
                     alt="Piel Allen Debut Monogram"
 
@@ -505,21 +655,21 @@ export function Footer() {
 
             <motion.div className="bg-white/90 backdrop-blur-md rounded-2xl p-6 border-2 border-white/30" whileHover={{ scale: 1.02 }} transition={{ duration: 0.3 }}>
 
-              <blockquote className={`${inter.className} text-[#D95C8A] italic text-lg leading-relaxed min-h-[80px]`}>
+              <blockquote className={`${inter.className} text-[#081F5C] italic text-lg leading-relaxed min-h-[80px]`}>
 
                 "{displayedText}
 
-                <span className="inline-block w-0.5 h-6 bg-[#D95C8A] ml-1 animate-pulse">|</span>"
+                <span className="inline-block w-0.5 h-6 bg-[#081F5C] ml-1 animate-pulse">|</span>"
 
               </blockquote>
 
               <div className="flex items-center gap-2 mt-4">
 
-                <div className="w-2 h-2 bg-[#D95C8A]/70 rounded-full" />
+                  <div className="w-2 h-2 bg-[#081F5C]/70 rounded-full" />
 
-                <div className="w-2 h-2 bg-[#D95C8A]/50 rounded-full" />
+                <div className="w-2 h-2 bg-[#081F5C]/50 rounded-full" />
 
-                <div className="w-2 h-2 bg-[#D95C8A]/70 rounded-full" />
+                <div className="w-2 h-2 bg-[#081F5C]/70 rounded-full" />
 
               </div>
 
@@ -537,13 +687,13 @@ export function Footer() {
 
               <div className="flex items-center gap-3 mb-4">
 
-                <div className="w-10 h-10 bg-[#D95C8A]/10 rounded-full flex items-center justify-center border-2 border-[#D95C8A]/20">
+                <div className="w-10 h-10 bg-[#081F5C]/10 rounded-full flex items-center justify-center border-2 border-[#081F5C]/20">
 
-                  <Clock className="w-5 h-5 text-[#D95C8A]" />
+                  <Clock className="w-5 h-5 text-[#081F5C]" />
 
                 </div>
 
-                <h4 className={`${playfair.className} font-bold text-xl text-[#D95C8A]`}>Debut Celebration</h4>
+                <h4 className={`${playfair.className} font-bold text-xl text-[#081F5C]`}>Debut Celebration</h4>
 
               </div>
 
@@ -551,17 +701,17 @@ export function Footer() {
 
                 <div className="flex items-center gap-3">
 
-                  <MapPin className="w-4 h-4 text-[#D95C8A]/70" />
+                  <MapPin className="w-4 h-4 text-[#081F5C]/70" />
 
-                  <span style={{ color: "#D95C8A" }}>{siteConfig.wedding.venue}</span>
+                  <span style={{ color: "#081F5C" }}>{siteConfig.wedding.venue}</span>
 
                 </div>
 
                 <div className="flex items-center gap-3">
 
-                  <Clock className="w-4 h-4 text-[#D95C8A]/70" />
+                  <Clock className="w-4 h-4 text-[#081F5C]/70" />
 
-                  <span style={{ color: "#D95C8A" }}>{siteConfig.wedding.time}</span>
+                  <span style={{ color: "#081F5C" }}>{siteConfig.wedding.time}</span>
 
                 </div>
 
@@ -577,29 +727,29 @@ export function Footer() {
 
                 <div className="w-10 h-10 bg-[#013662]/10 rounded-full flex items-center justify-center border-2 border-[#013662]/20">
 
-                  <Sparkles className="w-5 h-5 text-[#D95C8A]" />
+                  <Sparkles className="w-5 h-5 text-[#081F5C]" />
 
                 </div>
 
-                <h4 className={`${playfair.className} font-bold text-xl text-[#D95C8A]`}>Evening Reception</h4>
+                <h4 className={`${playfair.className} font-bold text-xl text-[#081F5C]`}>Evening Reception</h4>
 
               </div>
 
-              <div className={`space-y-3 ${inter.className} text-[#D95C8A]/80 text-sm`}>
+              <div className={`space-y-3 ${inter.className} text-[#081F5C]/80 text-sm`}>
 
                 <div className="flex items-center gap-3">
 
-                  <MapPin className="w-4 h-4 text-[#D95C8A]/70" />
+                    <MapPin className="w-4 h-4 text-[#081F5C]/70" />
 
-                  <span style={{ color: "#D95C8A" }}>{siteConfig.wedding.venue}</span>
+                  <span style={{ color: "#081F5C" }}>{siteConfig.wedding.venue}</span>
 
                 </div>
 
                 <div className="flex items-center gap-3">
 
-                  <Clock className="w-4 h-4 text-[#D95C8A]/70" />
+                      <Clock className="w-4 h-4 text-[#081F5C]/70" />
 
-                  <span style={{ color: "#D95C8A" }}>Following the debut</span>
+                  <span style={{ color: "#081F5C" }}>Following the debut</span>
 
                 </div>
 
@@ -737,7 +887,7 @@ export function Footer() {
 
             <div className="text-center md:text-left">
 
-              <p className={`text-[white]/85 ${inter.className} text-sm`}>© {year} ${siteConfig.couple.debutNickname}'s Debut. All rights reserved.</p>
+              <p className={`text-[white]/85 ${inter.className} text-sm`}>© {year} {siteConfig.couple.debutNickname}'s Debut. All rights reserved.</p>
 
               <p className={`text-[white]/90 ${inter.className} text-sm mt-1`}>
 

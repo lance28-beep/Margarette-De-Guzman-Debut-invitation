@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Section } from "@/components/section"
 import { motion } from "motion/react"
 import { Great_Vibes, Playfair_Display, Inter } from "next/font/google"
+import { siteConfig } from "@/content/site"
 
 const greatVibes = Great_Vibes({
   subsets: ["latin"],
@@ -20,35 +21,33 @@ const inter = Inter({
   weight: ["300", "400", "500", "600"],
 })
 
-// Soft pink beach narrative palette
-const narrativePalette = {
-  primaryPink: "#F6C1CF",
-  secondaryPink: "#F48FB1",
-  accentPink: "#D95C8A",
-  lavender: "#D8B4E2",
-  baseWhite: "#FFF6F8",
-  textDeep: "rgba(108, 23, 61, 0.95)",
+// Narrative section color controls (celestial theme)
+const narrativeColors = {
+  // sectionBackground: '#020819',
+  // gradientSky: '#BAD6EB',
+  // gradientRoyal: '#334EAC',
+  gradientMidnight: '#081F5C',
+  cardFrontOverlayFrom: 'rgba(2,6,20,0.85)',
+  cardFrontOverlayTo: 'rgba(2,6,20,0.15)',
+  label: '#BAD6EB',
+  heading: '#F7F2EB',
+  subtitle: 'rgba(237,241,246,0.88)',
+  frontTitle: '#F7F2EB',
+  frontText: 'rgba(237,241,246,0.9)',
+  backTitle: '#F7F2EB',
+  backBody: 'rgba(237,241,246,0.9)',
+  backHint: 'rgba(186,214,235,0.85)',
+  cardBorder: 'rgba(186,214,235,0.55)',
 }
 
-const ABOUT_TEXT = `Piel is a vibrant and kind-hearted young woman who enjoys expressing herself through her talents and hobbies. She loves spending time with family and friends, listening to music, watching movies, and capturing fun moments that turn into beautiful memories.
-Piel is known for her positive attitude, creativity, and determination in everything she does. Whether it’s exploring new interests or working toward her goals, she continues to grow and learn every day.`
+const ABOUT_TEXT = `${siteConfig.couple.debutNickname} is a vibrant and kind-hearted young woman who enjoys expressing herself through her talents and hobbies. She loves spending time with family and friends, listening to music, watching movies, and capturing fun moments that turn into beautiful memories.
+${siteConfig.couple.debutNickname} is known for her positive attitude, creativity, and determination in everything she does. Whether it’s exploring new interests or working toward her goals, she continues to grow and learn every day.`
 
 export function Narrative() {
   const [isFlipped, setIsFlipped] = useState(false)
 
   return (
-    <Section id="narrative" className="relative py-20 md:py-32 bg-[#FFF6F8] overflow-hidden">
-      {/* Soft pastel background accents */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-70"
-        style={{
-          backgroundImage: `
-            radial-gradient(circle at 0% 0%, ${narrativePalette.primaryPink}26 0, transparent 55%),
-            radial-gradient(circle at 100% 100%, ${narrativePalette.lavender}26 0, transparent 55%)
-          `,
-        }}
-      />
-
+    <Section id="narrative" className="relative py-20 md:py-32 overflow-hidden">
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center max-w-3xl mx-auto"
@@ -59,24 +58,25 @@ export function Narrative() {
         >
           <p
             className="text-xs sm:text-sm tracking-[0.35em] uppercase mb-4"
-            style={{ color: narrativePalette.accentPink }}
+            style={{ color: narrativeColors.label }}
           >
-            A little about Piel
+            A little about {siteConfig.couple.debutNickname}
           </p>
           <h2
             className={`${greatVibes.className} text-5xl sm:text-6xl md:text-7xl lg:text-8xl`}
             style={{
-              color: narrativePalette.accentPink,
-              textShadow: "0 12px 32px rgba(217,92,138,0.4)",
+              color: narrativeColors.heading,
+              textShadow:
+                "0 0 22px rgba(208,227,255,0.9), 0 0 52px rgba(8,31,92,0.9), 0 18px 46px rgba(0,0,0,0.9)",
             }}
           >
             My Journey to 18
           </h2>
           <p
             className={`${inter.className} text-base sm:text-lg md:text-xl mt-4 tracking-[0.04em]`}
-            style={{ color: narrativePalette.textDeep }}
+            style={{ color: narrativeColors.subtitle }}
           >
-            A soft pink seaside story of growing up, holding on to simple joys, and stepping into eighteen with grace and gratitude.
+            A celestial story of growing up under moonlit skies, holding on to quiet joys, and stepping into {siteConfig.couple.debutNickname} with grace and wonder.
           </p>
         </motion.div>
 
@@ -99,9 +99,9 @@ export function Narrative() {
               aria-label={isFlipped ? "Hide about me" : "Show about me"}
             >
               <div
-                className="relative min-h-[500px] sm:min-h-[480px] md:min-h-[560px] lg:min-h-[620px] rounded-3xl border shadow-[0_18px_45px_rgba(0,0,0,0.08)] bg-white transition-transform duration-700"
+                className="relative min-h-[500px] sm:min-h-[480px] md:min-h-[560px] lg:min-h-[620px] rounded-3xl border shadow-[0_24px_70px_rgba(0,0,0,0.6)] bg-transparent transition-transform duration-700"
                 style={{
-                  borderColor: `${narrativePalette.secondaryPink}55`,
+                  borderColor: narrativeColors.cardBorder,
                   transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
                   transformStyle: "preserve-3d",
                 }}
@@ -114,9 +114,10 @@ export function Narrative() {
                   <div className="relative h-full w-full">
                     <div
                       className="absolute inset-0 bg-cover bg-center"
-                      style={{ backgroundImage: "url('/desktop-background/debut (2).webp')" }}
+                      style={{ backgroundImage: "url('/mobile-background/debut (2).jpg')" }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.7)] via-[rgba(0,0,0,0.25)] to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t"
+                      style={{ backgroundImage: `linear-gradient(to top, ${narrativeColors.cardFrontOverlayFrom}, ${narrativeColors.cardFrontOverlayTo})` }} />
 
                     <div className="absolute inset-x-6 bottom-6 sm:bottom-8 flex flex-col items-start gap-2 text-left">
                       <p
@@ -125,12 +126,14 @@ export function Narrative() {
                         Meet the debutant
                       </p>
                       <h3
-                        className={`${playfair.className} text-2xl sm:text-3xl md:text-4xl text-[#FFF6F8] leading-tight drop-shadow-[0_12px_32px_rgba(0,0,0,0.8)]`}
+                        className={`${playfair.className} text-2xl sm:text-3xl md:text-4xl leading-tight drop-shadow-[0_14px_36px_rgba(0,0,0,0.85)]`}
+                      style={{ color: narrativeColors.frontTitle }}
                       >
-                        Piel Allen G. Marasigan
+                       {siteConfig.couple.debut}
                       </h3>
                       <p
-                        className={`${inter.className} text-xs sm:text-sm max-w-sm text-[rgba(255,246,248,0.9)]`}
+                        className={`${inter.className} text-xs sm:text-sm max-w-sm`}
+                      style={{ color: narrativeColors.frontText }}
                       >
                         Tap to flip and read a little more about her story.
                       </p>
@@ -141,18 +144,20 @@ export function Narrative() {
                 {/* Back: about me text */}
                 <div
                   className="absolute inset-0 rounded-3xl overflow-hidden"
-                  style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden", backgroundColor: "#FFFFFF" }}
+                  style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden", background: "rgba(2,6,20,0.96)" }}
                 >
                   {/* subtle corner accents */}
-                  <div className="pointer-events-none absolute -top-10 -left-6 w-32 h-32 rounded-full border border-[rgba(255,246,248,0.7)]" />
-                  <div className="pointer-events-none absolute -bottom-10 -right-10 w-40 h-32 rounded-[999px] border border-[rgba(244,143,177,0.45)]" />
+                  <div className="pointer-events-none absolute -top-10 -left-6 w-32 h-32 rounded-full border"
+                  style={{ borderColor: "rgba(186,214,235,0.55)" }} />
+                  <div className="pointer-events-none absolute -bottom-10 -right-10 w-40 h-32 rounded-[999px] border"
+                  style={{ borderColor: "rgba(186,214,235,0.38)" }} />
 
                   <div className="relative z-10 h-full w-full px-6 sm:px-8 md:px-10 py-8 sm:py-10 md:py-12 flex flex-col justify-between">
                     <div className="space-y-5 sm:space-y-6">
                       <div>
                         <h3
                           className={`${playfair.className} text-2xl sm:text-3xl md:text-4xl leading-tight`}
-                          style={{ color: narrativePalette.accentPink }}
+                          style={{ color: narrativeColors.backTitle }}
                         >
                           About Me
                         </h3>
@@ -163,7 +168,7 @@ export function Narrative() {
                           <p
                             key={idx}
                             className="text-sm sm:text-base md:text-lg leading-relaxed"
-                            style={{ color: narrativePalette.textDeep }}
+                            style={{ color: narrativeColors.backBody }}
                           >
                             {para}
                           </p>
@@ -173,7 +178,7 @@ export function Narrative() {
 
                     <p
                       className={`${inter.className} mt-4 text-[10px] sm:text-xs tracking-[0.25em] uppercase text-right`}
-                      style={{ color: "rgba(108,23,61,0.7)" }}
+                      style={{ color: narrativeColors.backHint }}
                     >
                       Tap to flip back
                     </p>

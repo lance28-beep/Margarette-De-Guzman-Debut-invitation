@@ -7,23 +7,20 @@ interface HeroProps {
 }
 
 const desktopImages: string[] = [
-'/mobile-background/debut (1).webp',
-'/mobile-background/debut (2).webp',
-'/mobile-background/debut (3).webp',
-'/mobile-background/debut (4).webp',
-'/mobile-background/debut (2).webp',
+'/desktop-background/debut (1).jpg',
+'/desktop-background/debut (2).jpg',
+'/desktop-background/debut (3).jpg',
+'/desktop-background/debut (4).jpg',
+'/desktop-background/debut (5).jpg',
 ];
 
 const mobileImages: string[] = [
-'/desktop-background/debut (1).webp',
-'/desktop-background/debut (2).webp',
-'/desktop-background/debut (3).webp',
-'/desktop-background/debut (4).webp',
-'/desktop-background/debut (5).webp',
-'/desktop-background/debut (6).jpg',
-'/desktop-background/debut (7).jpg',
+'/mobile-background/debut (1).jpg',
+'/mobile-background/debut (2).jpg',
+'/mobile-background/debut (3).jpg',
+'/mobile-background/debut (4).jpg',
+'/mobile-background/debut (5).jpg',
 '/mobile-background/debut (6).jpg',
-'/desktop-background/debut (9).jpg',
 ];
 
 export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
@@ -67,14 +64,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
           />
         ))}
         
-        {/* Overlay - soft pink beach gradient */}
+        {/* Overlay - luxury celestial night gradient */}
         <div 
           className="absolute inset-0 pointer-events-none"
           style={{
             background: `
-              radial-gradient(circle at top left, rgba(246, 193, 207, 0.55), transparent 45%),
-              radial-gradient(circle at bottom right, rgba(216, 180, 226, 0.55), transparent 50%),
-              linear-gradient(to bottom, rgba(255, 246, 248, 0.05), rgba(244, 143, 177, 0.45))
+              radial-gradient(circle at top left, rgba(186, 214, 235, 0.35), transparent 45%),
+              radial-gradient(circle at bottom right, rgba(51, 78, 172, 0.75), transparent 55%),
+              linear-gradient(to bottom, rgba(8, 31, 92, 0.85), rgba(8, 31, 92, 0.25))
             `
           }}
         />
@@ -89,10 +86,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
             {/* Monogram Image */}
             <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44">
               <Image
-                src="/monogram/newmonogram.png"
+                src="/monogram/mongoram.png"
                 alt="Debut Monogram"
                 fill
-                className="object-contain drop-shadow-[0_18px_45px_rgba(0,0,0,0.45)]"
+                className="object-contain drop-shadow-[0_22px_55px_rgba(0,0,0,0.7)]"
                 priority
                 style={{ filter: 'brightness(0) invert(1)' }}
               />
@@ -108,7 +105,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
             style={{
               fontFamily: '"Great Vibes", cursive',
               fontWeight: 400,
-              color: '#FFF6F8',
+              color: '#F7F2EB',
+              textShadow:
+                '0 0 18px rgba(186,214,235,0.9), 0 0 38px rgba(8,31,92,0.95), 0 22px 55px rgba(0,0,0,0.9)',
             }}
           >
             You are
@@ -117,9 +116,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
           <h1
             className="text-5xl md:text-7xl font-bold tracking-wider uppercase"
             style={{
-              fontFamily: '"Cinzel", serif',
+              fontFamily: '"Cinzel Decorative", "Cinzel", serif',
               fontWeight: 700,
-              color: '#FFF6F8',
+              color: '#EDF1F6',
+              textShadow:
+                '0 0 20px rgba(208,227,255,0.9), 0 0 42px rgba(8,31,92,0.95), 0 24px 60px rgba(0,0,0,0.9)',
             }}
           >
             Invited!
@@ -129,20 +130,24 @@ export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
             onClick={() => {
               onOpen();
             }}
-            className="px-10 py-4 font-serif text-sm tracking-[0.2em] uppercase rounded-full border transition-all duration-300 shadow-[0_18px_45px_rgba(0,0,0,0.35)] backdrop-blur-sm bg-white/10"
+            className="px-10 py-4 font-serif text-sm tracking-[0.2em] uppercase rounded-full border transition-all duration-300 shadow-[0_18px_45px_rgba(0,0,0,0.55)] backdrop-blur-sm bg-white/5"
             style={{
-              borderColor: 'rgba(255, 246, 248, 0.8)',
-              color: '#FFF6F8',
+              borderColor: 'rgba(186, 214, 235, 0.85)',
+              color: '#EDF1F6',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255, 246, 248, 0.16)';
+              e.currentTarget.style.backgroundColor = 'rgba(186, 214, 235, 0.18)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
             }}
           >
             <span
-              style={{ fontFamily: '"Cinzel", serif', fontWeight: 500, color: '#FFF6F8' }}
+              style={{
+                fontFamily: '"Playfair Display", var(--font-serif), serif',
+                fontWeight: 500,
+                color: '#EDF1F6',
+              }}
             >
               Open Invitation
             </span>

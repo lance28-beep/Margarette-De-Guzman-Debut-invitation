@@ -1,50 +1,50 @@
 export const siteConfig = {
   couple: {
-    debut: "Piel Allen G. Marasigan",
-    debutNickname: "Piel Allen",
+    debut: "Margarette De Guzman",
+    debutNickname: "Margarette",
     groom: "",
     groomNickname: "",
   },
   wedding: {
-    date: "APRIL 4, 2026",
+    date: "May 9, 2026",
     time: "3:00 PM",
-    venue: "7 Cardels Function Hall Brgy. Gulod Itaas, Batangas City",
-    tagline: "18th Birthday Celebration",
-    theme: "Soft Pink Beach Aesthetic",
-    motif: "#F6C1CF, #F48FB1, #D95C8A, #D8B4E2, #E57399, #FFF6F8",
+    venue: "Kikay's Private Pool (San isidro Cabanatuan City) ",
+    tagline: "Debut Celebration",
+    theme: "Moonlit Garden Dream",
+    motif: "#F7F2EB, #EDF1F6, #BACEDB, #334EAC, #081F5C",
   },
   details: {
     rsvp: {
-      deadline: "March 23, 2026",
+      deadline: "May 4, 2026",
     },
   },
   ceremony: {
-    location: "7 Cardels Function Hall Brgy. Gulod Itaas, Batangas City, Batangas",
-    venue: "7 Cardels Event Centre",
-    date: "April 4, 2026",
-    day: "Saturday",
+    location: "Kikay's Private Pool (San isidro Cabanatuan City) ",
+    venue: "Kikay's Private Pool",
+    date: "May 9, 2026",
+    day: "Friday",
     time: "3:00 PM",
     entourageTime: "2:30 PM",
-    guestsTime: "2:30 PM",
+    guestsTime: "3:00 PM",
   },
   reception: {
-    location: "7 Cardels Function Hall Brgy. Gulod Itaas, Batangas City, Batangas",
-    venue: "7 Cardels Event Centre",
-    date: "APRIL 4, 2026",
+    location: "Kikay's Private Pool (San isidro Cabanatuan City) ",
+    venue: "Kikay's Private Pool",
+    date: "May 9, 2026",
     time: "3:00 PM - 8:00 PM",
   },
   dressCode: {
-    theme: "Casual in soft pink tones",
-    colors: ["#F6C1CF", "#F48FB1", "#D95C8A", "#D8B4E2", "#E57399", "#FFF6F8"],
+    theme: "Moonlit Garden Dream",
+    colors: ["#F7F2EB", "#EDF1F6", "#BACEDB", "#334EAC", "#081F5C"],
     sponsors: {
-      male: "Barong, Black Pants and Leather Shoes",
-      female: "Purple/Lavender/Sage Long Gown"
+      male: "Moonlit Garden Dream",
+      female: "Moonlit Garden Dream"
     },
     guests: {
     gents: "Casual attire",
-      ladies: "Casual dresses in shades of pink such as blush, rose, dusty pink or soft pastel pink"
+      ladies: "Moonlit Garden Dream"
     },
-    note: "Casual attire - shades of pink such as blush, rose, dusty pink or soft pastel pink."
+    note: "Moonlit Garden Dream"
   },
   narratives: {
     groom: `The first time Mark saw Catherine, time seemed to slow down. It was an ordinary day that instantly became unforgettable: one smile, one hello, and suddenly his world had a new center. He didn't have the perfect words ready, but he knew he had met someone who felt like home.
@@ -64,7 +64,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
   },
   snapShare: {
     googleDriveLink: "https://drive.google.com/drive/folders/1mcPDa_sGpHnDBWR5mUDek-RFyawjWQqI?usp=sharing",
-    hashtag: "#PielAllenTurns18",
+    hashtag: `#margaretteturns18`,
     instructions: "Please scan this QR Code, create a folder with your name and upload the photos and videos you have taken during the celebration. We are delighted to see your snaps too!",
   },
 }

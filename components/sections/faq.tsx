@@ -18,7 +18,33 @@ const playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", "
 
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500", "600"] })
 
-
+const starField: { top: string; left: string; size: number; delay: string; duration: string; glow?: boolean }[] = [
+  { top: "5%",  left: "7%",  size: 1.2, delay: "0s",   duration: "6.2s" },
+  { top: "8%",  left: "24%", size: 2.2, delay: "1.1s", duration: "4.8s", glow: true },
+  { top: "11%", left: "44%", size: 1.4, delay: "0.5s", duration: "5.6s" },
+  { top: "14%", left: "62%", size: 1.9, delay: "1.9s", duration: "4.3s", glow: true },
+  { top: "9%",  left: "78%", size: 1.1, delay: "0.8s", duration: "5.0s" },
+  { top: "19%", left: "14%", size: 1.3, delay: "2.2s", duration: "5.9s" },
+  { top: "22%", left: "36%", size: 2.4, delay: "0.3s", duration: "6.4s", glow: true },
+  { top: "26%", left: "57%", size: 1.0, delay: "1.5s", duration: "4.6s" },
+  { top: "23%", left: "88%", size: 1.6, delay: "0.1s", duration: "5.3s" },
+  { top: "33%", left: "6%",  size: 1.2, delay: "2.6s", duration: "4.9s" },
+  { top: "38%", left: "29%", size: 1.5, delay: "1.0s", duration: "6.0s" },
+  { top: "41%", left: "73%", size: 2.1, delay: "0.6s", duration: "5.5s", glow: true },
+  { top: "44%", left: "92%", size: 1.1, delay: "2.0s", duration: "4.7s" },
+  { top: "50%", left: "17%", size: 1.4, delay: "1.4s", duration: "5.8s" },
+  { top: "55%", left: "48%", size: 1.9, delay: "0.9s", duration: "6.5s", glow: true },
+  { top: "59%", left: "82%", size: 1.2, delay: "1.7s", duration: "5.2s" },
+  { top: "65%", left: "33%", size: 1.5, delay: "2.3s", duration: "4.4s" },
+  { top: "69%", left: "61%", size: 1.0, delay: "0.4s", duration: "5.7s" },
+  { top: "73%", left: "8%",  size: 2.3, delay: "1.3s", duration: "6.1s", glow: true },
+  { top: "78%", left: "76%", size: 1.3, delay: "0.7s", duration: "4.5s" },
+  { top: "83%", left: "22%", size: 1.6, delay: "2.8s", duration: "5.9s" },
+  { top: "87%", left: "45%", size: 1.1, delay: "1.6s", duration: "4.8s" },
+  { top: "91%", left: "85%", size: 1.9, delay: "0.2s", duration: "6.3s", glow: true },
+  { top: "3%",  left: "55%", size: 1.3, delay: "3.0s", duration: "5.4s" },
+  { top: "47%", left: "40%", size: 1.0, delay: "2.5s", duration: "4.2s" },
+]
 
 interface FAQItem {
 
@@ -34,9 +60,9 @@ const faqItems: FAQItem[] = [
 
   {
 
-    question: "What is the dress code for Piel Allen's debut?",
+    question: `What is the dress code for ${siteConfig.couple.debutNickname}'s debut?`,
 
-    answer: `Our celebration theme is "${siteConfig.dressCode.theme}". Guests are encouraged to wear attire in soft pink tones—${siteConfig.dressCode.guests.ladies}. Gentlemen may come in ${siteConfig.dressCode.guests.gents}.`,
+    answer: `Our celebration theme is "${siteConfig.dressCode.theme}". Guests are encouraged to wear attire —${siteConfig.dressCode.guests.ladies}. Gentlemen may come in ${siteConfig.dressCode.guests.gents}.`,
   },
 
   {
@@ -45,7 +71,7 @@ const faqItems: FAQItem[] = [
 
     answer:
 
-      `Piel Allen's 18th birthday celebration will be held on ${siteConfig.ceremony.day}, ${siteConfig.ceremony.date} at ${siteConfig.ceremony.time}. The celebration will take place at ${siteConfig.ceremony.location} in Batangas City.`,
+      `${siteConfig.couple.debutNickname}'s 18th birthday celebration will be held on ${siteConfig.ceremony.day}, ${siteConfig.ceremony.date} at ${siteConfig.ceremony.time}. The celebration will take place at ${siteConfig.ceremony.location} in Batangas City.`,
 
   },
 
@@ -65,7 +91,7 @@ const faqItems: FAQItem[] = [
 
     answer:
 
-      `Kindly RSVP on or before ${siteConfig.details.rsvp.deadline}. Your response helps us prepare for Piel Allen's special evening. [RSVP_LINK]Click here to RSVP[/RSVP_LINK]`,
+      `Kindly RSVP on or before ${siteConfig.details.rsvp.deadline}. Your response helps us prepare for ${siteConfig.couple.debutNickname}'s special evening. [RSVP_LINK]Click here to RSVP[/RSVP_LINK]`,
 
   },
 
@@ -75,7 +101,7 @@ const faqItems: FAQItem[] = [
 
     answer:
 
-      "Your presence is the most precious gift. If you wish to share a token of love, monetary gifts are warmly appreciated as Piel begins a new chapter and pursues her dreams.",
+      `Your presence is the most precious gift. If you wish to share a token of love, monetary gifts are warmly appreciated as ${siteConfig.couple.debutNickname} begins a new chapter and pursues her dreams.`,
 
   },
 
@@ -185,6 +211,15 @@ export function FAQ() {
 
   }
 
+  const faqPalette = {
+    baseWhite: "#F7F2EB",
+    textDeep: "#081F5C",
+    MoonBeige: "#F7F2EB",
+    Porcelain: "#EDF1F6",
+    Moonlight: "#BACEDB",
+    RoyalBlue: "#334EAC",
+    MidnightBlue: "#081F5C",
+  }
 
 
   return (
@@ -194,13 +229,136 @@ export function FAQ() {
       id="faq"
 
       className="relative z-[30] overflow-hidden py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28"
-      style={{ background: "linear-gradient(to bottom, #FFF6F8, #F6C1CF)" }}
+
 
     >
 
+           {/* Celestial, dreamy background */}
+           <div className="absolute inset-0 pointer-events-none overflow-hidden">
+
+{/* Deep celestial base */}
+<div
+  className="absolute inset-0"
+  style={{
+    background: `
+      radial-gradient(ellipse at 12% 15%, rgba(186,214,235,0.32) 0%, transparent 48%),
+      radial-gradient(ellipse at 88% 80%, rgba(51,78,172,0.55) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 50%, rgba(8,31,92,0.5) 0%, transparent 70%),
+      linear-gradient(160deg, rgba(2,6,20,1) 0%, rgba(6,18,58,0.88) 40%, rgba(2,6,20,1) 100%)
+    `,
+  }}
+/>
+
+{/* Nebula cloud — top-left blue mist */}
+<div
+  className="absolute -top-16 -left-20 w-[55%] h-[55%] mix-blend-screen"
+  style={{
+    background: "radial-gradient(ellipse at 40% 40%, rgba(186,214,235,0.9) 0%, rgba(51,78,172,0.55) 38%, transparent 70%)",
+    filter: "blur(52px)",
+    opacity: 0.28,
+    animation: "countdownNebula1 18s ease-in-out infinite",
+  }}
+/>
+
+{/* Nebula cloud — bottom-right royal mist */}
+<div
+  className="absolute -bottom-20 -right-20 w-[60%] h-[60%] mix-blend-screen"
+  style={{
+    background: "radial-gradient(ellipse at 60% 60%, rgba(51,78,172,0.88) 0%, rgba(8,31,92,0.5) 45%, transparent 70%)",
+    filter: "blur(58px)",
+    opacity: 0.25,
+    animation: "countdownNebula2 22s ease-in-out infinite",
+  }}
+/>
+
+{/* Nebula cloud — mid soft glow */}
+<div
+  className="absolute top-1/3 left-1/4 w-[50%] h-[40%] mix-blend-screen"
+  style={{
+    background: "radial-gradient(ellipse at 50% 50%, rgba(208,227,255,0.85) 0%, transparent 65%)",
+    filter: "blur(64px)",
+    opacity: 0.13,
+    animation: "countdownNebula3 26s ease-in-out infinite",
+  }}
+/>
+
+{/* Aurora shimmer ribbon */}
+<div
+  className="absolute inset-0 mix-blend-screen"
+  style={{
+    background: `
+      radial-gradient(ellipse at 20% 35%, rgba(208,227,255,0.22) 0%, transparent 50%),
+      radial-gradient(ellipse at 78% 25%, rgba(186,214,235,0.24) 0%, transparent 55%)
+    `,
+    opacity: 0.65,
+    animation: "countdownAurora 16s ease-in-out infinite",
+  }}
+/>
+
+{/* Moon — top-right, partially cropped behind top edge so it never overlaps content */}
+<div
+  className="absolute right-4 sm:right-10 md:right-16 -top-10 sm:-top-14 md:-top-16 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full pointer-events-none"
+  style={{
+    backgroundImage: `radial-gradient(circle at 28% 28%, #D0E3FF 0%, #F7F2EB 36%, transparent 70%)`,
+    boxShadow: `0 0 60px rgba(186,214,235,0.99), 0 0 120px rgba(186,214,235,0.88), 0 0 200px rgba(8,31,92,0.9)`,
+  }}
+>
+  <div
+    className="absolute rounded-full bg-[#020c1e]"
+    style={{ width: "84%", height: "84%", top: "10%", right: "-4%" }}
+  />
+  <div className="absolute inset-0 rounded-full border border-white/25" />
+  {/* Sparkle companions */}
+  <div
+    className="absolute -bottom-2 -left-3 w-2 h-2 rounded-full bg-white/90 blur-[1px]"
+    style={{ animation: "countdownTwinkle 2.8s 0.4s ease-in-out infinite" }}
+  />
+  <div
+    className="absolute top-3 -left-4 w-1 h-1 rounded-full bg-white/70 blur-[0.5px]"
+    style={{ animation: "countdownTwinkle 3.6s 1.2s ease-in-out infinite" }}
+  />
+</div>
+
+{/* Shooting star */}
+<div
+  className="absolute h-px"
+  style={{
+    width: "clamp(80px, 9vw, 140px)",
+    top: "18%",
+    left: "18%",
+    background: "linear-gradient(90deg, transparent, rgba(237,241,246,0.98) 60%, transparent)",
+    boxShadow: "0 0 6px rgba(237,241,246,0.95)",
+    transform: "rotate(-26deg)",
+    animation: "countdownShootingStar 10s 2.5s ease-in-out infinite",
+    opacity: 0,
+  }}
+/>
+
+{/* Stars */}
+<div className="absolute inset-0 pointer-events-none">
+  {starField.map((star, index) => (
+    <div
+      key={index}
+      className="absolute rounded-full bg-[rgba(237,241,246,0.98)]"
+      style={{
+        width: `${star.size}px`,
+        height: `${star.size}px`,
+        top: star.top,
+        left: star.left,
+        opacity: 0.85,
+        filter: star.glow
+          ? `blur(0.5px) drop-shadow(0 0 3px rgba(208,227,255,0.95))`
+          : star.size > 1.4 ? "blur(0.4px)" : "blur(0.2px)",
+        animation: `countdownTwinkle ${star.duration} ${star.delay} ease-in-out infinite`,
+      }}
+    />
+  ))}
+</div>
+</div>
+
       {/* Ornate pattern background */}
 
-      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-40">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
 
         {/* Base pattern - diagonal lines forming diamonds */}
 
@@ -212,9 +370,9 @@ export function FAQ() {
 
             backgroundImage: `
 
-              repeating-linear-gradient(45deg, transparent, transparent 70px, rgba(229,201,183,0.06) 70px, rgba(229,201,183,0.06) 71px),
+              repeating-linear-gradient(45deg, transparent, transparent 70px, ${faqPalette.MoonBeige}0.06 70px, ${faqPalette.MoonBeige}0.06 71px),
 
-              repeating-linear-gradient(-45deg, transparent, transparent 70px, rgba(229,201,183,0.06) 70px, rgba(229,201,183,0.06) 71px)
+              repeating-linear-gradient(-45deg, transparent, transparent 70px, ${faqPalette.MoonBeige}0.06 70px, ${faqPalette.MoonBeige}0.06 71px)
 
             `,
 
@@ -236,7 +394,7 @@ export function FAQ() {
 
               {/* Scroll motifs at intersections */}
 
-              <g fill="none" stroke="#F8D7E2" strokeWidth="0.5">
+              <g fill="none" stroke="${faqPalette.RoyalBlue}" strokeWidth="0.5">
 
                 {/* Top scroll */}
 
@@ -286,7 +444,7 @@ export function FAQ() {
 
       <div className="relative z-10 text-center mb-8 sm:mb-10 md:mb-14 lg:mb-16 px-3 sm:px-4">
 
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-[#F48FB1]/70 px-5 py-2 text-[10px] sm:text-xs tracking-[0.48em] uppercase text-white">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-[${faqPalette.RoyalBlue}]/70 px-5 py-2 text-[10px] sm:text-xs tracking-[0.48em] uppercase text-white">
 
           Event Details & FAQ
 
@@ -294,7 +452,7 @@ export function FAQ() {
 
         <h2
 
-          className={`${greatVibes.className} text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#D95C8A] drop-shadow-[0_18px_40px_rgba(248,181,204,0.75)] mt-3 sm:mt-4`}
+          className={`${greatVibes.className} text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#F7F2EB] drop-shadow-[0_18px_40px_${faqPalette.RoyalBlue}0.75] mt-3 sm:mt-4`}
 
         >
 
@@ -302,9 +460,9 @@ export function FAQ() {
 
         </h2>
 
-        <p className={`${inter.className} text-[11px] sm:text-xs md:text-sm lg:text-base text-[#D95C8A]/90 max-w-2xl mx-auto mt-3 sm:mt-4 leading-relaxed px-2`}>
+        <p className={`${inter.className} text-[11px] sm:text-xs md:text-sm lg:text-base text-[#F7F2EB] max-w-2xl mx-auto mt-3 sm:mt-4 leading-relaxed px-2`}>
 
-          Everything you need to know for Piel Allen&apos;s soft pink beach-inspired celebration
+          Everything you need to know for {siteConfig.couple.debut}&apos;s soft pink beach-inspired celebration
 
         </p>
 
@@ -314,7 +472,7 @@ export function FAQ() {
 
       <div className="relative z-10 max-w-4xl mx-auto px-3 sm:px-4 md:px-6">
 
-        <div className="relative overflow-hidden rounded-2xl sm:rounded-[28px] md:rounded-[32px] border-2 border-white/60 bg-white/95 backdrop-blur-md shadow-[0_20px_55px_rgba(212,116,151,0.35)] sm:shadow-[0_26px_70px_rgba(212,116,151,0.45)]">
+        <div className="relative overflow-hidden rounded-2xl sm:rounded-[28px] md:rounded-[32px] border-2 border-white/60 bg-white/95 backdrop-blur-md shadow-[0_20px_55px_${faqPalette.RoyalBlue}0.35] sm:shadow-[0_26px_70px_${faqPalette.RoyalBlue}0.45]">
 
           <div className="relative px-4 py-6 sm:px-6 sm:py-8 md:px-10 md:py-10 lg:px-12 lg:py-12">
 
@@ -332,7 +490,7 @@ export function FAQ() {
 
                     key={index}
 
-                    className="group relative overflow-hidden rounded-xl sm:rounded-2xl border-2 border-[#D95C8A]/20 bg-white transition-all duration-300 hover:border-[#D95C8A]/40 hover:shadow-[0_12px_30px_rgba(1,54,98,0.25)]"
+                    className="group relative overflow-hidden rounded-xl sm:rounded-2xl border-2 border-[${faqPalette.RoyalBlue}]/20 bg-white transition-all duration-300 hover:border-[${faqPalette.RoyalBlue}]/40 hover:shadow-[0_12px_30px_${faqPalette.RoyalBlue}0.25]"
 
                   >
 
@@ -350,7 +508,7 @@ export function FAQ() {
 
                       <span
 
-                        className={`${playfair.className} font-semibold text-[#D95C8A] flex-1 text-[13px] sm:text-sm md:text-base lg:text-lg leading-snug sm:leading-relaxed group-hover:text-[#D95C8A]/80 transition-colors duration-200`}
+                        className={`${playfair.className} font-semibold text-[#081F5C] flex-1 text-[13px] sm:text-sm md:text-base lg:text-lg leading-snug sm:leading-relaxed group-hover:text-[#081F5C]/80 transition-colors duration-200`}
 
                       >
 
@@ -362,7 +520,7 @@ export function FAQ() {
 
                         size={18}
 
-                        className={`text-[#D95C8A]/70 flex-shrink-0 transition-all duration-300 ${isOpen ? "rotate-180 text-[#D95C8A]/80" : ""} w-4 h-4 sm:w-5 sm:h-5 mt-0.5 sm:mt-0 group-hover:text-[#D95C8A]/80`}
+                        className={`text-[#081F5C]/70 flex-shrink-0 transition-all duration-300 ${isOpen ? "rotate-180 text-[#081F5C]/80" : ""} w-4 h-4 sm:w-5 sm:h-5 mt-0.5 sm:mt-0 group-hover:text-[#081F5C]/80`}
 
                         aria-hidden
 
@@ -388,11 +546,11 @@ export function FAQ() {
 
                       <div className="overflow-hidden">
 
-                        <div className="px-4 py-3.5 sm:px-5 sm:py-4 md:px-6 md:py-5 bg-[#013662]/5 border-t border-[#013662]/20">
+                        <div className="px-4 py-3.5 sm:px-5 sm:py-4 md:px-6 md:py-5 bg-[${faqPalette.RoyalBlue}]/5 border-t border-[${faqPalette.RoyalBlue}]/20">
 
                           {item.answer.includes("[RSVP_LINK]") ? (
 
-                            <p className={`${inter.className} text-[#D95C8A]/80 leading-relaxed text-[12px] sm:text-sm md:text-base lg:text-lg whitespace-pre-line`}>
+                            <p className={`${inter.className} text-[${faqPalette.RoyalBlue}]/80 leading-relaxed text-[12px] sm:text-sm md:text-base lg:text-lg whitespace-pre-line`}>
 
                               {item.answer.split("[RSVP_LINK]")[0]}
 
@@ -400,7 +558,7 @@ export function FAQ() {
 
                                 href="#guest-list"
 
-                                className="text-[#D95C8A] underline font-semibold hover:text-[#D95C8A]/70 transition-colors break-words"
+                                className="text-[${faqPalette.RoyalBlue}] underline font-semibold hover:text-[${faqPalette.RoyalBlue}]/70 transition-colors break-words"
 
                                 onClick={(e) => {
 
@@ -422,7 +580,7 @@ export function FAQ() {
 
                           ) : (
 
-                            <p className={`${inter.className} text-[#D95C8A]/80 leading-relaxed text-[12px] sm:text-sm md:text-base lg:text-lg whitespace-pre-line`}>
+                            <p className={`${inter.className} text-[${faqPalette.RoyalBlue}]/80 leading-relaxed text-[12px] sm:text-sm md:text-base lg:text-lg whitespace-pre-line`}>
 
                               {item.answer}
 

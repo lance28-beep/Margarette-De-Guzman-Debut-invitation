@@ -46,7 +46,7 @@ export default async function GalleryPage() {
   ]
 
   return (
-    <main className="min-h-screen relative overflow-hidden" style={{ background: "linear-gradient(to bottom, #FECFDA, #FAA4BC)" }}>
+    <main className="min-h-screen relative overflow-hidden" style={{ background: "linear-gradient(to bottom, #081F5C, #334EAC)" }}>
       {/* Ornate pattern background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
         {/* Base pattern - diagonal lines forming diamonds */}
@@ -54,8 +54,8 @@ export default async function GalleryPage() {
           className="absolute inset-0"
           style={{
             backgroundImage: `
-              repeating-linear-gradient(45deg, transparent, transparent 70px, rgba(229,201,183,0.06) 70px, rgba(229,201,183,0.06) 71px),
-              repeating-linear-gradient(-45deg, transparent, transparent 70px, rgba(229,201,183,0.06) 70px, rgba(229,201,183,0.06) 71px)
+              repeating-linear-gradient(45deg, transparent, transparent 70px, #081F5C/0.06 70px, #081F5C/0.06 71px),
+              repeating-linear-gradient(-45deg, transparent, transparent 70px, #081F5C/0.06 70px, #081F5C/0.06 71px)
             `,
             backgroundSize: '70px 70px, 70px 70px',
           }}
@@ -66,7 +66,7 @@ export default async function GalleryPage() {
           <defs>
             <pattern id="scrollPatternGallery" x="0" y="0" width="140" height="140" patternUnits="userSpaceOnUse">
               {/* Scroll motifs at intersections */}
-              <g fill="none" stroke="#E5C9B7" strokeWidth="0.5">
+              <g fill="none" stroke="#081F5C" strokeWidth="0.5">
                 {/* Top scroll */}
                 <path d="M 70 0 Q 65 15 70 30 Q 75 15 70 0" />
                 {/* Bottom scroll */}
@@ -93,29 +93,29 @@ export default async function GalleryPage() {
       <section className="relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-8 sm:py-16">
         <div className="text-center mb-6 sm:mb-8 md:mb-10 px-3 sm:px-4">
           <div className="mx-auto max-w-3xl">
-            <p className={`${inter.className} text-xs sm:text-sm tracking-[0.45em] uppercase text-white/75 mb-3`}>
+            <p className={`${inter.className} text-xs sm:text-sm tracking-[0.45em] uppercase text-[#F7F2EB]/75 mb-3`}>
               Timeless Memories
             </p>
             <h1
-              className={`${greatVibes.className} text-4xl sm:text-5xl md:text-6xl text-white mb-4 drop-shadow-[0_18px_40px_rgba(1,54,98,0.68)]`}
+              className={`${greatVibes.className} text-4xl sm:text-5xl md:text-6xl text-[#F7F2EB] mb-4 drop-shadow-[0_18px_40px_rgba(1,54,98,0.68)]`}
             >
               `{siteConfig.couple.debutNickname} Debut Gallery
             </h1>
-            <p className={`${inter.className} text-sm sm:text-base md:text-lg text-white/90 mt-4 leading-relaxed`}>
+            <p className={`${inter.className} text-sm sm:text-base md:text-lg text-[#F7F2EB]/90 mt-4 leading-relaxed`}>
               Moments captured in sapphire blue and champagne elegance—`{siteConfig.couple.debutNickname}&apos;s eighteenth celebration, preserved for you to treasure forever.
             </p>
           </div>
         </div>
 
         {images.length === 0 ? (
-          <div className={`${inter.className} text-center text-white/90`}>
+          <div className={`${inter.className} text-center text-[#F7F2EB]/90`}>
             <p className="font-light">
               No images found. Add files to{" "}
-              <code className="px-2 py-1 bg-[#013662]/80 rounded border border-white/30 text-white">
+              <code className="px-2 py-1 bg-[#013662]/80 rounded border border-[#F7F2EB]/30 text-[#F7F2EB]">
                 public/mobile-background
               </code>
               {" "}or{" "}
-              <code className="px-2 py-1 bg-[#013662]/80 rounded border border-white/30 text-white">
+              <code className="px-2 py-1 bg-[#013662]/80 rounded border border-[#F7F2EB]/30 text-[#F7F2EB]">
                 public/desktop-background
               </code>
               .

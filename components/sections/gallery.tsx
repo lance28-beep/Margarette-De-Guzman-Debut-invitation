@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 import { Section } from "@/components/section"
 import { Great_Vibes, Playfair_Display, Inter } from "next/font/google"
+import { siteConfig } from "@/content/site"
 
 const greatVibes = Great_Vibes({
   subsets: ["latin"],
@@ -20,28 +21,55 @@ const inter = Inter({
   weight: ["400", "500", "600"],
 })
 
+const starField: { top: string; left: string; size: number; delay: string; duration: string; glow?: boolean }[] = [
+  { top: "5%",  left: "7%",  size: 1.2, delay: "0s",   duration: "6.2s" },
+  { top: "8%",  left: "24%", size: 2.2, delay: "1.1s", duration: "4.8s", glow: true },
+  { top: "11%", left: "44%", size: 1.4, delay: "0.5s", duration: "5.6s" },
+  { top: "14%", left: "62%", size: 1.9, delay: "1.9s", duration: "4.3s", glow: true },
+  { top: "9%",  left: "78%", size: 1.1, delay: "0.8s", duration: "5.0s" },
+  { top: "19%", left: "14%", size: 1.3, delay: "2.2s", duration: "5.9s" },
+  { top: "22%", left: "36%", size: 2.4, delay: "0.3s", duration: "6.4s", glow: true },
+  { top: "26%", left: "57%", size: 1.0, delay: "1.5s", duration: "4.6s" },
+  { top: "23%", left: "88%", size: 1.6, delay: "0.1s", duration: "5.3s" },
+  { top: "33%", left: "6%",  size: 1.2, delay: "2.6s", duration: "4.9s" },
+  { top: "38%", left: "29%", size: 1.5, delay: "1.0s", duration: "6.0s" },
+  { top: "41%", left: "73%", size: 2.1, delay: "0.6s", duration: "5.5s", glow: true },
+  { top: "44%", left: "92%", size: 1.1, delay: "2.0s", duration: "4.7s" },
+  { top: "50%", left: "17%", size: 1.4, delay: "1.4s", duration: "5.8s" },
+  { top: "55%", left: "48%", size: 1.9, delay: "0.9s", duration: "6.5s", glow: true },
+  { top: "59%", left: "82%", size: 1.2, delay: "1.7s", duration: "5.2s" },
+  { top: "65%", left: "33%", size: 1.5, delay: "2.3s", duration: "4.4s" },
+  { top: "69%", left: "61%", size: 1.0, delay: "0.4s", duration: "5.7s" },
+  { top: "73%", left: "8%",  size: 2.3, delay: "1.3s", duration: "6.1s", glow: true },
+  { top: "78%", left: "76%", size: 1.3, delay: "0.7s", duration: "4.5s" },
+  { top: "83%", left: "22%", size: 1.6, delay: "2.8s", duration: "5.9s" },
+  { top: "87%", left: "45%", size: 1.1, delay: "1.6s", duration: "4.8s" },
+  { top: "91%", left: "85%", size: 1.9, delay: "0.2s", duration: "6.3s", glow: true },
+  { top: "3%",  left: "55%", size: 1.3, delay: "3.0s", duration: "5.4s" },
+  { top: "47%", left: "40%", size: 1.0, delay: "2.5s", duration: "4.2s" },
+]
+
 // Soft pink beach palette for gallery
 const galleryPalette = {
-  primaryPink: "#F6C1CF",
-  secondaryPink: "#F48FB1",
-  accentPink: "#D95C8A",
-  lavender: "#D8B4E2",
-  coral: "#E57399",
-  baseWhite: "#FFF6F8",
-  textDeep: "rgba(108, 23, 61, 0.95)",
+  MidnightBlue: "#081F5C",
+  RoyalBlue: "#334EAC",
+  SkyBlueAccent: "#BAD6EB",
+  DawnBlue: "#D0E3FF",
+  Porcelain: "#EDF1F6",
+  MoonBeige: "#F7F2EB",
 }
 
 const galleryItems = [
-  { image: "/desktop-background/debut (1).webp", text: "Soft Shoreline" },
-  { image: "/desktop-background/debut (2).webp", text: "Pink Horizon" },
-  { image: "/desktop-background/debut (3).webp", text: "Seaside Glow" },
-  { image: "/desktop-background/debut (4).webp", text: "Sunset Whispers" },
-  { image: "/desktop-background/debut (5).webp", text: "Pastel Dream" },
-  { image: "/desktop-background/debut (6).jpg", text: "Tide of Memories" },
-  { image: "/mobile-background/debut (6).jpg", text: "Shoreline Smiles" },
-  { image: "/mobile-background/debut (1).jpg", text: "Blush Skies" },
-  { image: "/desktop-background/debut (9).jpg", text: "Seafoam Stories" },
-  { image: "/mobile-background/debut (2).webp", text: "Seafoam Stories" },
+  { image: "/mobile-background/debut (1).jpg", text: "Moonrise Beginning" },
+  { image: "/mobile-background/debut (2).jpg", text: "Starlit Horizon" },
+  { image: "/mobile-background/debut (3).jpg", text: "Celestial Glow" },
+  { image: "/mobile-background/debut (4).jpg", text: "Whispers of the Moon" },
+  { image: "/mobile-background/debut (5).jpg", text: "A Sky Full of Dreams" },
+  { image: "/mobile-background/debut (6).jpg", text: "Moonlight Memories" },
+  { image: "/mobile-background/debut (2).jpg", text: "Under the Silver Sky" },
+  { image: "/mobile-background/debut (3).jpg", text: "Stardust Wishes" },
+  { image: "/mobile-background/debut (4).jpg", text: "Celestial Reflections" },
+  { image: "/mobile-background/debut (5).jpg", text: "Dancing with the Stars" },
 ]
 
 const tileLayouts = [
@@ -129,44 +157,153 @@ export function Gallery() {
   return (
     <Section
       id="gallery"
-      className="relative py-14 sm:py-20 md:py-24 lg:py-28 overflow-hidden bg-[#FFF6F8]"
+      className="relative py-14 sm:py-20 md:py-24 lg:py-28 overflow-hidden"
     >
-      {/* Soft pink beach background */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Celestial, dreamy background */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+
+        {/* Deep celestial base */}
         <div
-          className="absolute inset-0 opacity-70"
+          className="absolute inset-0"
           style={{
-            backgroundImage: `
-              radial-gradient(circle at 0% 0%, ${galleryPalette.primaryPink}26 0, transparent 55%),
-              radial-gradient(circle at 100% 100%, ${galleryPalette.lavender}26 0, transparent 55%),
-              radial-gradient(circle at 15% 80%, ${galleryPalette.coral}22 0, transparent 60%)
+            background: `
+              radial-gradient(ellipse at 12% 15%, rgba(186,214,235,0.32) 0%, transparent 48%),
+              radial-gradient(ellipse at 88% 80%, rgba(51,78,172,0.55) 0%, transparent 55%),
+              radial-gradient(ellipse at 50% 50%, rgba(8,31,92,0.5) 0%, transparent 70%),
+              linear-gradient(160deg, rgba(2,6,20,1) 0%, rgba(6,18,58,0.88) 40%, rgba(2,6,20,1) 100%)
             `,
           }}
         />
+
+        {/* Nebula cloud — top-left blue mist */}
+        <div
+          className="absolute -top-16 -left-20 w-[55%] h-[55%] mix-blend-screen"
+          style={{
+            background: "radial-gradient(ellipse at 40% 40%, rgba(186,214,235,0.9) 0%, rgba(51,78,172,0.55) 38%, transparent 70%)",
+            filter: "blur(52px)",
+            opacity: 0.28,
+            animation: "countdownNebula1 18s ease-in-out infinite",
+          }}
+        />
+
+        {/* Nebula cloud — bottom-right royal mist */}
+        <div
+          className="absolute -bottom-20 -right-20 w-[60%] h-[60%] mix-blend-screen"
+          style={{
+            background: "radial-gradient(ellipse at 60% 60%, rgba(51,78,172,0.88) 0%, rgba(8,31,92,0.5) 45%, transparent 70%)",
+            filter: "blur(58px)",
+            opacity: 0.25,
+            animation: "countdownNebula2 22s ease-in-out infinite",
+          }}
+        />
+
+        {/* Nebula cloud — mid soft glow */}
+        <div
+          className="absolute top-1/3 left-1/4 w-[50%] h-[40%] mix-blend-screen"
+          style={{
+            background: "radial-gradient(ellipse at 50% 50%, rgba(208,227,255,0.85) 0%, transparent 65%)",
+            filter: "blur(64px)",
+            opacity: 0.13,
+            animation: "countdownNebula3 26s ease-in-out infinite",
+          }}
+        />
+
+        {/* Aurora shimmer ribbon */}
+        <div
+          className="absolute inset-0 mix-blend-screen"
+          style={{
+            background: `
+              radial-gradient(ellipse at 20% 35%, rgba(208,227,255,0.22) 0%, transparent 50%),
+              radial-gradient(ellipse at 78% 25%, rgba(186,214,235,0.24) 0%, transparent 55%)
+            `,
+            opacity: 0.65,
+            animation: "countdownAurora 16s ease-in-out infinite",
+          }}
+        />
+
+        {/* Moon — top-right, partially cropped behind top edge so it never overlaps content */}
+        <div
+          className="absolute right-4 sm:right-10 md:right-16 -top-10 sm:-top-14 md:-top-16 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full pointer-events-none"
+          style={{
+            backgroundImage: `radial-gradient(circle at 28% 28%, #D0E3FF 0%, #F7F2EB 36%, transparent 70%)`,
+            boxShadow: `0 0 60px rgba(186,214,235,0.99), 0 0 120px rgba(186,214,235,0.88), 0 0 200px rgba(8,31,92,0.9)`,
+          }}
+        >
+          <div
+            className="absolute rounded-full bg-[#020c1e]"
+            style={{ width: "84%", height: "84%", top: "10%", right: "-4%" }}
+          />
+          <div className="absolute inset-0 rounded-full border border-white/25" />
+          {/* Sparkle companions */}
+          <div
+            className="absolute -bottom-2 -left-3 w-2 h-2 rounded-full bg-white/90 blur-[1px]"
+            style={{ animation: "countdownTwinkle 2.8s 0.4s ease-in-out infinite" }}
+          />
+          <div
+            className="absolute top-3 -left-4 w-1 h-1 rounded-full bg-white/70 blur-[0.5px]"
+            style={{ animation: "countdownTwinkle 3.6s 1.2s ease-in-out infinite" }}
+          />
+        </div>
+
+        {/* Shooting star */}
+        <div
+          className="absolute h-px"
+          style={{
+            width: "clamp(80px, 9vw, 140px)",
+            top: "18%",
+            left: "18%",
+            background: "linear-gradient(90deg, transparent, rgba(237,241,246,0.98) 60%, transparent)",
+            boxShadow: "0 0 6px rgba(237,241,246,0.95)",
+            transform: "rotate(-26deg)",
+            animation: "countdownShootingStar 10s 2.5s ease-in-out infinite",
+            opacity: 0,
+          }}
+        />
+
+        {/* Stars */}
+        <div className="absolute inset-0 pointer-events-none">
+          {starField.map((star, index) => (
+            <div
+              key={index}
+              className="absolute rounded-full bg-[rgba(237,241,246,0.98)]"
+              style={{
+                width: `${star.size}px`,
+                height: `${star.size}px`,
+                top: star.top,
+                left: star.left,
+                opacity: 0.85,
+                filter: star.glow
+                  ? `blur(0.5px) drop-shadow(0 0 3px rgba(208,227,255,0.95))`
+                  : star.size > 1.4 ? "blur(0.4px)" : "blur(0.2px)",
+                animation: `countdownTwinkle ${star.duration} ${star.delay} ease-in-out infinite`,
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       <div className="relative z-10 text-center px-4">
         <div className="mx-auto max-w-3xl">
           <p
             className="text-xs sm:text-sm tracking-[0.45em] uppercase mb-3 font-medium"
-            style={{ color: galleryPalette.accentPink }}
+            style={{ color: galleryPalette.MoonBeige }}
           >
-            Soft pink snapshots
+            {siteConfig.couple.debutNickname}&apos;s Gallery
           </p>
           <h2
             className={`${greatVibes.className} text-4xl sm:text-5xl md:text-6xl`}
             style={{
-              color: galleryPalette.accentPink,
-              textShadow: "0 10px 30px rgba(217,92,138,0.4)",
+              color: galleryPalette.MoonBeige,
+              textShadow: "0 10px 30px rgba(8,31,92,0.4)",
             }}
           >
-            Gallery of Sweet Moments
+            Gallery of {siteConfig.couple.debutNickname}&apos;s 18th Debut
           </h2>
           <p
             className={`${inter.className} text-sm sm:text-base md:text-lg mt-4 leading-relaxed max-w-2xl mx-auto`}
-            style={{ color: galleryPalette.textDeep }}
+            style={{ color: galleryPalette.MoonBeige }}
           >
-            A collection of seaside-inspired memories from Piel Allen’s 18th—soft pastels, bright smiles, and little snapshots of a day to remember.
+            A collection of seaside-inspired memories from  {siteConfig.couple.debutNickname}&apos;s 18th Debut—soft pastels, bright smiles, and little snapshots of a day to remember.
           </p>
         </div>
       </div>
@@ -175,7 +312,7 @@ export function Gallery() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
           {isLoading ? (
             <div className="flex items-center justify-center h-64 sm:h-80 md:h-96">
-              <div className="w-14 h-14 border-[3px] border-[rgba(217,92,138,0.25)] border-t-[rgba(244,143,177,0.95)] rounded-full animate-spin" />
+              <div className="w-14 h-14 border-[3px] border-[rgba(8,31,92,0.25)] border-t-[rgba(186,214,235,0.95)] rounded-full animate-spin" />
             </div>
           ) : (
             <div className="mx-auto max-w-6xl w-full px-3 sm:px-4 md:px-6">
@@ -193,7 +330,7 @@ export function Gallery() {
                     aria-label={`Open image ${index + 1}: ${item.text}`}
                     >
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[1] pointer-events-none">
-                      <div className="absolute -inset-3 bg-gradient-to-br from-[rgba(246,193,207,0.35)] via-transparent to-[rgba(216,180,226,0.4)] blur-xl" />
+                      <div className="absolute -inset-3 bg-gradient-to-br from-[rgba(8,31,92,0.35)] via-transparent to-[rgba(186,214,235,0.4)] blur-xl" />
                     </div>
 
                     <div className="relative h-full w-full overflow-hidden">
@@ -205,7 +342,7 @@ export function Gallery() {
                         className="h-full w-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
                         sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 16vw"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.45)] via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[rgba(8,31,92,0.45)] via-transparent to-transparent" />
                     </div>
 
                     <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-2.5 md:p-3 flex items-center justify-between text-white z-10">
@@ -214,7 +351,7 @@ export function Gallery() {
                       >
                         {item.text}
                       </span>
-                      <span className="text-[8px] sm:text-[9px] tracking-[0.25em] uppercase text-[rgba(255,246,248,0.9)] flex-shrink-0">
+                      <span className="text-[8px] sm:text-[9px] tracking-[0.25em] uppercase text-[rgba(186,214,235,0.9)] flex-shrink-0">
                         {index + 1}/{galleryItems.length}
                       </span>
                     </div>
@@ -228,7 +365,7 @@ export function Gallery() {
 
       {selectedImage && (
         <div
-          className="fixed inset-0 z-[9999] bg-[rgba(6,0,18,0.96)] backdrop-blur-md flex items-center justify-center p-2 sm:p-4"
+          className="fixed inset-0 z-[9999] bg-[rgba(8,31,92,0.96)] backdrop-blur-md flex items-center justify-center p-2 sm:p-4"
           onClick={() => {
             setSelectedImage(null)
             resetZoom()
@@ -288,8 +425,8 @@ export function Gallery() {
             }}
           >
             <div className="absolute inset-x-0 top-0 z-30 flex items-start justify-between px-3 sm:px-6 pt-3 sm:pt-6">
-              <div className="bg-[rgba(217,92,138,0.95)] backdrop-blur-md rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border border-[rgba(255,246,248,0.65)] shadow-[0_12px_24px_rgba(0,0,0,0.55)]">
-                <span className="text-xs sm:text-sm font-medium text-[#FFF6F8] tracking-[0.18em]">
+              <div className="bg-[rgba(8,31,92,0.95)] backdrop-blur-md rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border border-[rgba(186,214,235,0.65)] shadow-[0_12px_24px_rgba(0,0,0,0.55)]">
+                <span className="text-xs sm:text-sm font-medium text-white tracking-[0.18em]">
                   {currentIndex + 1} / {galleryItems.length}
                 </span>
               </div>
@@ -303,10 +440,10 @@ export function Gallery() {
                     navigateImage("prev")
                     resetZoom()
                   }}
-                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 bg-[rgba(217,92,138,0.9)] hover:bg-[rgba(217,92,138,1)] backdrop-blur-md rounded-full p-3 sm:p-4 transition-all duration-200 border border-[rgba(255,246,248,0.7)]"
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 bg-[rgba(8,31,92,0.9)] hover:bg-[rgba(8,31,92,1)] backdrop-blur-md rounded-full p-3 sm:p-4 transition-all duration-200 border border-[rgba(186,214,235,0.7)]"
                   aria-label="Previous image"
                 >
-                  <ChevronLeft size={24} className="sm:w-7 sm:h-7 text-[#FFF6F8]" />
+                  <ChevronLeft size={24} className="sm:w-7 sm:h-7 text-white" />
                 </button>
 
                 <button
@@ -315,10 +452,10 @@ export function Gallery() {
                     navigateImage("next")
                     resetZoom()
                   }}
-                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 bg-[rgba(217,92,138,0.9)] hover:bg-[rgba(217,92,138,1)] backdrop-blur-md rounded-full p-3 sm:p-4 transition-all duration-200 border border=[rgba(255,246,248,0.7)]"
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 bg-[rgba(8,31,92,0.9)] hover:bg-[rgba(8,31,92,1)] backdrop-blur-md rounded-full p-3 sm:p-4 transition-all duration-200 border border=[rgba(186,214,235,0.7)]"
                   aria-label="Next image"
                 >
-                  <ChevronRight size={24} className="sm:w-7 sm:h-7 text-[#FFF6F8]" />
+                  <ChevronRight size={24} className="sm:w-7 sm:h-7 text-white" />
                 </button>
               </>
             )}
@@ -334,11 +471,11 @@ export function Gallery() {
                     setSelectedImage(null)
                     resetZoom()
                   }}
-                  className="absolute top-3 right-3 z-40 flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-[rgba(255,246,248,0.7)] bg-[rgba(217,92,138,0.95)] backdrop-blur-md shadow-[0_14px_28px_rgba(0,0,0,0.6)] transition-all duration-200 hover:scale-105"
+                  className="absolute top-3 right-3 z-40 flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-[rgba(186,214,235,0.7)] bg-[rgba(8,31,92,0.95)] backdrop-blur-md shadow-[0_14px_28px_rgba(0,0,0,0.6)] transition-all duration-200 hover:scale-105"
                   aria-label="Close lightbox"
                 >
                   <span className="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
-                  <X size={18} className="sm:w-6 sm:h-6 text-[#FFF6F8] drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]" />
+                  <X size={18} className="sm:w-6 sm:h-6 text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)] " />
                 </button>
                 <img
                   src={selectedImage.image || "/placeholder.svg"}
@@ -347,7 +484,7 @@ export function Gallery() {
                     transform: `translate3d(${pan.x}px, ${pan.y}px, 0) scale(${zoomScale})`,
                     transition: pinchStartDist ? "none" : "transform 200ms ease-out",
                   }}
-                  className="max-w-full max-h-[75vh] sm:max-h-[85vh] object-contain rounded-2xl shadow-[0_32px_64px_rgba(0,0,0,0.7)] ring-2 ring-[rgba(244,143,177,0.6)]"
+                  className="max-w-full max-h-[75vh] sm:max-h-[85vh] object-contain rounded-2xl shadow-[0_32px_64px_rgba(0,0,0,0.7)] ring-2 ring-[rgba(186,214,235,0.6)]"
                 />
 
                 {zoomScale > 1 && (
@@ -356,7 +493,7 @@ export function Gallery() {
                       e.stopPropagation()
                       resetZoom()
                     }}
-                    className="absolute bottom-2 right-2 bg-[rgba(217,92,138,0.9)] hover:bg-[rgba(217,92,138,1)] backdrop-blur-md text-[#FFF6F8] rounded-full px-3 py-1.5 text-xs font-medium border border-[rgba(255,246,248,0.7)] transition-all duration-200"
+                    className="absolute bottom-2 right-2 bg-[rgba(8,31,92,0.9)] hover:bg-[rgba(8,31,92,1)] backdrop-blur-md text-white rounded-full px-3 py-1.5 text-xs font-medium border border-[rgba(186,214,235,0.7)] transition-all duration-200"
                   >
                     Reset Zoom
                   </button>
@@ -366,7 +503,7 @@ export function Gallery() {
 
             {galleryItems.length > 1 && (
               <div className="absolute bottom-2 left-1/2 -translate-x-1/2 sm:hidden z-20">
-                <p className="text-xs text-[#FFF6F8] bg-[rgba(217,92,138,0.9)] backdrop-blur-sm rounded-full px-3 py-1.5 border border-[rgba(255,246,248,0.7)]">
+                <p className="text-xs text-white bg-[rgba(8,31,92,0.9)] backdrop-blur-sm rounded-full px-3 py-1.5 border border-[rgba(186,214,235,0.7)]">
                   Swipe to navigate
                 </p>
               </div>
@@ -380,9 +517,9 @@ export function Gallery() {
           href="/gallery"
           className="group relative inline-flex h-full min-h-[3.5rem] sm:min-h-[3.75rem] items-center justify-center overflow-hidden rounded-full border-2 px-10 sm:px-12 md:px-14 text-[9px] sm:text-[10px] md:text-xs tracking-[0.48em] uppercase font-semibold shadow-[0_20px_48px_rgba(0,0,0,0.18)] transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-[0_28px_56px_rgba(0,0,0,0.22)]"
           style={{
-            backgroundImage: `linear-gradient(120deg, ${galleryPalette.primaryPink}, ${galleryPalette.secondaryPink})`,
-            borderColor: galleryPalette.accentPink,
-            color: "#2b1016",
+            backgroundImage: `linear-gradient(120deg, ${galleryPalette.MidnightBlue}, ${galleryPalette.RoyalBlue})`,
+            borderColor: galleryPalette.SkyBlueAccent,
+            color: galleryPalette.MoonBeige,
           }}
         >
           <span className="absolute inset-0 bg-gradient-to-r from-white/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

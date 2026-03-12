@@ -11,26 +11,27 @@ const cormorant = Cormorant_Garamond({
   weight: ["400"],
 })
 
-// Soft pink beach aesthetic palette for easy tweaking
 const navPalette = {
-  primaryPink: "#F6C1CF",
-  secondaryPink: "#F48FB1",
-  accentPink: "#D95C8A",
-  lavender: "#D8B4E2",
-  coral: "#E57399",
-  baseWhite: "#FFF6F8",
+  midnightBlue: "#081F5C",
+  royalBlue: "#334EAC",
+  skyBlue: "#BAD6EB",
+  dawnBlue: "#D0E3FF",
+  porcelain: "#EDF1F6",
+  moonBeige: "#F7F2EB",
+  deepNavy: "#0C1B3A",
+  starWhite: "#FFFFFF",
 }
 
 // Central navbar color tokens
 const NAV_COLORS = {
-  // Glassmorphism over hero photos, aligned with LoadingScreen and loader Hero
-  background: "rgba(246, 193, 207, 0.22)", // primary pink glass
-  backgroundScrolled: "rgba(216, 180, 226, 0.3)", // lavender glass a bit stronger
-  border: "rgba(255, 246, 248, 0.55)",
-  text: navPalette.baseWhite,
-  textMuted: "rgba(255, 246, 248, 0.9)",
-  accent: navPalette.accentPink,
-  glow: navPalette.secondaryPink,
+  // Glassmorphism over celestial hero photos, aligned with LoadingScreen and loader Hero
+  background: "rgba(8, 31, 92, 0.9)",
+  backgroundScrolled: "rgba(2, 8, 25, 0.96)",
+  border: "rgba(186, 214, 235, 0.35)",
+  text: navPalette.porcelain,
+  textMuted: "rgba(237, 241, 246, 0.85)",
+  accent: navPalette.skyBlue,
+  glow: navPalette.starWhite,
   monogramFilter: "brightness(0) invert(1)",
 }
 
@@ -140,7 +141,7 @@ export function Navbar() {
           <Link href="#home" className="flex-shrink-0 group relative z-10">
             <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20">
               <Image
-                src="/monogram/newmonogram.png"
+                src="/monogram/mongoram.png"
                 alt="Debut Monogram"
                 fill
                 className="object-contain group-hover:scale-110 group-active:scale-105 transition-all duration-500 drop-shadow-[0_4px_16px_rgba(0,0,0,0.35)] group-hover:drop-shadow-[0_6px_22px_rgba(0,0,0,0.45)]"
@@ -154,7 +155,7 @@ export function Navbar() {
             <div
               className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10"
               style={{
-                background: `linear-gradient(90deg, transparent, ${navPalette.coral}55, transparent)`,
+                background: `radial-gradient(circle at 30% 30%, ${navPalette.skyBlue}33, transparent 60%)`,
               }}
             />
           </Link>
@@ -172,19 +173,19 @@ export function Navbar() {
                       : "bg-transparent hover:shadow-[0_6px_18px_rgba(0,0,0,0.35)] hover:scale-105 active:scale-95"
                   }`}
                   style={{
-                    color: isActive ? "#0B0B10" : NAV_COLORS.textMuted,
-                    backgroundColor: isActive ? `${NAV_COLORS.text}F2` : "transparent",
-                    borderColor: isActive ? `${NAV_COLORS.text}E0` : "transparent",
+                    color: isActive ? navPalette.deepNavy : NAV_COLORS.textMuted,
+                    backgroundColor: isActive ? `${navPalette.moonBeige}F2` : "transparent",
+                    borderColor: isActive ? `rgba(247,242,235,0.9)` : "transparent",
                   }}
                 >
                   {link.label}
                   <span
                     className="absolute bottom-0 left-0 h-0.5 transition-all duration-500 rounded-full"
                     style={{
-                      backgroundImage: `linear-gradient(90deg, ${navPalette.primaryPink}, ${navPalette.secondaryPink}, ${navPalette.lavender})`,
+                      backgroundImage: `linear-gradient(90deg, ${navPalette.midnightBlue}, ${navPalette.royalBlue}, ${navPalette.skyBlue})`,
                       width: isActive ? "100%" : "0%",
                       boxShadow: isActive
-                        ? "0 0 10px rgba(244,143,177,0.7)"
+                        ? "0 0 10px rgba(186,214,235,0.9)"
                         : "0 0 0 rgba(0,0,0,0)",
                     }}
                   />
@@ -193,8 +194,8 @@ export function Navbar() {
                     <div
                       className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full animate-pulse"
                       style={{
-                        backgroundColor: navPalette.secondaryPink,
-                        boxShadow: "0 0 6px rgba(244,143,177,0.9)",
+                        backgroundColor: navPalette.skyBlue,
+                        boxShadow: "0 0 8px rgba(186,214,235,0.95)",
                       }}
                     />
                   )}
@@ -202,21 +203,21 @@ export function Navbar() {
                   <div
                     className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
                     style={{
-                      background: `radial-gradient(circle at top left, ${navPalette.primaryPink}35, transparent 55%)`,
+                      background: `radial-gradient(circle at top left, ${navPalette.primaryBackground}35, transparent 55%)`,
                     }}
                   />
                 </Link>
               )
             })}
           </div>
-
+{/* i need to change the color of text menu items to textPrimary */ }
           <div className="md:hidden flex items-center h-full">
             {/* Decorative halo to improve tap target and visual affordance */}
             <div className="relative">
               <div
                 className="absolute -inset-1 rounded-full blur-md pointer-events-none"
                 style={{
-                  background: `linear-gradient(135deg, ${navPalette.primaryPink}26, ${navPalette.lavender}18, transparent)`,
+                  background: `linear-gradient(135deg, ${navPalette.midnightBlue}30, ${navPalette.skyBlue}22, transparent)`,
                 }}
               />
               <StaggeredMenu
@@ -225,11 +226,11 @@ export function Navbar() {
                 socialItems={[]}
                 displaySocials={false}
                 displayItemNumbering={true}
-                menuButtonColor={NAV_COLORS.text}
-                openMenuButtonColor={NAV_COLORS.accent}
+                menuButtonColor={navPalette.porcelain}
+                openMenuButtonColor={navPalette.skyBlue}
                 changeMenuColorOnOpen={true}
-                colors={[NAV_COLORS.background, NAV_COLORS.backgroundScrolled, NAV_COLORS.text, NAV_COLORS.accent, NAV_COLORS.glow]}
-                accentColor={NAV_COLORS.accent}
+                colors={[navPalette.midnightBlue, navPalette.royalBlue, navPalette.dawnBlue, navPalette.skyBlue, navPalette.porcelain]}
+                accentColor={navPalette.skyBlue}
                 isFixed={true}
                 onMenuOpen={() => {}}
                 onMenuClose={() => {}}

@@ -17,13 +17,13 @@ const playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", "
 
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500", "600"] })
 const color = {
-  containerBackground: "#F6C1CF",
-  roleCategoryText: "#FFF6F8",
-  roleTitleText: "#D95C8A",
-  nameText: "#D95C8A",
-  dividerText: "#FFF6F8",
-  dividerBackground: "#D95C8A",
-  dividerBackgroundText: "#FFF6F8",
+  containerBackground: "#BAD6EB",
+  roleCategoryText: "#081F5C",
+  roleTitleText: "#334EAC",
+  nameText: "#334EAC",
+  dividerText: "#081F5C",
+  dividerBackground: "#334EAC",
+  dividerBackgroundText: "#081F5C",
 }
 
 
@@ -297,7 +297,7 @@ export function Entourage() {
       >
 
         <p
-          className={`${playfair.className} text-[12px] sm:text-[13px] md:text-sm lg:text-base font-medium tracking-[0.02em] text-[#D95C8A] ${textAlign}`}
+          className={`${playfair.className} text-[12px] sm:text-[13px] md:text-sm lg:text-base font-medium tracking-[0.02em] text-[#334EAC] ${textAlign}`}
         >
 
           {member.Name}
@@ -306,7 +306,7 @@ export function Entourage() {
 
         {showRole && member.RoleTitle && (
           <p
-            className={`${inter.className} text-[9px] sm:text-[10px] md:text-[11px] font-medium tracking-[0.18em] uppercase text-[#D95C8A]/80 mt-0.5 leading-snug ${textAlign}`}
+            className={`${inter.className} text-[9px] sm:text-[10px] md:text-[11px] font-medium tracking-[0.18em] uppercase text-[#334EAC]/80 mt-0.5 leading-snug ${textAlign}`}
           >
             {member.RoleTitle}
           </p>
@@ -484,9 +484,9 @@ export function Entourage() {
 
                 <div className="flex flex-col items-center gap-4">
 
-                  <Loader2 className="h-12 w-12 animate-spin text-[#D95C8A]" />
+                  <Loader2 className="h-12 w-12 animate-spin text-[#334EAC]" />
 
-                  <span className={`${inter.className} text-[#D95C8A]/80 text-lg`}>
+                  <span className={`${inter.className} text-[#334EAC]/80 text-lg`}>
 
                     Loading the entourage…
 
@@ -508,7 +508,7 @@ export function Entourage() {
 
                     onClick={fetchEntourage}
 
-                    className={`${playfair.className} text-[#D95C8A] hover:text-[#D95C8A]/70 transition-colors underline`}
+                    className={`${playfair.className} text-[#334EAC] hover:text-[#334EAC]/70 transition-colors underline`}
 
                   >
 
@@ -524,9 +524,9 @@ export function Entourage() {
 
               <div className="text-center py-24">
 
-                <Users className="h-16 w-16 text-[#D95C8A]/30 mx-auto mb-4" />
+                <Users className="h-16 w-16 text-[#334EAC]/30 mx-auto mb-4" />
 
-                <p className={`${inter.className} text-[#D95C8A]/70 text-lg`}>
+                <p className={`${inter.className} text-[#334EAC]/70 text-lg`}>
 
                   The entourage list will be available soon.
 
