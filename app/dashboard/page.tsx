@@ -463,7 +463,7 @@ export default function DashboardPage() {
           <div className="px-8 py-4 flex items-center justify-between">
             <div>
               <h1 className="text-xl font-bold text-[#111827]">
-                Kaith
+              {siteConfig.couple.debutNickname}'s Debut
               </h1>
             </div>
             <div className="flex items-center gap-3">
