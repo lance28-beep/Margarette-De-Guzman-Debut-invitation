@@ -79,7 +79,6 @@ export default function Home() {
               <BookOfGuests />
               <Registry />
               <FAQ />
-   
               <SnapShare />
               <Footer />
             </div>

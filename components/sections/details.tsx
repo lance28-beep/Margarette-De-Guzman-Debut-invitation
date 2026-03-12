@@ -373,7 +373,7 @@ export function Details() {
           >
             <div className="relative h-[220px] sm:h-60 md:h-80 lg:h-[380px] xl:h-[420px] overflow-hidden">
               <Image
-                src="/Details/Details.png"
+                src="/Details/KikaysPrivatepool.png"
                 alt={venue}
                 fill
                 priority
