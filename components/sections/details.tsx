@@ -2,7 +2,7 @@
 
 import { Section } from "@/components/section"
 import { siteConfig } from "@/content/site"
-import { Clock, Navigation, Copy, Check, Palette, Car, Sparkles, ListOrdered } from "lucide-react"
+import { Clock, Navigation, Copy, Check, Palette, Car, Sparkles, ListOrdered, Music, Video, Backpack } from "lucide-react"
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Great_Vibes, Inter } from "next/font/google"
@@ -21,31 +21,34 @@ const COLORS = {
 }
 
 const PROGRAM_PART1 = [
-  "Debut Program",
-  "Entrance of the debutant's family (Parents)",
-  "Entrance of the Debutant",
-  "Opening prayer",
-  "Trivia c/o host",
-  "18 Candles ",
-  "Special video greetings from Kuya Earl and Ate Pat",
-  "Singing of happy birthday song",
-  "Blowing of the candle",
-  "18 Bills/Gifts & 18 Roses",
-  "Gracing of the food",
-  "Dinner",
-  "DJ or Background Track",
+ "Opening of the Debut Program",
+	"Entrance of the Debutante’s Family (Parents)",
+	"Grand Entrance of the Debutante",
+	"Opening Prayer",
+	"Trivia Segment c/o Host",
+	"18 Candles Ceremony",
+	"Special Video Greetings from Kuya Earl and Ate Pat",
+	"Singing of the Happy Birthday Song",
+	"Blowing of the Birthday Candle",
+	"18 Bills",
+	"18 Gifts",
+	"18 Roses",
+	"Grace Before Meals",
+	"Dinner",
+	"DJ / Background Music",
 ]
 
 const PROGRAM_PART2 = [
-  "Cotillion de Honor",
-  "Trivia c/o Host",
-  "18 Shots with trivia games c/o celebrant for questions",
-  "18 Perfumes/ 18 bags and 18 shoes",
-  "Intermission song number – Host",
-  "Message from the parent",
-  "Message from the celebrant",
-  "Closing spiel host",
-  "Community Dance",
+	"Cotillion de Honor",
+	"Trivia Segment c/o Host",
+	"18 Shots with Trivia Games (Questions from the Celebrant)",
+	"18 Perfumes",
+	"18 Bags (Backpack or Sling Bag)",
+	"18 Footwear (Slides or Sandal)",
+	"Intermission Song Number – Host",
+	"Message from the Parents",
+	"Message from the Celebrant",
+	"Closing Piel – Host",
 ]
 
 type Particle = {
