@@ -343,7 +343,7 @@ export function SnapShare() {
 
                   >
 
-                    <Image src="/desktop-background/debut (1).jpg" alt="Debut moment 3" fill className="object-cover" />
+                    <Image src="/Details/LinkPreview.jpg" alt="Debut moment 3" fill className="object-cover" />
 
                   </motion.div>
 
