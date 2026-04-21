@@ -114,7 +114,7 @@ export function Narrative() {
                   <div className="relative h-full w-full">
                     <div
                       className="absolute inset-0 bg-cover bg-center"
-                      style={{ backgroundImage: "url('/mobile-background/debut (2).jpg')" }}
+                      style={{ backgroundImage: "url('/mobile-backgroundnew/debut (31).webp')" }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t"
                       style={{ backgroundImage: `linear-gradient(to top, ${narrativeColors.cardFrontOverlayFrom}, ${narrativeColors.cardFrontOverlayTo})` }} />

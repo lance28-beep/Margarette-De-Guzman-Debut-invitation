@@ -6,6 +6,9 @@ const IMAGE_DIRS = [
   path.resolve(process.cwd(), "public", "desktop-background"),
   path.resolve(process.cwd(), "public", "mobile-background"),
   path.resolve(process.cwd(), "public", "Details"),
+  path.resolve(process.cwd(), "public", "box"),
+  path.resolve(process.cwd(), "public", "desktop-backgroundNew"),
+  path.resolve(process.cwd(), "public", "mobile-backgroundnew"),
 ];
 
 const VALID_INPUT_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".JPG", ".JPEG", ".PNG"]);

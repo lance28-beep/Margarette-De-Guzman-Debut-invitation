@@ -3,19 +3,20 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import Image from 'next/image';
 import { siteConfig } from '@/content/site';
-
 interface LoadingScreenProps {
   onComplete: () => void;
 }
 
 // Countdown boxes with color photos - numbers show days, hours, minutes
 const COUNTDOWN_BOXES = [
-  { src: '/boxes/box (1).jpg' },
-  { src: '/boxes/box (2).jpg' },
-  { src: '/boxes/box (3).jpg' },
+  { src: '/box/box1.webp' },
+  { src: '/box/box2.webp' },
+  { src: '/box/box3.webp' },
 ];
 
-const MAIN_BW_IMAGE = '/boxes/debut (2).jpg';
+const MOBILE_BG = '/mobile-backgroundnew/debut (51).webp';
+const DESKTOP_BG = '/box/desktop.webp';
+
 const STAGGER_DELAY_MS = 4000; // Each image appears every 4 seconds
 const INITIAL_DELAY_MS = 3000; // Delay before first image appears
 const BOX_TRANSITION_MS = 1200; // Slow, smooth transition
@@ -67,6 +68,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
     const t = setInterval(() => setNow(new Date()), 60000); // update every minute
     return () => clearInterval(t);
   }, []);
+
 
   useEffect(() => {
     const timers: NodeJS.Timeout[] = [];
@@ -122,64 +124,187 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         fadeOut ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
-      {/* Background image with pastel overlay */}
-      <div className="absolute inset-0">
-        <Image
-          src={MAIN_BW_IMAGE}
-          alt=""
-          fill
-          className="object-cover object-center"
-          sizes="100vw"
-          priority
-        />
-        {/* Celestial gradient overlay for readability and depth */}
+      {/* ── Background layer ── */}
+      <div className="absolute inset-0 overflow-hidden">
+
+        {/* Keyframe styles injected once */}
+        <style>{`
+          @keyframes kbZoom {
+            from { transform: scale(1);      }
+            to   { transform: scale(1.09);   }
+          }
+          @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.7); }
+            50%       { opacity: 1;   transform: scale(1.3); }
+          }
+          @keyframes aurora {
+            0%   { transform: translateX(-8%) skewX(-6deg) scaleY(1);   opacity: 0.22; }
+            50%  { transform: translateX(8%)  skewX(6deg)  scaleY(1.1); opacity: 0.38; }
+            100% { transform: translateX(-8%) skewX(-6deg) scaleY(1);   opacity: 0.22; }
+          }
+          @keyframes floatUp {
+            0%   { transform: translateY(0)   scale(1);   opacity: 0; }
+            20%  { opacity: 0.7; }
+            80%  { opacity: 0.5; }
+            100% { transform: translateY(-60px) scale(1.4); opacity: 0; }
+          }
+        `}</style>
+
+        {/* 1 — Photo with slow Ken Burns zoom — CSS picks mobile vs desktop, no JS flash */}
+        <div className="absolute inset-0 md:hidden">
+          <Image
+            src={MOBILE_BG}
+            alt=""
+            fill
+            className="object-cover object-center"
+            sizes="100vw"
+            priority
+            style={{ animation: 'kbZoom 18s ease-in-out infinite alternate' }}
+          />
+        </div>
+        <div className="absolute inset-0 hidden md:block">
+          <Image
+            src={DESKTOP_BG}
+            alt=""
+            fill
+            className="object-cover object-center"
+            sizes="100vw"
+            priority
+            style={{ animation: 'kbZoom 18s ease-in-out infinite alternate' }}
+          />
+        </div>
+
+        {/* 2 — Deep vignette: edges darken to frame the subject */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 pointer-events-none"
           style={{
-            background: `radial-gradient(circle at top left, ${palette.skyBlue}33 0%, transparent 40%),
-                         radial-gradient(circle at bottom right, ${palette.royalBlue}66 0%, transparent 50%),
-                         linear-gradient(180deg, ${palette.midnightBlue}80 0%, ${palette.royalBlue}dd 100%)`,
+            background: `radial-gradient(ellipse 80% 80% at 50% 45%,
+                           transparent 35%,
+                           rgba(4,10,40,0.55) 70%,
+                           rgba(4,10,40,0.88) 100%)`,
           }}
         />
 
-        {/* Moon + celestial line-art accents */}
+        {/* 3 — Celestial color wash (depth + readability) */}
         <div
-          className="absolute right-6 sm:right-10 top-10 sm:top-12 w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-[0_0_45px_rgba(208,227,255,0.95)]"
+          className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: `radial-gradient(circle at 30% 30%, ${palette.dawnBlue}ff 0%, ${palette.moonBeige}ee 35%, transparent 70%)`,
-            boxShadow:
-              '0 0 45px rgba(186,214,235,0.95), 0 0 90px rgba(186,214,235,0.9), 0 0 140px rgba(8,31,92,0.9)',
+            background: `linear-gradient(175deg,
+                           ${palette.midnightBlue}70 0%,
+                           transparent 45%,
+                           ${palette.royalBlue}99 100%)`,
+          }}
+        />
+
+        {/* 4 — Aurora shimmer band */}
+        <div
+          className="absolute inset-x-0 pointer-events-none"
+          style={{
+            top: '18%',
+            height: '28%',
+            background: `linear-gradient(90deg,
+                           transparent 0%,
+                           ${palette.skyBlue}28 20%,
+                           ${palette.dawnBlue}40 50%,
+                           ${palette.skyBlue}28 80%,
+                           transparent 100%)`,
+            filter: 'blur(28px)',
+            animation: 'aurora 9s ease-in-out infinite',
+          }}
+        />
+
+        {/* 5 — Crescent moon */}
+        <div
+          className="absolute right-6 sm:right-12 top-10 sm:top-12 w-16 h-16 sm:w-20 sm:h-20 rounded-full"
+          style={{
+            background: `radial-gradient(circle at 32% 32%, ${palette.dawnBlue} 0%, ${palette.moonBeige}dd 40%, transparent 72%)`,
+            boxShadow: `0 0 32px rgba(186,214,235,0.9), 0 0 70px rgba(186,214,235,0.55), 0 0 120px rgba(8,31,92,0.7)`,
           }}
         >
-          {/* Shadow to carve out crescent */}
-          <div className="absolute right-0.5 top-1.5 w-14 h-14 sm:w-[4.25rem] sm:h-[4.25rem] rounded-full bg-[rgba(8,31,92,0.98)] opacity-95" />
-          {/* Soft rim highlight */}
-          <div className="absolute inset-0 rounded-full border border-[rgba(237,241,246,0.8)]/80 opacity-70" />
-          {/* Tiny star sparkle near the moon */}
-          <div className="absolute -bottom-1 -left-2 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[rgba(237,241,246,0.98)] blur-[1px] animate-pulse" />
-        </div>
-        <div className="absolute -top-10 -left-6 sm:-top-6 sm:left-4 w-40 h-40 rounded-full border border-white/40 opacity-60 blur-[1px]" />
-        <div className="absolute bottom-10 -right-12 sm:-right-4 w-48 h-32 rounded-[999px] border border-white/40 opacity-50 rotate-6" />
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-6 top-24 w-16 h-16 rounded-3xl border border-white/40 opacity-60" />
-          <div className="absolute right-10 bottom-32 w-12 h-12 rounded-full border border-white/60 opacity-60" />
+          <div className="absolute right-0.5 top-1.5 w-14 h-14 sm:w-[4.2rem] sm:h-[4.2rem] rounded-full bg-[#060e2a] opacity-95" />
+          <div className="absolute inset-0 rounded-full border border-white/30" />
+          {/* Sparkle beside moon */}
+          <div
+            className="absolute -bottom-1.5 -left-3 w-1.5 h-1.5 rounded-full bg-white/90"
+            style={{ animation: 'twinkle 2.4s ease-in-out infinite' }}
+          />
         </div>
 
-        {/* Soft starfield and glowing stars */}
+        {/* 6 — Decorative orbital rings */}
+        <div className="pointer-events-none absolute -top-12 -left-8 w-44 h-44 rounded-full border border-white/25 blur-[1px]" />
+        <div className="pointer-events-none absolute bottom-8 -right-14 w-52 h-36 rounded-[999px] border border-white/20 rotate-12" />
+
+        {/* 7 — Stars (12 stars, varied size + twinkle speed) */}
+        <div className="pointer-events-none absolute inset-0">
+          {[
+            { t:'7%',  l:'12%', s:1.5, d:'0s',    dur:'2.1s' },
+            { t:'14%', l:'68%', s:1,   d:'0.4s',  dur:'3.0s' },
+            { t:'22%', l:'38%', s:2,   d:'0.9s',  dur:'2.5s' },
+            { t:'32%', l:'82%', s:1,   d:'1.2s',  dur:'1.8s' },
+            { t:'45%', l:'5%',  s:1.5, d:'0.2s',  dur:'2.8s' },
+            { t:'55%', l:'55%', s:1,   d:'1.5s',  dur:'3.3s' },
+            { t:'63%', l:'25%', s:2,   d:'0.7s',  dur:'2.2s' },
+            { t:'72%', l:'74%', s:1,   d:'0.3s',  dur:'1.9s' },
+            { t:'80%', l:'42%', s:1.5, d:'1.1s',  dur:'2.6s' },
+            { t:'88%', l:'88%', s:1,   d:'0.6s',  dur:'3.1s' },
+            { t:'10%', l:'48%', s:1,   d:'1.8s',  dur:'2.4s' },
+            { t:'50%', l:'90%', s:2,   d:'0.5s',  dur:'1.7s' },
+          ].map((star, idx) => (
+            <div
+              key={idx}
+              className="absolute rounded-full bg-white"
+              style={{
+                top: star.t,
+                left: star.l,
+                width: `${star.s * 4}px`,
+                height: `${star.s * 4}px`,
+                filter: `blur(${star.s * 0.5}px)`,
+                animation: `twinkle ${star.dur} ${star.d} ease-in-out infinite`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* 8 — Floating bokeh particles */}
+        <div className="pointer-events-none absolute inset-0">
+          {[
+            { l:'15%', t:'75%', s:10, d:'0s',   dur:'6s'  },
+            { l:'35%', t:'80%', s:8,  d:'1.5s', dur:'7s'  },
+            { l:'60%', t:'85%', s:14, d:'0.8s', dur:'5.5s'},
+            { l:'80%', t:'78%', s:7,  d:'2.2s', dur:'8s'  },
+            { l:'50%', t:'90%', s:10, d:'3.0s', dur:'6.5s'},
+          ].map((b, idx) => (
+            <div
+              key={idx}
+              className="absolute rounded-full"
+              style={{
+                left: b.l,
+                top: b.t,
+                width: `${b.s}px`,
+                height: `${b.s}px`,
+                background: `radial-gradient(circle, rgba(186,214,235,0.7) 0%, transparent 70%)`,
+                filter: 'blur(3px)',
+                animation: `floatUp ${b.dur} ${b.d} ease-in-out infinite`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* 9 — Top fade so header text is always readable */}
         <div
-          className="pointer-events-none absolute inset-0 mix-blend-screen opacity-60"
+          className="absolute inset-x-0 top-0 h-40 pointer-events-none"
           style={{
-            backgroundImage: `radial-gradient(circle at 15% 25%, ${palette.dawnBlue}33 0, transparent 45%),
-                              radial-gradient(circle at 80% 20%, ${palette.skyBlue}33 0, transparent 50%),
-                              radial-gradient(circle at 25% 80%, ${palette.porcelain}33 0, transparent 55%)`,
+            background: `linear-gradient(180deg, rgba(4,10,40,0.72) 0%, transparent 100%)`,
           }}
         />
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[rgba(208,227,255,0.95)] blur-[1px] opacity-90 top-10 left-1/5 animate-pulse" />
-          <div className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[rgba(186,214,235,0.95)] blur-[1px] opacity-90 top-1/4 right-1/4 animate-pulse" />
-          <div className="absolute w-0.5 h-0.5 sm:w-1 sm:h-1 rounded-full bg-[rgba(237,241,246,0.95)] blur-[0.5px] opacity-80 bottom-1/3 left-1/3 animate-pulse" />
-          <div className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[rgba(208,227,255,0.95)] blur-[1px] opacity-80 bottom-8 right-1/5 animate-pulse" />
-        </div>
+
+        {/* 10 — Bottom fade so cards / progress bar sit on clean dark base */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-48 pointer-events-none"
+          style={{
+            background: `linear-gradient(0deg, rgba(4,10,40,0.82) 0%, transparent 100%)`,
+          }}
+        />
       </div>
 
       <div className="relative flex flex-col flex-1 min-h-0">

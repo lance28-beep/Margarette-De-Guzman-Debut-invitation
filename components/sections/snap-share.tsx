@@ -315,7 +315,7 @@ export function SnapShare() {
 
                   >
 
-                    <Image src="/boxes/box (1).jpg" alt="Debut moment 1" fill className="object-cover" />
+                    <Image src="/mobile-backgroundnew/debut (5).webp" alt="Debut moment 1" fill className="object-cover" />
 
                   </motion.div>
 
@@ -329,7 +329,7 @@ export function SnapShare() {
 
                   >
 
-                    <Image src="/boxes/box (2).jpg" alt="Debut moment 2" fill className="object-cover" />
+                    <Image src="/mobile-backgroundnew/debut (6).webp" alt="Debut moment 2" fill className="object-cover" />
 
                   </motion.div>
 
@@ -343,7 +343,7 @@ export function SnapShare() {
 
                   >
 
-                    <Image src="/Details/LinkPreview.jpg" alt="Debut moment 3" fill className="object-cover" />
+                    <Image src="/desktop-backgroundNew/debut (2).webp" alt="Debut moment 3" fill className="object-cover" />
 
                   </motion.div>
 

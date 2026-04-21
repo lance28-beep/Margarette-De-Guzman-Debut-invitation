@@ -37,9 +37,9 @@ async function getImagesFrom(dir: string) {
 }
 
 export default async function GalleryPage() {
-  const mobileImages = await getImagesFrom("mobile-background")
-  const desktopImages = await getImagesFrom("desktop-background")
-  
+  const mobileImages = await getImagesFrom("mobile-backgroundnew")
+  const desktopImages = await getImagesFrom("desktop-backgroundNew")
+
   const images = [
     ...mobileImages.map((src) => ({ src, category: "mobile" as const })),
     ...desktopImages.map((src) => ({ src, category: "desktop" as const })),
@@ -112,11 +112,11 @@ export default async function GalleryPage() {
             <p className="font-light">
               No images found. Add files to{" "}
               <code className="px-2 py-1 bg-[#013662]/80 rounded border border-[#F7F2EB]/30 text-[#F7F2EB]">
-                public/mobile-background
+              public/mobile-backgroundnew
               </code>
               {" "}or{" "}
               <code className="px-2 py-1 bg-[#013662]/80 rounded border border-[#F7F2EB]/30 text-[#F7F2EB]">
-                public/desktop-background
+              public/desktop-backgroundNew
               </code>
               .
             </p>

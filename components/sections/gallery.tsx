@@ -60,16 +60,16 @@ const galleryPalette = {
 }
 
 const galleryItems = [
-  { image: "/mobile-background/debut (1).jpg", text: "Moonrise Beginning" },
-  { image: "/mobile-background/debut (2).jpg", text: "Starlit Horizon" },
-  { image: "/mobile-background/debut (3).jpg", text: "Celestial Glow" },
-  { image: "/mobile-background/debut (4).jpg", text: "Whispers of the Moon" },
-  { image: "/mobile-background/debut (5).jpg", text: "A Sky Full of Dreams" },
-  { image: "/mobile-background/debut (6).jpg", text: "Moonlight Memories" },
-  { image: "/mobile-background/debut (2).jpg", text: "Under the Silver Sky" },
-  { image: "/mobile-background/debut (3).jpg", text: "Stardust Wishes" },
-  { image: "/mobile-background/debut (4).jpg", text: "Celestial Reflections" },
-  { image: "/mobile-background/debut (5).jpg", text: "Dancing with the Stars" },
+  { image: "/mobile-backgroundnew/debut (41).webp", text: "Moonrise Beginning" },
+  { image: "/mobile-backgroundnew/debut (38).webp", text: "Starlit Horizon" },
+  { image: "/mobile-backgroundnew/debut (43).webp", text: "Celestial Glow" },
+  { image: "/mobile-backgroundnew/debut (5).webp", text: "Whispers of the Moon" },
+  { image: "/mobile-backgroundnew/debut (51).webp", text: "A Sky Full of Dreams" },
+  { image: "/mobile-backgroundnew/debut (11).webp", text: "Moonlight Memories" },
+  { image: "/mobile-backgroundnew/debut (25).webp", text: "Under the Silver Sky" },
+  { image: "/mobile-backgroundnew/debut (30).webp", text: "Stardust Wishes" },
+  { image: "/mobile-backgroundnew/debut (49).webp", text: "Celestial Reflections" },
+  { image: "/mobile-backgroundnew/debut (47).webp", text: "Dancing with the Stars" },
 ]
 
 const tileLayouts = [
