@@ -76,20 +76,24 @@ const starField: { top: string; left: string; size: number; delay: string; durat
 
 const PROGRAM_PART1 = [
  "Opening of the Debut Program",
-	"Entrance of the Debutante’s Family (Parents)",
+	"Entrance of the Debutante's Family (Parents)",
 	"Grand Entrance of the Debutante",
 	"Opening Prayer",
 	"Trivia Segment c/o Host",
 	"18 Candles Ceremony",
-	"Special Video Greetings from Kuya Earl and Ate Pat",
 	"Singing of the Happy Birthday Song",
 	"Blowing of the Birthday Candle",
 	"18 Bills",
+	"18 Sweets",
 	"18 Gifts",
-	"18 Roses",
+	"18 Treasures",
+  "18 Roses",
 	"Grace Before Meals",
 	"Dinner",
-	"DJ / Background Music",
+	"18 Shots ",
+  "18 Wines",
+  "Message from the Parents",
+  "Message from the Celebrant",
 ]
 
 const PROGRAM_PART2 = [
@@ -512,7 +516,7 @@ export function Details() {
                     ))}
                   </ul>
                 </div>
-                <div>
+                {/* <div>
                   <p
                     className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase mb-2 flex items-center gap-2 mt-4"
                     style={{ color: COLORS.MidnightBlue }}
@@ -531,7 +535,7 @@ export function Details() {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </div> */}
               </div>
             </div>
 

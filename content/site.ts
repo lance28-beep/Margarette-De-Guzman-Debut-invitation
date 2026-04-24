@@ -22,7 +22,7 @@ export const siteConfig = {
     location: "Kikay's Private Pool (San isidro Cabanatuan City) ",
     venue: "Kikay's Private Pool",
     date: "May 9, 2026",
-    day: "Friday",
+    day: "Saturday",
     time: "3:00 PM",
     entourageTime: "2:30 PM",
     guestsTime: "3:00 PM",
