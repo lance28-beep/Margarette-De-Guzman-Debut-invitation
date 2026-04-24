@@ -1,7 +1,7 @@
 export const siteConfig = {
   couple: {
-    debut: "Margarette De Guzman",
-    debutNickname: "Margarette",
+    debut: "Lady Margarette N. De Guzman",
+    debutNickname: "Lady Margarette",
     groom: "",
     groomNickname: "",
   },

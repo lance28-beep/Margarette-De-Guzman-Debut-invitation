@@ -423,7 +423,7 @@ export function BookOfGuests() {
                     className={`${inter.className} text-sm sm:text-lg md:text-xl font-medium leading-tight`}
                     style={{ color: guestsPalette.textDeep }}
                   >
-                    {totalGuests === 1 ? "Guest" : "Guests"} Celebrating With Piel
+                    {totalGuests === 1 ? "Guest" : "Guests"} Celebrating With {siteConfig.couple.debutNickname}
                   </p>
                 </div>
               </div>
@@ -441,7 +441,7 @@ export function BookOfGuests() {
                 className={`${inter.className} text-[10px] sm:text-xs md:text-sm leading-tight`}
                 style={{ color: guestsPalette.MidnightBlue }}
               >
-                Thank you for confirming your RSVP! Your presence means the world to Piel.
+                Thank you for confirming your RSVP! Your presence means the world to {siteConfig.couple.debutNickname}.
               </p>
             </div>
           </div>

@@ -71,7 +71,7 @@ const faqItems: FAQItem[] = [
 
     answer:
 
-      `${siteConfig.couple.debutNickname}'s 18th birthday celebration will be held on ${siteConfig.ceremony.day}, ${siteConfig.ceremony.date} at ${siteConfig.ceremony.time}. The celebration will take place at ${siteConfig.ceremony.location} in Batangas City.`,
+      `${siteConfig.couple.debutNickname}'s 18th birthday celebration will be held on ${siteConfig.ceremony.day}, ${siteConfig.ceremony.date} at ${siteConfig.ceremony.time}. The celebration will take place at ${siteConfig.ceremony.location}.`,
 
   },
 
