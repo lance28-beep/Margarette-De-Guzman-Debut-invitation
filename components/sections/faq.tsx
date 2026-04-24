@@ -171,7 +171,7 @@ const faqItems: FAQItem[] = [
 
     answer:
 
-      "While we love children, this is a formal evening celebration. We kindly request that only the guests listed in your invitation or RSVP join us. If you need clarification, please feel free to contact the family.",
+      "Yes, children are welcome to join the celebration! Since the venue includes a pool, we kindly encourage bringing an extra set of clothes for your child to ensure they stay comfortable throughout the event. We look forward to celebrating with you and your family!",
 
   },
 
